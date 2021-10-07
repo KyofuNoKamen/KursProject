@@ -1,7 +1,7 @@
-﻿  Source.cpp
+﻿  Window.cpp
   Создание кода
-  58 of 71 functions (81.7%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  1 of 212 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Game.vcxproj -> D:\VSRepo\Game\Release\Game.exe

@@ -153,6 +153,7 @@
   <ItemGroup>
     <Image Include="resources\ground.jpg" />
     <Image Include="resources\texture.jpg" />
+    <Image Include="resources\tile_set.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h" />
