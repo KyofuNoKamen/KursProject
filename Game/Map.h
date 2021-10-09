@@ -22,7 +22,6 @@ private:
 	std::map <std::string, sf::IntRect> tile_set;
 	std::map <std::string, sf::IntRect> ::iterator iterator_tile_set;
 	
-	void draw_map(std::string map[10][10]);
-
+	void draw_map(std::vector<std::vector<std::string>> &map);
 };
 
