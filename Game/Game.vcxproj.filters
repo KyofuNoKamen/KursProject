@@ -35,6 +35,9 @@
     <Image Include="resources\texture.jpg">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="resources\tile_set.jpg">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">

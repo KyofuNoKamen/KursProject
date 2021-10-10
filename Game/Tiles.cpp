@@ -5,7 +5,8 @@
 x_tiles - количество тайлов в ширину
 y_tiles - количество тайлов в высоту
 border - размер границы вокруг тайлового поля*/
-Tiles::Tiles(sf::RenderWindow *window_ptr, int x_tiles, int y_tiles) {
+Tiles::Tiles(sf::RenderWindow *window_ptr, int x_tiles, int y_tiles) 
+{
     this->window_ptr = window_ptr;
     this->x_tiles = x_tiles;
     this->y_tiles = y_tiles;
@@ -15,7 +16,8 @@ Tiles::Tiles(sf::RenderWindow *window_ptr, int x_tiles, int y_tiles) {
     draw_grid();
 }
 
-void Tiles::draw_grid() {
+void Tiles::draw_grid()
+{
     int points = (x_tiles + y_tiles + 2) * 2; // Количество точек для создания линий
     sf::VertexArray line(sf::Lines, points);
     sf::Vector2u resolution = window_ptr->getSize(); // Получение разрешения окна

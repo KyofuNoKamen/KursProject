@@ -1,23 +1,28 @@
 #include "Window.h"
 
-Window::Window(int resolution_x, int resolution_y, std::string name) {
+Window::Window(int resolution_x, int resolution_y, std::string name)
+{
 	create_window(resolution_x, resolution_y, name);
-
-
 }
 
-void Window::create_window(int resolution_x, int resolution_y, std::string name) {
+void Window::create_window(int resolution_x, int resolution_y, std::string name)
+{
     Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
 	Window::main_window.setFramerateLimit(60);
 }
 
 /*Функция возвращает главное окно*/
-sf::RenderWindow &Window::get_window() {
+sf::RenderWindow &Window::get_window()
+{
     return main_window;
 }
 
-void Window::start() {
+void Window::start() 
+{
 
+    sf::View view;
+    view.setCenter(sf::Vector2f(500, 500));
+    main_window.setView(view);
 
     while (main_window.isOpen())
     {
@@ -26,6 +31,15 @@ void Window::start() {
         {
             if (event.type == sf::Event::Closed)
                 main_window.close();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                view.move(sf::Vector2f(0, -50));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                view.move(sf::Vector2f(0, 50));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                view.move(sf::Vector2f(50, 0));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                view.move(sf::Vector2f(-50, 0));
+            main_window.setView(view);
         }
 
 

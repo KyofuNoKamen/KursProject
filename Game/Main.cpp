@@ -3,7 +3,7 @@
 
 int main()
 {
-    Window main_window(1920, 1000, "Main window");
+    Window main_window(1000, 1000, "Main window");
 
     main_window.start();
 
