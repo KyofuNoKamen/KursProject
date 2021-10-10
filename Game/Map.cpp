@@ -3,28 +3,21 @@
 #include <string>
 #include <map>
 #include <iterator>
+#include <vector>
 
 Map::Map(sf::RenderWindow* window)
 {
 	this->main_window = window;
 
+	std::vector <std::vector <std::string>> map_vector;
+	create_map(15);
+
+
 	int grid_width = 40;
 	int grid_height = 40;
+	const int size_map = 40;
 
 	grid = new Tiles(main_window, grid_width, grid_height);
-	std::string map_array[10][10] = 
-	{
-		{"Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Water", "Water", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Water", "Water", "Nothing", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Ground", "Wall"},
-		{"Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall", "Wall"}
-	};
 
 	std::map <std::string, sf::IntRect> tile_set;
 	std::map <std::string, sf::IntRect> :: iterator iterator_tile_set = tile_set.begin();
@@ -35,13 +28,12 @@ Map::Map(sf::RenderWindow* window)
 	int max = 4;
 	insert_into_tile_set(name_tile, coordinate, max);
 
-
-	draw_map(map_array);
+	draw_map();
 }
 
 
 //Метод заполняет тайлы спрайтами с нужными текстурами.
-void Map::draw_map(std::string map[10][10]) 
+void Map::draw_map() 
 {
 	sf::Vector2u tile;
 	sf::Vector2f coordinates;
@@ -58,7 +50,7 @@ void Map::draw_map(std::string map[10][10])
 			tile.y = i;
 			coordinates = grid->get_tile(tile);
 			
-			texture.loadFromFile("resources/tile_set.jpg", set_texture(map[i][j]));
+			texture.loadFromFile("resources/tile_set.jpg", set_texture(map_vector[i][j]));
 			sprite.setTexture(texture);
 			sprite.setPosition(coordinates);
 
@@ -94,4 +86,19 @@ void Map::insert_into_tile_set(std::string arr_key[], sf::IntRect arr_coordinate
 Map::~Map()
 {
 	delete grid;
+}
+
+void Map::create_map(int size)
+{
+	std::vector <std::string> string_map;
+	for (int j = 0; j < size; j++)
+	{
+		string_map.push_back("Ground");
+		std::cout << string_map[j] << " ";
+	}
+	std::cout << std::endl;
+	for (int i = 0; i < size; i++)
+	{
+		map_vector.push_back(string_map);
+	}
 }
