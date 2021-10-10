@@ -1,6 +1,40 @@
-﻿  Map.cpp
-  Создание кода
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-  All 345 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Создание кода завершено
-  Game.vcxproj -> D:\VSRepo\Game\Release\Game.exe
+﻿  Main.cpp
+  Map.cpp
+D:\VSRepo\Game\Game\Map.cpp(21,1): error C2059: синтаксическая ошибка: <<
+D:\VSRepo\Game\Game\Map.cpp(24,2): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(25,82): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(25,83): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(26,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(26,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(26,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(27,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(27,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(27,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(28,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(28,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(28,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(29,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(29,96): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(29,97): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(30,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(30,97): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(30,98): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(31,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(31,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(31,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(32,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(32,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(32,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(33,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(33,98): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(33,99): error C2059: синтаксическая ошибка: ,
+D:\VSRepo\Game\Game\Map.cpp(34,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(34,82): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+D:\VSRepo\Game\Game\Map.cpp(36,1): error C2059: синтаксическая ошибка: >>
+D:\VSRepo\Game\Game\Map.cpp(47,1): error C2059: синтаксическая ошибка: <<
+D:\VSRepo\Game\Game\Map.cpp(49,1): error C2059: синтаксическая ошибка: ==
+D:\VSRepo\Game\Game\Map.cpp(52,1): error C2059: синтаксическая ошибка: >>
+D:\VSRepo\Game\Game\Map.cpp(57,1): error C2059: синтаксическая ошибка: <<
+D:\VSRepo\Game\Game\Map.cpp(62,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+D:\VSRepo\Game\Game\Map.cpp(62,1): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
+  Window.cpp

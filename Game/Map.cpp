@@ -35,26 +35,24 @@ Map::Map(sf::RenderWindow* window)
 //Метод заполняет тайлы спрайтами с нужными текстурами.
 void Map::draw_map() 
 {
-	sf::Vector2u tile;
+	//sf::Vector2u tile;
 	sf::Vector2f coordinates;
 	sf::Texture texture;
 
-	sf::IntRect rect(0, 0, 100, 100);
+	//sf::IntRect rect(0, 0, 100, 100);
 
 	sf::Sprite sprite;
 	for (int i = 0; i < 10; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			tile.x = j;
-			tile.y = i;
-			coordinates = grid->get_tile(tile);
+			//tile.x = j;
+			//tile.y = i;
+			coordinates = grid->get_tile(sf::Vector2u(i, j));
 			
 			texture.loadFromFile("resources/tile_set.jpg", set_texture(map_vector[i][j]));
 			sprite.setTexture(texture);
 			sprite.setPosition(coordinates);
-
-
 
 			main_window->draw(sprite);	
 		}
