@@ -1,2 +1,6 @@
-﻿  Map.cpp
-  Game.vcxproj -> D:\CPPprojects\Kypca4\Debug\Game.exe
+﻿  Main.cpp
+  Map.cpp
+D:\VSRepo\Game\Game\Map.cpp(12,41): warning C4091: : пропускается слева от "std::vector<std::vector<std::string,std::allocator<std::string>>,std::allocator<std::vector<std::string,std::allocator<std::string>>>>", когда ни одна переменная не объявлена
+  Window.cpp
+  Создание кода...
+  Game.vcxproj -> D:\VSRepo\Game\Debug\Game.exe

@@ -3,6 +3,7 @@
 #include "Tiles.h"
 
 
+
 /*
 Задачи класса:
 	1. Создание карты поверх тайлового поля;
@@ -14,7 +15,8 @@ class Map
 public:
 	Map(sf::RenderWindow*);
 	~Map();
-	
+	void draw_map();
+
 	void insert_into_tile_set(std::string arr_key[], sf::IntRect arr_coordinates[], int max);
 	sf::IntRect set_texture(std::string tile_name);
 private:
@@ -24,7 +26,8 @@ private:
 	std::map <std::string, sf::IntRect> ::iterator iterator_tile_set;
 	std::vector <std::vector <std::string>> map_vector;
 	
-	void draw_map();
+	const int size_map = 40;
+
 	void create_map(int size);
 };
 
