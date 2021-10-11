@@ -19,10 +19,11 @@ sf::RenderWindow &Window::get_window()
 
 void Window::start() 
 {
-
+    
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
+    Map map(&get_window());
 
     while (main_window.isOpen())
     {
@@ -41,10 +42,10 @@ void Window::start()
                 view.move(sf::Vector2f(-50, 0));
             main_window.setView(view);
         }
-
+        
 
         main_window.clear();
-        Map map(&get_window());
+        map.draw_map();
         main_window.display();
     }
 }

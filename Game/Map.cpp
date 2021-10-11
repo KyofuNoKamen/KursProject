@@ -9,52 +9,54 @@ Map::Map(sf::RenderWindow* window)
 {
 	this->main_window = window;
 
-	std::vector <std::vector <std::string>> map_vector;
-	create_map(15);
+	std::vector <std::vector <std::string>>;
+
+	create_map(size_map);
 
 
-	int grid_width = 40;
-	int grid_height = 40;
-	const int size_map = 40;
+
+	int grid_width = 45;
+	int grid_height = 45;
+
+
 
 	grid = new Tiles(main_window, grid_width, grid_height);
-
-	std::map <std::string, sf::IntRect> tile_set;
-	std::map <std::string, sf::IntRect> :: iterator iterator_tile_set = tile_set.begin();
-
-	std::string name_tile[4] = { "Ground", "Wall", "Nothing", "Water" };
-	sf::IntRect coordinate[4] = { sf::IntRect(0,0,100,100), sf::IntRect(0,100,100,100), sf::IntRect(100,0,100,100), sf::IntRect(100,100,100,100) };
-	
-	int max = 4;
-	insert_into_tile_set(name_tile, coordinate, max);
-
-	draw_map();
 }
 
 
 //Метод заполняет тайлы спрайтами с нужными текстурами.
 void Map::draw_map() 
 {
+	std::map <std::string, sf::IntRect> tile_set;
+	std::map <std::string, sf::IntRect> ::iterator iterator_tile_set = tile_set.begin();
+
+	std::string name_tile[4] = { "Ground", "Wall", "Nothing", "Water" };
+	sf::IntRect coordinate[4] = { sf::IntRect(0,0,100,100), sf::IntRect(0,100,100,100), sf::IntRect(100,0,100,100), sf::IntRect(100,100,100,100) };
+
+	int max = 4;
+	insert_into_tile_set(name_tile, coordinate, max);
+
+
+
+
+
 	//sf::Vector2u tile;
 	sf::Vector2f coordinates;
 	sf::Texture texture;
 
-	//sf::IntRect rect(0, 0, 100, 100);
-
+	texture.loadFromFile("resources/tile_set.jpg");
 	sf::Sprite sprite;
-	for (int i = 0; i < 10; i++)
+	sprite.setTexture(texture);
+	for (int i = 0; i < size_map; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int j = 0; j < size_map; j++)
 		{
-			//tile.x = j;
-			//tile.y = i;
 			coordinates = grid->get_tile(sf::Vector2u(i, j));
 			
-			texture.loadFromFile("resources/tile_set.jpg", set_texture(map_vector[i][j]));
-			sprite.setTexture(texture);
+			sprite.setTextureRect(set_texture(map_vector[i][j]));
 			sprite.setPosition(coordinates);
 
-			main_window->draw(sprite);	
+			main_window->draw(sprite);
 		}
 	}
 }
@@ -89,14 +91,20 @@ Map::~Map()
 void Map::create_map(int size)
 {
 	std::vector <std::string> string_map;
-	for (int j = 0; j < size; j++)
+	for (int j = 0; j < size/2; j++)
 	{
 		string_map.push_back("Ground");
 		std::cout << string_map[j] << " ";
+		
+		
+		string_map.push_back("Water");
+		std::cout << string_map[j] << " ";
 	}
+
 	std::cout << std::endl;
 	for (int i = 0; i < size; i++)
 	{
 		map_vector.push_back(string_map);
 	}
+
 }
