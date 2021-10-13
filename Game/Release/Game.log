@@ -1,10 +1,7 @@
-﻿  Main.cpp
-  Map.cpp
-D:\VSRepo\Game\Game\Map.cpp(12,41): warning C4091: : пропускается слева от "std::vector<std::vector<std::string,std::allocator<std::string>>,std::allocator<std::vector<std::string,std::allocator<std::string>>>>", когда ни одна переменная не объявлена
-  Window.cpp
+﻿  Hero.cpp
   Создание кода
-  154 of 344 functions (44.8%) were compiled, the rest were copied from previous compilation.
-    62 functions were new in current compilation
-    25 functions had inline decision re-evaluated but remain unchanged
+  2 of 349 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Game.vcxproj -> D:\VSRepo\Game\Release\Game.exe

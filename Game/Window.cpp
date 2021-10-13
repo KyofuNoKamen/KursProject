@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "Hero.h"
 
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
@@ -19,7 +20,8 @@ sf::RenderWindow &Window::get_window()
 
 void Window::start() 
 {
-    
+
+    Hero hero(&get_window());
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
@@ -43,9 +45,10 @@ void Window::start()
             main_window.setView(view);
         }
         
-
         main_window.clear();
         map.draw_map();
+        hero.heroSpriteFunction();
+        hero.move();
         main_window.display();
     }
 }
