@@ -20,7 +20,8 @@ sf::RenderWindow &Window::get_window()
 
 void Window::start() 
 {
-    
+
+    Hero hero(&get_window());
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
@@ -46,8 +47,8 @@ void Window::start()
         
         main_window.clear();
         map.draw_map();
-        Hero hero(&get_window());
         hero.heroSpriteFunction();
+        hero.move();
         main_window.display();
     }
 }

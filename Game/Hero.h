@@ -4,10 +4,13 @@
 
 class Hero {
 public:
-    void heroSpriteFunction();
+    
     Hero(sf::RenderWindow* window);
     sf::Sprite heroSprite;
     sf::RenderWindow* window;
+
+    void heroSpriteFunction();
 private:
-    
+   
+
 };
