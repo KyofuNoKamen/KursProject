@@ -146,9 +146,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Tiles.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +161,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Tiles.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\map.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
