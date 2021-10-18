@@ -1,8 +1,15 @@
 #include "Window.h"
+#include "Hero.h"
 
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
 	create_window(resolution_x, resolution_y, name);
+}
+
+Window::Window(int resolution_x, int resolution_y, Level& level, std::string name)
+    : Window(resolution_x, resolution_y, name)
+{
+    setLevel(level);
 }
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
@@ -17,13 +24,19 @@ sf::RenderWindow &Window::get_window()
     return main_window;
 }
 
+void Window::setLevel(Level& level) {
+    this->level = &level;
+}
+
 void Window::start() 
 {
-    
+    Hero hero(&get_window());
+
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
-    Map map(&get_window());
+
+    //Map map(&get_window());
 
     while (main_window.isOpen())
     {
@@ -43,9 +56,10 @@ void Window::start()
             main_window.setView(view);
         }
         
-
         main_window.clear();
-        map.draw_map();
+        //hero.move();
+        if (level) level->Draw(main_window);
+        hero.heroSpriteFunction();
         main_window.display();
     }
 }

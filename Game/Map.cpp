@@ -15,8 +15,8 @@ Map::Map(sf::RenderWindow* window)
 
 
 
-	int grid_width = 45;
-	int grid_height = 45;
+	int grid_width = 5;
+	int grid_height = 5;
 
 
 
@@ -27,6 +27,7 @@ Map::Map(sf::RenderWindow* window)
 //Метод заполняет тайлы спрайтами с нужными текстурами.
 void Map::draw_map() 
 {
+	/*
 	std::map <std::string, sf::IntRect> tile_set;
 	std::map <std::string, sf::IntRect> ::iterator iterator_tile_set = tile_set.begin();
 
@@ -35,10 +36,6 @@ void Map::draw_map()
 
 	int max = 4;
 	insert_into_tile_set(name_tile, coordinate, max);
-
-
-
-
 
 	//sf::Vector2u tile;
 	sf::Vector2f coordinates;
@@ -59,6 +56,8 @@ void Map::draw_map()
 			main_window->draw(sprite);
 		}
 	}
+	*/
+
 }
 
 
