@@ -274,6 +274,7 @@ std::vector<Object> Level::GetObjects(std::string name)
     return vec;
 }
 
+//
 sf::Vector2i Level::GetTileSize()
 {
     return sf::Vector2i(tileWidth, tileHeight);

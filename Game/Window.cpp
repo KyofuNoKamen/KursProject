@@ -16,6 +16,7 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
     Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
 	Window::main_window.setFramerateLimit(60);
+    Window::main_window.setKeyRepeatEnabled(false);
 }
 
 /*Функция возвращает главное окно*/
@@ -30,13 +31,20 @@ void Window::setLevel(Level& level) {
 
 void Window::start() 
 {
+    int timer = 0; //Таймер, который считает количество циклов. Каждые 60 циклов = 1 секунда
+
+
     Hero hero(&get_window());
+    hero.set_tile_size(level->GetTileSize());
 
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
 
-    //Map map(&get_window());
+
+
+
+
 
     while (main_window.isOpen())
     {
@@ -50,16 +58,20 @@ void Window::start()
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 view.move(sf::Vector2f(0, 50));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                view.move(sf::Vector2f(50, 0));
+                    view.move(sf::Vector2f(50, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view.move(sf::Vector2f(-50, 0));
             main_window.setView(view);
+            hero.hero_move();
         }
         
         main_window.clear();
-        //hero.move();
         if (level) level->Draw(main_window);
         hero.heroSpriteFunction();
+        //if (timer%5 == 0) 
+        
+        //hero.draw_hero();
         main_window.display();
+        timer++;
     }
 }
