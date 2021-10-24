@@ -5,6 +5,7 @@
 
 using namespace tinyxml2;
 
+// Возращает значение свойства типа int
 int Object::GetPropertyInt(std::string name)
 {
     return atoi(properties[name].c_str());
@@ -20,6 +21,7 @@ std::string Object::GetPropertyString(std::string name)
     return properties[name];
 }
 
+// Загружает карту из .tmx файла
 bool Level::LoadFromFile(std::string filename)
 {
     XMLDocument levelFile;
@@ -183,9 +185,10 @@ bool Level::LoadFromFile(std::string filename)
                     objectName = objectElement->Attribute("name");
                 }
                 int x = atoi(objectElement->Attribute("x"));
-                int y = atoi(objectElement->Attribute("y"));
+                int y = atoi(objectElement->Attribute("y")) - 100; //костыль, особенность сохранения координат в Tiled 
 
                 int width, height;
+                float rotation = 0;
 
                 sf::Sprite sprite;
                 sprite.setTexture(tilesetImage);
@@ -197,17 +200,23 @@ bool Level::LoadFromFile(std::string filename)
                     width = atoi(objectElement->Attribute("width"));
                     height = atoi(objectElement->Attribute("height"));
                 }
-                else
-                {
+                else {
                     width = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].width;
                     height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;
-                    sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
                 }
+
+                if (objectElement->Attribute("rotation"))
+                    rotation = atof(objectElement->Attribute("rotation"));
+
+                if(objectElement->Attribute("gid"))
+                    sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
+                
 
                 // Экземпляр объекта
                 Object object;
                 object.name = objectName;
                 object.type = objectType;
+                sprite.setRotation(rotation);
                 object.sprite = sprite;
 
                 sf::Rect <int> objectRect;
@@ -255,20 +264,27 @@ bool Level::LoadFromFile(std::string filename)
 }
 
 
-Object Level::GetObject(std::string name)
-{
-    // Только первый объект с заданным именем
+/* Возращает первый объект с заданным именем */
+Object Level::GetObject(std::string name){
     for (int i = 0; i < objects.size(); i++)
         if (objects[i].name == name)
             return objects[i];
 }
 
-std::vector<Object> Level::GetObjects(std::string name)
-{
-    // Все объекты с заданным именем
+/* Возращает все объекты с заданным именем */
+std::vector<Object> Level::GetObjects(std::string name){
     std::vector<Object> vec;
     for (int i = 0; i < objects.size(); i++)
         if (objects[i].name == name)
+            vec.push_back(objects[i]);
+
+    return vec;
+}
+
+std::vector<Object> Level::GetObjectsWithType(std::string type) {
+    std::vector<Object> vec;
+    for (int i = 0; i < objects.size(); i++)
+        if (objects[i].type == type)
             vec.push_back(objects[i]);
 
     return vec;
@@ -281,8 +297,14 @@ sf::Vector2i Level::GetTileSize()
 
 void Level::Draw(sf::RenderWindow& window)
 {
-    // Рисуем все тайлы (объекты НЕ рисуем!)
+    // Рисуем все тайлы 
     for (int layer = 0; layer < layers.size(); layer++)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
+
+    // Рисуем все объекты
+    for (Object obj : objects) {
+        window.draw(obj.sprite);
+        
+    }
 }

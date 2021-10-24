@@ -3,6 +3,10 @@
 
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
+    view = new sf::View;
+    view->setCenter(sf::Vector2f(500, 500));
+    main_window.setView(*view);
+
 	create_window(resolution_x, resolution_y, name);
 }
 
@@ -28,15 +32,23 @@ void Window::setLevel(Level& level) {
     this->level = &level;
 }
 
+Level& Window::getLevel() {
+    return *(this->level);
+}
+
+void Window::moveView(int x, int y) {
+    view->move(x, y);
+    main_window.setView(*view);
+}
+
+sf::View& Window::getView() {
+    return *view;
+}
+
 void Window::start() 
 {
-    Hero hero(&get_window());
-
-    sf::View view;
-    view.setCenter(sf::Vector2f(500, 500));
-    main_window.setView(view);
-
     //Map map(&get_window());
+    Hero hero(this, 200, 200);
 
     while (main_window.isOpen())
     {
@@ -46,14 +58,14 @@ void Window::start()
             if (event.type == sf::Event::Closed)
                 main_window.close();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                view.move(sf::Vector2f(0, -50));
+                view->move(sf::Vector2f(0, -50));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                view.move(sf::Vector2f(0, 50));
+                view->move(sf::Vector2f(0, 50));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                view.move(sf::Vector2f(50, 0));
+                view->move(sf::Vector2f(50, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                view.move(sf::Vector2f(-50, 0));
-            main_window.setView(view);
+                view->move(sf::Vector2f(-50, 0));
+           main_window.setView(*view);
         }
         
         main_window.clear();
