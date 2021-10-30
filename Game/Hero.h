@@ -1,21 +1,22 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Level.h"
 #include "Window.h"
+#include "Level.h"
 
 class Hero {
 public:
     
     Hero(Window* window);
-    Hero(Window* window, int, int);
+    Hero(Window* window, int x, int y);
     sf::Sprite heroSprite;
     Window* window;
 
     void heroSpriteFunction();
-    void move(float, float);
+    void hero_move();
+    void set_tile_size(sf::Vector2i tile_size);
+    void draw_hero(int x, int y, int width, int height);
 private:
-    //sf::Rect<int> collider;
-    sf::Sprite colliderSprite;
-    int speed;
+    sf::Vector2i tile_size;
+    Level* level;
 };

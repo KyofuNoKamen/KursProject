@@ -185,7 +185,7 @@ bool Level::LoadFromFile(std::string filename)
                     objectName = objectElement->Attribute("name");
                 }
                 int x = atoi(objectElement->Attribute("x"));
-                int y = atoi(objectElement->Attribute("y")) - 100; //костыль, особенность сохранени€ координат в Tiled 
+                int y = atoi(objectElement->Attribute("y")) - 100; // костыль
 
                 int width, height;
                 float rotation = 0;
@@ -205,12 +205,8 @@ bool Level::LoadFromFile(std::string filename)
                     height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;
                 }
 
-                if (objectElement->Attribute("rotation"))
-                    rotation = atof(objectElement->Attribute("rotation"));
-
-                if(objectElement->Attribute("gid"))
+                if (objectElement->Attribute("gid"))
                     sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
-                
 
                 // Ёкземпл€р объекта
                 Object object;
@@ -302,9 +298,7 @@ void Level::Draw(sf::RenderWindow& window)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
 
-    // –исуем все объекты
-    for (Object obj : objects) {
+    for (Object obj : objects) 
         window.draw(obj.sprite);
-        
-    }
+
 }

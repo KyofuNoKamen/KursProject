@@ -9,11 +9,10 @@ public:
 	Window(int, int, std::string);
 	Window(int, int, Level&, std::string);
 	void start();
-	void setLevel(Level&);
 	Level& getLevel();
-	void moveView(int, int);
-	sf::View& getView();
+	void setLevel(Level&);
 	sf::RenderWindow &get_window();
+	void moveView(int x, int y);
 
 private:
 	sf::RenderWindow main_window;

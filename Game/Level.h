@@ -39,7 +39,7 @@ public:
     bool LoadFromFile(std::string);
     Object GetObject(std::string name);
     std::vector<Object> GetObjects(std::string name);
-    std::vector<Object> GetObjectsWithType(std::string type);
+    std::vector<Object> GetObjectsWithType(std::string);
     void Draw(sf::RenderWindow& window);
     sf::Vector2i GetTileSize();
 
