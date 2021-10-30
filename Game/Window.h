@@ -9,6 +9,7 @@ class Window {
 		Window(int, int, std::string);
 		Window(int, int, Level&, std::string);
 		void start();
+		Level& getLevel();
 		void setLevel(Level&);
 		sf::RenderWindow &get_window();
 
