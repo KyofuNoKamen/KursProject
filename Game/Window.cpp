@@ -29,21 +29,20 @@ void Window::setLevel(Level& level) {
     this->level = &level;
 }
 
+Level& Window::getLevel() {
+    return *(this->level);
+}
+
 void Window::start() 
 {
     int timer = 0; //Таймер, который считает количество циклов. Каждые 60 циклов = 1 секунда
 
-
-    Hero hero(&get_window());
+    Hero hero(this, 200, 200);
     hero.set_tile_size(level->GetTileSize());
 
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
-
-
-
-
 
 
     while (main_window.isOpen())
