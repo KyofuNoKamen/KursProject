@@ -183,7 +183,7 @@ bool Level::LoadFromFile(std::string filename)
                     objectName = objectElement->Attribute("name");
                 }
                 int x = atoi(objectElement->Attribute("x"));
-                int y = atoi(objectElement->Attribute("y"));
+                int y = atoi(objectElement->Attribute("y")) - 100; // костыль
 
                 int width, height;
 
@@ -201,8 +201,10 @@ bool Level::LoadFromFile(std::string filename)
                 {
                     width = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].width;
                     height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;
-                    sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
                 }
+
+                if (objectElement->Attribute("gid"))
+                    sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
 
                 // Ёкземпл€р объекта
                 Object object;
@@ -274,6 +276,15 @@ std::vector<Object> Level::GetObjects(std::string name)
     return vec;
 }
 
+std::vector<Object> Level::GetObjectsWithType(std::string type) {
+    std::vector<Object> vec;
+    for (int i = 0; i < objects.size(); i++)
+        if (objects[i].type == type)
+            vec.push_back(objects[i]);
+
+    return vec;
+}
+
 //
 sf::Vector2i Level::GetTileSize()
 {
@@ -286,4 +297,8 @@ void Level::Draw(sf::RenderWindow& window)
     for (int layer = 0; layer < layers.size(); layer++)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
+
+    for (Object obj : objects) 
+        window.draw(obj.sprite);
+
 }

@@ -1,13 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Window.h"
+#include "Level.h"
 
 class Hero {
 public:
     
-    Hero(sf::RenderWindow* window);
+    Hero(Window* window);
+    Hero(Window* window, int x, int y);
     sf::Sprite heroSprite;
-    sf::RenderWindow* window;
+    Window* window;
 
     void heroSpriteFunction();
     void hero_move();
@@ -15,4 +18,5 @@ public:
     void draw_hero(int x, int y, int width, int height);
 private:
     sf::Vector2i tile_size;
+    Level* level;
 };
