@@ -158,8 +158,10 @@
     <Image Include="resources\ground.jpg" />
     <Image Include="resources\texture.jpg" />
     <Image Include="resources\tile_set.jpg" />
+    <Image Include="resources\tile_set_fight.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fight_level.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Map.h" />
@@ -169,6 +171,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Fight_map.tmx" />
     <None Include="resources\map.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

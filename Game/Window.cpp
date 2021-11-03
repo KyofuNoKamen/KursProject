@@ -14,7 +14,7 @@ Window::Window(int resolution_x, int resolution_y, Level& level, std::string nam
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
-    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
+    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name, sf::Style::Fullscreen);
 	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
 }
@@ -41,7 +41,10 @@ void Window::start()
     hero.set_tile_size(level->GetTileSize());
 
     sf::View view;
-    view.setCenter(sf::Vector2f(500, 500));
+    //view.setCenter(sf::Vector2f(500, 500));
+    
+    view.setCenter(sf::Vector2f(750, 750));
+    
     main_window.setView(view);
 
 
@@ -53,13 +56,13 @@ void Window::start()
             if (event.type == sf::Event::Closed)
                 main_window.close();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                view.move(sf::Vector2f(0, -50));
+                view.move(sf::Vector2f(0, -10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                view.move(sf::Vector2f(0, 50));
+                view.move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    view.move(sf::Vector2f(50, 0));
+                    view.move(sf::Vector2f(10, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                view.move(sf::Vector2f(-50, 0));
+                view.move(sf::Vector2f(-10, 0));
             main_window.setView(view);
             hero.hero_move();
         }

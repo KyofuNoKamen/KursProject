@@ -5,7 +5,7 @@
 #include <iterator>
 #include <vector>
 
-Map::Map(sf::RenderWindow* window)
+/*Map::Map(sf::RenderWindow* window)
 {
 	this->main_window = window;
 
@@ -23,11 +23,9 @@ Map::Map(sf::RenderWindow* window)
 	grid = new Tiles(main_window, grid_width, grid_height);
 }
 
-
-//Метод заполняет тайлы спрайтами с нужными текстурами.
+Метод заполняет тайлы спрайтами с нужными текстурами.
 void Map::draw_map() 
 {
-	/*
 	std::map <std::string, sf::IntRect> tile_set;
 	std::map <std::string, sf::IntRect> ::iterator iterator_tile_set = tile_set.begin();
 
@@ -56,7 +54,6 @@ void Map::draw_map()
 			main_window->draw(sprite);
 		}
 	}
-	*/
 
 }
 
@@ -107,3 +104,4 @@ void Map::create_map(int size)
 	}
 
 }
+*/
