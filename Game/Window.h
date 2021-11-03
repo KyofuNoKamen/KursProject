@@ -3,6 +3,7 @@
 #include <string>
 #include "Level.h"
 #include "Map.h"
+#include "Enemy.h"
 
 class Window {
 	public:
@@ -11,6 +12,7 @@ class Window {
 		void start();
 		Level& getLevel();
 		void setLevel(Level&);
+		void mapUpdate(int);
 		sf::RenderWindow &get_window();
 
 	private:
@@ -19,5 +21,6 @@ class Window {
 			resolution_y;
 		std::string name;
 		Level* level;
+		Enemy* p_easy_enemy;
 		void create_window(int, int, std::string);
 };

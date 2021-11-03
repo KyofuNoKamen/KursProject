@@ -16,6 +16,7 @@ public:
     void hero_move();
     void set_tile_size(sf::Vector2i tile_size);
     void draw_hero(int x, int y, int width, int height);
+    int status;
 private:
     sf::Vector2i tile_size;
     Level* level;

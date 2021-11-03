@@ -1,2 +1,90 @@
-﻿  Hero.cpp
-  Game.vcxproj -> D:\Study\KursProject\KursProject\Debug\Game.exe
+﻿  Enemy.cpp
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Study\KursProject\KursProject\Game\Entity.h(13,16): error C2238: непредвиденные лексемы перед ";"
+D:\Study\KursProject\KursProject\Game\Entity.h(27,76): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,75): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,124): error C2065: window: необъявленный идентификатор
+  Entity.cpp
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Study\KursProject\KursProject\Game\Entity.h(13,16): error C2238: непредвиденные лексемы перед ";"
+D:\Study\KursProject\KursProject\Game\Entity.h(27,76): error C2061: синтаксическая ошибка: идентификатор "Window"
+  Hero.cpp
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Study\KursProject\KursProject\Game\Entity.h(13,16): error C2238: непредвиденные лексемы перед ";"
+D:\Study\KursProject\KursProject\Game\Entity.h(27,76): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,75): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,124): error C2065: window: необъявленный идентификатор
+D:\Study\KursProject\KursProject\Game\Hero.cpp(12,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Hero.cpp(12,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Hero.cpp(30,79): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(31,94): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(32,85): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(33,96): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(40,47): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(40,37): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Main.cpp
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Study\KursProject\KursProject\Game\Entity.h(13,16): error C2238: непредвиденные лексемы перед ";"
+D:\Study\KursProject\KursProject\Game\Entity.h(27,76): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,75): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,124): error C2065: window: необъявленный идентификатор
+  Window.cpp
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
+D:\Study\KursProject\KursProject\Game\Entity.h(13,8): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Study\KursProject\KursProject\Game\Entity.h(13,16): error C2238: непредвиденные лексемы перед ";"
+D:\Study\KursProject\KursProject\Game\Entity.h(27,76): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,75): error C2061: синтаксическая ошибка: идентификатор "Window"
+D:\Study\KursProject\KursProject\Game\Enemy.h(6,124): error C2065: window: необъявленный идентификатор
+  Создание кода...

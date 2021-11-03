@@ -1,5 +1,9 @@
 #include "Window.h"
 #include "Hero.h"
+#include "Entity.h"
+//#include "Player.cpp"
+#include "Enemy.h"
+#include <list>
 
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
@@ -40,6 +44,13 @@ void Window::start()
     Hero hero(this, 200, 200);
     hero.set_tile_size(level->GetTileSize());
 
+    sf::Image easyEnemyImage;
+    easyEnemyImage.loadFromFile("resources/hellhound.png");
+    //easyEnemyImage.createMaskFromColor(sf::Color(255, 0, 0));
+    //Player p(heroImage, 750, 500, 40, 30, "Player1");//объект класса игрока
+    Enemy easyEnemy(easyEnemyImage,"EasyEnemy", 0, 0, 100, 100);
+    p_easy_enemy = &easyEnemy;
+
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
@@ -70,7 +81,11 @@ void Window::start()
         //if (timer%5 == 0) 
         
         //hero.draw_hero();
+        main_window.draw(easyEnemy.sprite);
         main_window.display();
         timer++;
     }
+}
+void Window::mapUpdate(int status) {
+    p_easy_enemy->update(status);
 }
