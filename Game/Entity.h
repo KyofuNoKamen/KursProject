@@ -10,7 +10,7 @@ private:
 	//sf::Vector2i tile_size;
 	//Level* level;
 public:
-	Window* window;
+	//Window* window;
 	//std::vector<Object> collidables = window->getLevel().GetObjectsWithType("collidable");
 	std::vector<Object> obj; //Вектор всех объектов
 
@@ -23,14 +23,5 @@ public:
 	sf::String name;
 
 	sf::FloatRect getRect();
-
-	Entity(sf::Image& image, sf::String Name, float X, float Y, int W, int H, Window* window) {
-		x = X; y = Y; w = W; h = H; name = Name;
-		speed = 0; health = 100; dx = 0; dy = 0;
-		life = true; isMove = false;
-		//this->window = window;
-		texture.loadFromImage(image);
-		sprite.setTexture(texture);
-		sprite.setOrigin(0, 0);
-	}
+	Entity(sf::Image& image, sf::String Name, float X, float Y, int W, int H);
 };
