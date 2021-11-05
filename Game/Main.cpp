@@ -7,6 +7,7 @@ int main()
 {
     // Level - это типо карта
     Level level;
+    // загрузка карты
     level.LoadFromFile("resources/map.tmx");
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
@@ -18,18 +19,3 @@ int main()
 
     return 0;
 }
-
-/*int main()
-{
-    // Level - это типо карта
-    Level level;
-    level.LoadFromFile("resources/Fight_map.tmx");
-    Window main_window(1920, 1080, level, "Main window");
-    sf::View view;
-    view.setCenter(sf::Vector2f(960, 540));
-    main_window.start();
-
-
-
-    return 0;
-}*/
