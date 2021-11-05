@@ -7,7 +7,9 @@ sf::Clock clock_;
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
     view = new sf::View;
+
     //view->setCenter(sf::Vector2f(500, 500));
+
     main_window.setView(*view);
 
 	create_window(resolution_x, resolution_y, name);
@@ -26,7 +28,7 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
     Window::main_window.setKeyRepeatEnabled(false);
 }
 
-/*Ôóíêöèÿ âîçâðàùàåò ãëàâíîå îêíî*/
+/*Ã”Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¢Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã£Ã«Ã Ã¢Ã­Ã®Ã¥ Ã®ÃªÃ­Ã®*/
 sf::RenderWindow &Window::get_window()
 {
     return main_window;
@@ -44,7 +46,6 @@ void Window::moveView(int x, int y) {
     view->move(x, y);
     main_window.setView(*view);
 }
-
 void Window::start() 
 {
     Hero hero(this, 200, 200);
@@ -56,6 +57,17 @@ void Window::start()
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
+/*
+
+sf::View& Window::getView() {
+    return *view;
+}
+
+void Window::start() 
+{
+    //Map map(&get_window());
+    Hero hero(this, 200, 200);
+*/
 
     while (main_window.isOpen())
     {
@@ -72,7 +84,9 @@ void Window::start()
                 view->move(sf::Vector2f(50, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-50, 0));
+
             main_window.setView(*view);
+
         }
         
         main_window.clear();

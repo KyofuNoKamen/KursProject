@@ -21,4 +21,24 @@ private:
     void heroSpriteFunction();
     void hero_move();
     void draw_hero(int x, int y, int width, int height);
+
+/*
+#include "Level.h"
+#include "Window.h"
+
+class Hero {
+public:
+    
+    Hero(Window* window);
+    Hero(Window* window, int, int);
+    sf::Sprite heroSprite;
+    Window* window;
+
+    void heroSpriteFunction();
+    void move(float, float);
+private:
+    //sf::Rect<int> collider;
+    sf::Sprite colliderSprite;
+    int speed;
+*/
 };
