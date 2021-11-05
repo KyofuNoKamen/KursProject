@@ -23,4 +23,5 @@ private:
 	sf::View* view;
 
 	void create_window(int, int, std::string);
+	void renderFPS();
 };
