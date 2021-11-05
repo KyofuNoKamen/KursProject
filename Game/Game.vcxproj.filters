@@ -36,6 +36,9 @@
     <ClCompile Include="Level.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Fight_map.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\ground.jpg">
@@ -76,7 +79,7 @@
     <ClInclude Include="Level.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Fight_level.h">
+    <ClInclude Include="Fight_map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

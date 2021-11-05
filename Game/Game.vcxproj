@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fight_map.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -161,7 +162,7 @@
     <Image Include="resources\tile_set_fight.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Fight_level.h" />
+    <ClInclude Include="Fight_map.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Map.h" />

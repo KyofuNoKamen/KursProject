@@ -298,7 +298,7 @@ void Level::Draw(sf::RenderWindow& window)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
 
-    for (Object obj : objects) 
+    for (Object obj : objects)
         window.draw(obj.sprite);
-
+    
 }

@@ -3,7 +3,7 @@
 #include "Level.h"
 
 
-/*int main()
+int main()
 {
     // Level - это типо карта
     Level level;
@@ -13,9 +13,9 @@
     main_window.start();
 
     return 0;
-}*/
+}
 
-int main()
+/*int main()
 {
     // Level - это типо карта
     Level level;
@@ -28,4 +28,4 @@ int main()
 
 
     return 0;
-}
+}*/
