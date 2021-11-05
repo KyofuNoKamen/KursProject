@@ -1,6 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "Includes.h"
 #include "Window.h"
 #include "Level.h"
 

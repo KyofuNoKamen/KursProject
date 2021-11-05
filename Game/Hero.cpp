@@ -1,6 +1,5 @@
+#include "includes.h"
 #include "Hero.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
 
 const sf::IntRect RECT_STAND(0, 0, 120, 130);
 const sf::IntRect RECT_DOWN(0, 520, 120, 130);
@@ -17,6 +16,7 @@ int animationSpeedLimiter = 80; // ÷åì ìåíüøå, òåì áûñòðåå à
 
 sf::Vector2f destination; // êîîðäèíàòû ÎÊÎÍ×ÀÒÅËÜÍÎÉ ÒÎ×ÊÈ ïåðåäâèæåíèÿ ãåðîÿ
 sf::Vector2f step; // øàã, òàêæå íàïðàâëåíèå ïåðåäâèæåíèÿ ãåðîÿ
+int status;
 
 Hero::Hero(Window* window) {
     isMoving = false;
@@ -81,21 +81,31 @@ void Hero::hero_move(){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         step = sf::Vector2f(-tile_size.x, 0);
         currentRect = RECT_LEFT;
+        status = 0;
+        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         step = sf::Vector2f(tile_size.x, 0); 
         currentRect = RECT_RIGHT;
+        status = 1;
+        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { 
         step = sf::Vector2f(0, -tile_size.y); 
         currentRect = RECT_UP;
+        status = 2;
+        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         step = sf::Vector2f(0, tile_size.y);
         currentRect = RECT_DOWN;
+        status = 3;
+        window->mapUpdate(status);
     }
     else {
         currentRect = RECT_STAND;
+        status = 4;
+        window->mapUpdate(status);
         return;
     }
 

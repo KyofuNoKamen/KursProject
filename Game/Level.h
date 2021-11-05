@@ -1,9 +1,5 @@
 #pragma once
-
-#include <string>
-#include <vector>
-#include <map>
-#include <SFML/Graphics.hpp>
+#include "Includes.h"
 
 /* Îáúåêò - ýòî âèäèìûé èëè íåâèäèìûé îáúåêò íà êàðòå, ó êîòîðîãî
    ìîæåò áûòü èìÿ, ñïðàéò, è ëþáûå ñâîéñòâà êîòîðûå ìîæíî çàäàòü

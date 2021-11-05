@@ -7,5 +7,5 @@ Entity::Entity(sf::Image& image, sf::String Name, float X, float Y, int W, int H
 
 	texture.loadFromImage(image);
 	sprite.setTexture(texture);
-	sprite.setOrigin(0, 0);
+	sprite.setOrigin(-X, -Y);
 }

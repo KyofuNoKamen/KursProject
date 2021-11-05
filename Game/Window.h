@@ -1,6 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
+#include "Includes.h"
 #include "Level.h"
 #include "Map.h"
 #include "Enemy.h"
@@ -12,16 +11,11 @@ public:
 	void start();
 
 	Level& getLevel();
+	sf::RenderWindow& get_window();
+
 	void setLevel(Level&);
-	sf::RenderWindow &get_window();
-	void moveView(int x, int y);
-/*
-	void setLevel(Level&);
-	Level& getLevel();
 	void moveView(int, int);
-	sf::View& getView();
-	sf::RenderWindow &get_window();
-*/
+	void mapUpdate(int);
 
 private:
 	sf::RenderWindow main_window;
@@ -30,9 +24,10 @@ private:
 		resolution_y;
 	Level* level;
 	sf::View* view;
+	
+	Enemy* p_easy_enemy;
 
 	void create_window(int, int, std::string);
-
 	void renderFPS();
 
 };

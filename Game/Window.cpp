@@ -2,7 +2,6 @@
 #include "Hero.h"
 #include "Entity.h"
 #include "Enemy.h"
-#include <list>
 
 sf::Text fpsText;
 sf::Clock clock_;
@@ -60,17 +59,12 @@ void Window::start()
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
-/*
 
-    sf::View view;
-    view.setCenter(sf::Vector2f(500, 500));
-    main_window.setView(view);
+    sf::Image easyEnemyImage;
+    easyEnemyImage.loadFromFile("resources/hellhound.png");
 
-void Window::start() 
-{
-    //Map map(&get_window());
-    Hero hero(this, 200, 200);
-*/
+    Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
+    p_easy_enemy = &easyEnemy;
 
     while (main_window.isOpen())
     {
@@ -95,6 +89,7 @@ void Window::start()
         main_window.clear();
         level->Draw(main_window);
         hero.update();
+        main_window.draw(easyEnemy.sprite);
         renderFPS();
         main_window.display();
     }
@@ -107,7 +102,8 @@ void Window::renderFPS() {
     main_window.draw(fpsText);
     clock_.restart();
 }
-void Window::mapUpdate(int status)
+
+void Window::mapUpdate(int status )
 {
     if (p_easy_enemy->name == "EasyEnemy") {
         sf::Vector2f step;
@@ -117,12 +113,12 @@ void Window::mapUpdate(int status)
         newPos = p_easy_enemy->sprite.getPosition() + step;
 
         bool canMakeStep = true;
-        for (Object obj : collidables) {
+       /* for (Object obj : collidables) {
             if (obj.rect.contains(newPos.x, newPos.y)) {
                 canMakeStep = false;
                 std::cout << "There's a wall ahead, I can't get through" <<std::endl;
                 break;
-            }
+            }*/
 
             if (canMakeStep) {
                 if (status == 0) {
@@ -130,22 +126,27 @@ void Window::mapUpdate(int status)
                     step = sf::Vector2f(-100, 0);
                     p_easy_enemy->sprite.move(step);
                 }
-                if (status == 1) {
+                else if (status == 1) {
                     std::cout << "st 1 - Right" << std::endl;
                     step = sf::Vector2f(100, 0);
                     p_easy_enemy->sprite.move(step);
                 }
-                if (status == 2) {
+                else if (status == 2) {
                     std::cout << "st 2 - Up" << std::endl;
                     step = sf::Vector2f(0, -100);
                     p_easy_enemy->sprite.move(step);
                 }
-                if (status == 3) {
+                else if (status == 3) {
                     std::cout << "st 3 - Down" << std::endl;
                     step = sf::Vector2f(0, 100);
                     p_easy_enemy->sprite.move(step);
                 }
+                /*else {
+                    std::cout << "st 4 - What?" << std::endl;
+                    step = sf::Vector2f(0, 1);
+                    p_easy_enemy->sprite.move(step);
+                }*/
             }
-        }
+        //}
     }
 }

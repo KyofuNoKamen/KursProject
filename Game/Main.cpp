@@ -1,7 +1,6 @@
-#include <iostream>
+#include "includes.h"
 #include "Window.h"
 #include "Level.h"
-
 
 int main()
 {

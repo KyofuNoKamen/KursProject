@@ -1,8 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <vector>
-#include <list>
+#include "Includes.h"
 #include "level.h"
 
 class Entity {
