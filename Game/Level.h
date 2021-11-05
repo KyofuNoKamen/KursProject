@@ -5,8 +5,8 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
-/* Объект - это видимый или невидимый объект на карте, у которого
-   может быть имя, спрайт, и любые свойства которые можно задать
+/* ГЋГЎГєГҐГЄГІ - ГЅГІГ® ГўГЁГ¤ГЁГ¬Г»Г© ГЁГ«ГЁ Г­ГҐГўГЁГ¤ГЁГ¬Г»Г© Г®ГЎГєГҐГЄГІ Г­Г  ГЄГ Г°ГІГҐ, Гі ГЄГ®ГІГ®Г°Г®ГЈГ®
+   Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГЁГ¬Гї, Г±ГЇГ°Г Г©ГІ, ГЁ Г«ГѕГЎГ»ГҐ Г±ГўГ®Г©Г±ГІГўГ  ГЄГ®ГІГ®Г°Г»ГҐ Г¬Г®Г¦Г­Г® Г§Г Г¤Г ГІГј
 */
 struct Object
 {
@@ -29,9 +29,9 @@ struct Layer
     std::vector<sf::Sprite> tiles;
 };
 
-/* Класс выполняет следующие функции:
-    - Загрузка и отрисовка карты с tmx-файла
-    - Получение объектов на карте
+/* ГЉГ«Г Г±Г± ГўГ»ГЇГ®Г«Г­ГїГҐГІ Г±Г«ГҐГ¤ГіГѕГ№ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ:
+    - Г‡Г ГЈГ°ГіГ§ГЄГ  ГЁ Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЄГ Г°ГІГ» Г± tmx-ГґГ Г©Г«Г 
+    - ГЏГ®Г«ГіГ·ГҐГ­ГЁГҐ Г®ГЎГєГҐГЄГІГ®Гў Г­Г  ГЄГ Г°ГІГҐ
 */
 class Level
 {
@@ -39,7 +39,11 @@ public:
     bool LoadFromFile(std::string);
     Object GetObject(std::string name);
     std::vector<Object> GetObjects(std::string name);
+  
+    std::vector<Object> GetObjectsWithType(std::string);
+/*
     std::vector<Object> GetObjectsWithType(std::string type);
+*/
     void Draw(sf::RenderWindow& window);
     sf::Vector2i GetTileSize();
 
