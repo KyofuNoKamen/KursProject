@@ -4,8 +4,17 @@
 #include "Enemy.h"
 #include <list>
 
+sf::Text fpsText;
+sf::Clock clock_;
+
 Window::Window(int resolution_x, int resolution_y, std::string name)
 {
+    view = new sf::View;
+
+    //view->setCenter(sf::Vector2f(500, 500));
+
+    main_window.setView(*view);
+
 	create_window(resolution_x, resolution_y, name);
 }
 
@@ -22,7 +31,7 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
     Window::main_window.setKeyRepeatEnabled(false);
 }
 
-/*Функция возвращает главное окно*/
+/*Г”ГіГ­ГЄГ¶ГЁГї ГўГ®Г§ГўГ°Г Г№Г ГҐГІ ГЈГ«Г ГўГ­Г®ГҐ Г®ГЄГ­Г®*/
 sf::RenderWindow &Window::get_window()
 {
     return main_window;
@@ -36,23 +45,32 @@ Level& Window::getLevel() {
     return *(this->level);
 }
 
+void Window::moveView(int x, int y) {
+    view->move(x, y);
+    main_window.setView(*view);
+}
 void Window::start() 
 {
-    int timer = 0; //Таймер, который считает количество циклов. Каждые 60 циклов = 1 секунда
-
     Hero hero(this, 200, 200);
     hero.set_tile_size(level->GetTileSize());
+    view->setCenter(hero.heroSprite.getPosition());
 
-    sf::Image easyEnemyImage;
-    easyEnemyImage.loadFromFile("resources/hellhound.png");
-
-    Enemy easyEnemy(easyEnemyImage,"EasyEnemy", 0, 0, 100, 100);
-    p_easy_enemy = &easyEnemy;
+    sf::Font font;
+    font.loadFromFile("resources/Minecraft.ttf");
+    fpsText.setFont(font);
+    fpsText.setCharacterSize(28);
+    fpsText.setFillColor(sf::Color::Red);
+/*
 
     sf::View view;
     view.setCenter(sf::Vector2f(500, 500));
     main_window.setView(view);
 
+void Window::start() 
+{
+    //Map map(&get_window());
+    Hero hero(this, 200, 200);
+*/
 
     while (main_window.isOpen())
     {
@@ -62,25 +80,32 @@ void Window::start()
             if (event.type == sf::Event::Closed)
                 main_window.close();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                view.move(sf::Vector2f(0, -50));
+                view->move(sf::Vector2f(0, -50));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                view.move(sf::Vector2f(0, 50));
+                view->move(sf::Vector2f(0, 50));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    view.move(sf::Vector2f(50, 0));
+                view->move(sf::Vector2f(50, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                view.move(sf::Vector2f(-50, 0));
-            main_window.setView(view);
-            hero.hero_move();
+                view->move(sf::Vector2f(-50, 0));
+
+            main_window.setView(*view);
+
         }
         
         main_window.clear();
-        if (level) level->Draw(main_window);
-        hero.heroSpriteFunction();
-        //if (timer%5 == 0) 
-        main_window.draw(easyEnemy.sprite);
+        level->Draw(main_window);
+        hero.update();
+        renderFPS();
         main_window.display();
-        timer++;
     }
+}
+
+void Window::renderFPS() {
+    float fps = 1 / clock_.getElapsedTime().asSeconds();
+    fpsText.setString(std::to_string(fps));
+    fpsText.setPosition(main_window.mapPixelToCoords(sf::Vector2i(20, 20)));
+    main_window.draw(fpsText);
+    clock_.restart();
 }
 void Window::mapUpdate(int status)
 {
