@@ -4,13 +4,8 @@
 
 class Entity {
 private:
-	//sf::Vector2i tile_size;
-	//Level* level;
-public:
-	//Window* window;
-	//std::vector<Object> collidables = window->getLevel().GetObjectsWithType("collidable");
-	std::vector<Object> obj; //Вектор всех объектов
 
+public:
 	float dx, dy, x, y, speed;
 	int w, h, health;
 	bool life, isMove, onGround;
