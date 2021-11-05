@@ -1,2 +1,92 @@
 ﻿  Hero.cpp
+D:\Study\KursProject\KursProject\Game\Hero.cpp(30,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Hero.cpp(30,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Hero.cpp(71,48): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(71,35): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(83,29): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(87,38): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(91,32): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(95,41): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(109,57): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Study\KursProject\KursProject\Game\Hero.cpp(109,42): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Level.cpp
+D:\Study\KursProject\KursProject\Game\Level.cpp(16,18): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(105,27): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(106,33): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(142,53): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(142,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(196,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(196,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Level.cpp(275,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Level.cpp(283,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Level.cpp(292,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Level.cpp(307,31): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Level.cpp(308,33): warning C4018: <: несоответствие типов со знаком и без знака
+  Main.cpp
+  Map.cpp
+D:\Study\KursProject\KursProject\Game\Map.cpp(12,41): warning C4091: : пропускается слева от "std::vector<std::vector<std::string,std::allocator<std::string>>,std::allocator<std::vector<std::string,std::allocator<std::string>>>>", когда ни одна переменная не объявлена
+  Tiles.cpp
+  tinyxml2.cpp
+  Window.cpp
+D:\Study\KursProject\KursProject\Game\Window.cpp(46,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Window.cpp(46,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
+D:\Study\KursProject\KursProject\Game\Level.cpp(278): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
+  LINK : не найден или не выполнена сборка D:\Study\KursProject\KursProject\Debug\Game.exe при последней инкрементной компоновке; выполняется полная компоновка
   Game.vcxproj -> D:\Study\KursProject\KursProject\Debug\Game.exe
