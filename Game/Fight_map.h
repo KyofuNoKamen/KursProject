@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include "Level.h"
+#include "Window.h"
 
 /*
 	«адачи класса:
@@ -9,7 +12,14 @@
 */
 class Fight_map
 {
-	/* онструктор получает путь к карте, */
-	Fight_map();
+public:
+	/* онструктор получает путь к карте, указатель на отр€д игрока и отр€д противника, указатель на главное окно*/
+	Fight_map(std::string path_map_fight/*, *player_squad, *enemy_squad*/, Window *main_window);
+
+private:
+	std::string path_map;
+	Window* window;
+	
+	void draw_map();
 };
 

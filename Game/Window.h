@@ -4,6 +4,7 @@
 #include "Level.h"
 #include "Map.h"
 
+
 class Window {
 	public:
 		Window(int, int, std::string);
@@ -12,8 +13,10 @@ class Window {
 		Level& getLevel();
 		void setLevel(Level&);
 		sf::RenderWindow &get_window();
+		void set_view(sf::View new_view);
 
 	private:
+		sf::View view;
 		sf::RenderWindow main_window;
 		int resolution_x,
 			resolution_y;
