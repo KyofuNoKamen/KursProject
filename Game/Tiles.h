@@ -2,8 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-/*¬ данный момент класс не используетс€!*/
-
 class Tiles {
 public:
 	Tiles(sf::RenderWindow *, int, int);

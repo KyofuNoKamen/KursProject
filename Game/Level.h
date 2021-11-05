@@ -5,6 +5,9 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
+/* Объект - это видимый или невидимый объект на карте, у которого
+   может быть имя, спрайт, и любые свойства которые можно задать
+*/
 struct Object
 {
     int GetPropertyInt(std::string name);
@@ -14,6 +17,7 @@ struct Object
     std::string name;
     std::string type;
     sf::Rect<int> rect;
+    float rotation;
     std::map<std::string, std::string> properties;
 
     sf::Sprite sprite;
@@ -25,6 +29,10 @@ struct Layer
     std::vector<sf::Sprite> tiles;
 };
 
+/* Класс выполняет следующие функции:
+    - Загрузка и отрисовка карты с tmx-файла
+    - Получение объектов на карте
+*/
 class Level
 {
 public:
