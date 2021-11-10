@@ -13,8 +13,8 @@ sf::IntRect currentRect = RECT_STAND;
 
 sf::Clock heroClock;
 
-float stepSpeedDivider = 10; // чем меньше, тем быстрее движени€ геро€
-int animationSpeedLimiter = 80; // чем меньше, тем быстрее анимаци€ движени€ геро€
+float stepSpeedDivider = 350; // чем меньше, тем быстрее движени€ геро€
+int animationSpeedLimiter = 60; // чем меньше, тем быстрее анимаци€ движени€ геро€
 
 sf::Vector2f destination; // координаты ќ ќЌ„ј“≈Ћ№Ќќ… “ќ„ » передвижени€ геро€
 sf::Vector2f step; // шаг, также направление передвижени€ геро€
@@ -22,6 +22,13 @@ sf::Vector2f step; // шаг, также направление передвижени€ геро€
 Hero::Hero(Window* window) {
     isMoving = false;
     this->window = window;
+
+    if (!texture.loadFromFile("resources/zel.png"))
+    {
+        std::cout << "Error during loading picture from file\n";
+    }
+    heroSprite.setTexture(texture);
+
     // позици€ спрайта отсчитываетс€ от области возле левого нижнего угла
     heroSprite.setOrigin(0, 60);
 }
@@ -30,32 +37,23 @@ Hero::Hero(Window* window, int x, int y) :Hero(window) {
     heroSprite.move(x, y);
 }
 
-void Hero::update() {
+void Hero::update(sf::Time deltatime) {
     heroSpriteFunction();
-    hero_move();
+    hero_move(deltatime);
 }
 
 void Hero::heroSpriteFunction() {
-    sf::Texture hero;
-    if (!hero.loadFromFile("resources/zel.png"))
-    {
-        std::cout << "Error during loading picture from file\n";
-    }
-    heroSprite.setTexture(hero);
     heroSprite.setTextureRect(currentRect);
     window->get_window().draw(heroSprite);
 }
 
-void Hero::hero_move(){
+void Hero::hero_move(sf::Time deltatime){
     window->get_window().setKeyRepeatEnabled(false);
     
     // анимаци€ передвижени€ геро€ (пока действует, управление героем заблокировано)
     if (isMoving) {
-        sf::Vector2f microstep = step / stepSpeedDivider;
+        sf::Vector2f microstep = step / stepSpeedDivider * (float)deltatime.asMilliseconds();
         heroSprite.move(microstep);
-        if (heroSprite.getPosition() == destination) 
-            isMoving = false;
-        
         window->moveView(microstep.x, microstep.y);
 
         // анимаци€ (смена спрайтов)
@@ -63,6 +61,15 @@ void Hero::hero_move(){
             currentRect.left = (currentRect.left >= 1080) ? 0 : currentRect.left + 120;
             heroClock.restart();
         }
+        
+        // если герой в микрошаге от пункта назначени€, то ставим его туда и прерываем движение
+        // этот код нужен чтобы герой не прошел мимо нужного тайла
+        sf::Vector2f distance = destination - heroSprite.getPosition();
+        if (abs(distance.x) <= abs(microstep.x) && abs(distance.y) <= abs(microstep.y)) {
+            isMoving = false;
+            heroSprite.setPosition(destination);
+        }
+
         // возвращаемс€ из функции, ибо управление не доступно во врем€ анимации передвижени€
         return;
     }

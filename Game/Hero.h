@@ -11,14 +11,15 @@ public:
     sf::Sprite heroSprite;
     Window* window;
 
-    void update();
+    void update(sf::Time);
     void set_tile_size(sf::Vector2i tile_size);
 private:
     sf::Vector2i tile_size;
+    sf::Texture texture;
     Level* level;
     bool isMoving;
 
     void heroSpriteFunction();
-    void hero_move();
+    void hero_move(sf::Time);
     void draw_hero(int x, int y, int width, int height);
 };
