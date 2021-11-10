@@ -1,10 +1,10 @@
+#include "Includes.h"
 #include "level.h"
-
-#include <iostream>
 #include "tinyxml2.h"
 
 using namespace tinyxml2;
 
+// Г‚Г®Г§Г°Г Г№Г ГҐГІ Г§Г­Г Г·ГҐГ­ГЁГҐ Г±ГўГ®Г©Г±ГІГўГ  ГІГЁГЇГ  int
 int Object::GetPropertyInt(std::string name)
 {
     return atoi(properties[name].c_str());
@@ -20,39 +20,40 @@ std::string Object::GetPropertyString(std::string name)
     return properties[name];
 }
 
+// Г‡Г ГЈГ°ГіГ¦Г ГҐГІ ГЄГ Г°ГІГі ГЁГ§ .tmx ГґГ Г©Г«Г 
 bool Level::LoadFromFile(std::string filename)
 {
     XMLDocument levelFile;
 
-    // Загружаем XML-карту
+    // Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ XML-ГЄГ Г°ГІГі
     if (levelFile.LoadFile(filename.c_str()))
     {
         std::cout << "Loading level \"" << filename << "\" failed. Error: " << levelFile.ErrorName() << std::endl;
         return false;
     }
 
-    // Работаем с контейнером map
+    // ГђГ ГЎГ®ГІГ ГҐГ¬ Г± ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г®Г¬ map
     XMLElement* map;
     map = levelFile.FirstChildElement("map");
 
-    // Пример карты: <map version="1.0" orientation="orthogonal"
+    // ГЏГ°ГЁГ¬ГҐГ° ГЄГ Г°ГІГ»: <map version="1.0" orientation="orthogonal"
     // width="10" height="10" tilewidth="34" tileheight="34">
     width = atoi(map->Attribute("width"));
     height = atoi(map->Attribute("height"));
     tileWidth = atoi(map->Attribute("tilewidth"));
     tileHeight = atoi(map->Attribute("tileheight"));
 
-    // Берем описание тайлсета и идентификатор первого тайла
+    // ГЃГҐГ°ГҐГ¬ Г®ГЇГЁГ±Г Г­ГЁГҐ ГІГ Г©Г«Г±ГҐГІГ  ГЁ ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГЇГҐГ°ГўГ®ГЈГ® ГІГ Г©Г«Г 
     XMLElement* tilesetElement;
     tilesetElement = map->FirstChildElement("tileset");
     firstTileID = atoi(tilesetElement->Attribute("firstgid"));
 
-    // source - путь до картинки в контейнере image
+    // source - ГЇГіГІГј Г¤Г® ГЄГ Г°ГІГЁГ­ГЄГЁ Гў ГЄГ®Г­ГІГҐГ©Г­ГҐГ°ГҐ image
     XMLElement* image;
     image = tilesetElement->FirstChildElement("image");
     std::string imagepath = std::string("resources/") + image->Attribute("source");
 
-    // Пытаемся загрузить тайлсет
+    // ГЏГ»ГІГ ГҐГ¬Г±Гї Г§Г ГЈГ°ГіГ§ГЁГІГј ГІГ Г©Г«Г±ГҐГІ
     sf::Image img;
 
     if (!img.loadFromFile(imagepath))
@@ -61,20 +62,20 @@ bool Level::LoadFromFile(std::string filename)
         return false;
     }
 
-    // Очищаем карту от света (109, 159, 185)
-    // Вообще-то в тайлсете может быть фон любого цвета, но я не нашел решения, как 16-ричную строку
-    // вроде "6d9fb9" преобразовать в цвет
+    // ГЋГ·ГЁГ№Г ГҐГ¬ ГЄГ Г°ГІГі Г®ГІ Г±ГўГҐГІГ  (109, 159, 185)
+    // Г‚Г®Г®ГЎГ№ГҐ-ГІГ® Гў ГІГ Г©Г«Г±ГҐГІГҐ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГґГ®Г­ Г«ГѕГЎГ®ГЈГ® Г¶ГўГҐГІГ , Г­Г® Гї Г­ГҐ Г­Г ГёГҐГ« Г°ГҐГёГҐГ­ГЁГї, ГЄГ ГЄ 16-Г°ГЁГ·Г­ГіГѕ Г±ГІГ°Г®ГЄГі
+    // ГўГ°Г®Г¤ГҐ "6d9fb9" ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ ГІГј Гў Г¶ГўГҐГІ
     img.createMaskFromColor(sf::Color(109, 159, 185));
-    // Грузим текстуру из изображения
+    // ГѓГ°ГіГ§ГЁГ¬ ГІГҐГЄГ±ГІГіГ°Гі ГЁГ§ ГЁГ§Г®ГЎГ°Г Г¦ГҐГ­ГЁГї
     tilesetImage.loadFromImage(img);
-    // Расплывчатость запрещена
+    // ГђГ Г±ГЇГ«Г»ГўГ·Г ГІГ®Г±ГІГј Г§Г ГЇГ°ГҐГ№ГҐГ­Г 
     tilesetImage.setSmooth(false);
 
-    // Получаем количество столбцов и строк тайлсета
+    // ГЏГ®Г«ГіГ·Г ГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГІГ®Г«ГЎГ¶Г®Гў ГЁ Г±ГІГ°Г®ГЄ ГІГ Г©Г«Г±ГҐГІГ 
     int columns = tilesetImage.getSize().x / tileWidth;
     int rows = tilesetImage.getSize().y / tileHeight;
 
-    // Вектор из прямоугольников изображений (TextureRect)
+    // Г‚ГҐГЄГІГ®Г° ГЁГ§ ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ®Гў ГЁГ§Г®ГЎГ°Г Г¦ГҐГ­ГЁГ© (TextureRect)
     std::vector<sf::Rect<int>> subRects;
 
     for (int y = 0; y < rows; y++)
@@ -90,14 +91,14 @@ bool Level::LoadFromFile(std::string filename)
             subRects.push_back(rect);
         }
 
-    // Работа со слоями
+    // ГђГ ГЎГ®ГІГ  Г±Г® Г±Г«Г®ГїГ¬ГЁ
     XMLElement* layerElement;
     layerElement = map->FirstChildElement("layer");
     while (layerElement)
     {
         Layer layer;
 
-        // Если присутствует opacity, то задаем прозрачность слоя, иначе он полностью непрозрачен
+        // Г…Г±Г«ГЁ ГЇГ°ГЁГ±ГіГІГ±ГІГўГіГҐГІ opacity, ГІГ® Г§Г Г¤Г ГҐГ¬ ГЇГ°Г®Г§Г°Г Г·Г­Г®Г±ГІГј Г±Г«Г®Гї, ГЁГ­Г Г·ГҐ Г®Г­ ГЇГ®Г«Г­Г®Г±ГІГјГѕ Г­ГҐГЇГ°Г®Г§Г°Г Г·ГҐГ­
         if (layerElement->Attribute("opacity") != NULL)
         {
             float opacity = strtod(layerElement->Attribute("opacity"), NULL);
@@ -108,7 +109,7 @@ bool Level::LoadFromFile(std::string filename)
             layer.opacity = 255;
         }
 
-        // Контейнер <data>
+        // ГЉГ®Г­ГІГҐГ©Г­ГҐГ° <data>
         XMLElement* layerDataElement;
         layerDataElement = layerElement->FirstChildElement("data");
 
@@ -125,13 +126,13 @@ bool Level::LoadFromFile(std::string filename)
    
         std::string mapContent(layerDataElement->GetText());
         
-        // Парсинг <data>: id тайлов разделены запятыми 
+        // ГЏГ Г°Г±ГЁГ­ГЈ <data>: id ГІГ Г©Г«Г®Гў Г°Г Г§Г¤ГҐГ«ГҐГ­Г» Г§Г ГЇГїГІГ»Г¬ГЁ 
         while ((rPos = mapContent.find(",", rPos+1)) != -1) {
-            // id текущего тайла 
+            // id ГІГҐГЄГіГ№ГҐГЈГ® ГІГ Г©Г«Г  
             int tileGID = std::stoi(mapContent.substr(lPos, rPos-lPos));
             int subRectToUse = tileGID - firstTileID;
             lPos = rPos + 1;
-            // Устанавливаем TextureRect каждого тайла
+            // Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ TextureRect ГЄГ Г¦Г¤Г®ГЈГ® ГІГ Г©Г«Г 
             if (subRectToUse >= 0)
             {
                 sf::Sprite sprite;
@@ -152,26 +153,26 @@ bool Level::LoadFromFile(std::string filename)
         }
 
         layers.push_back(layer);
-        //новый слой тайлов
+        //Г­Г®ГўГ»Г© Г±Г«Г®Г© ГІГ Г©Г«Г®Гў
         layerElement = layerElement->NextSiblingElement("layer");
     }
 
-    // Работа с объектами
+    // ГђГ ГЎГ®ГІГ  Г± Г®ГЎГєГҐГЄГІГ Г¬ГЁ
     XMLElement* objectGroupElement;
 
-    // Если есть слои объектов
+    // Г…Г±Г«ГЁ ГҐГ±ГІГј Г±Г«Г®ГЁ Г®ГЎГєГҐГЄГІГ®Гў
     if (map->FirstChildElement("objectgroup") != NULL)
     {
         objectGroupElement = map->FirstChildElement("objectgroup");
         while (objectGroupElement)
         {
-            // Контейнер <object>
+            // ГЉГ®Г­ГІГҐГ©Г­ГҐГ° <object>
             XMLElement* objectElement;
             objectElement = objectGroupElement->FirstChildElement("object");
 
             while (objectElement)
             {
-                // Получаем все данные - тип, имя, позиция, etc
+                // ГЏГ®Г«ГіГ·Г ГҐГ¬ ГўГ±ГҐ Г¤Г Г­Г­Г»ГҐ - ГІГЁГЇ, ГЁГ¬Гї, ГЇГ®Г§ГЁГ¶ГЁГї, etc
                 std::string objectType;
                 if (objectElement->Attribute("type") != NULL)
                 {
@@ -183,9 +184,10 @@ bool Level::LoadFromFile(std::string filename)
                     objectName = objectElement->Attribute("name");
                 }
                 int x = atoi(objectElement->Attribute("x"));
-                int y = atoi(objectElement->Attribute("y")) - 100; // костыль
+                int y = atoi(objectElement->Attribute("y")) - 100; // ГЄГ®Г±ГІГ»Г«Гј
 
                 int width, height;
+                float rotation = 0;
 
                 sf::Sprite sprite;
                 sprite.setTexture(tilesetImage);
@@ -197,19 +199,29 @@ bool Level::LoadFromFile(std::string filename)
                     width = atoi(objectElement->Attribute("width"));
                     height = atoi(objectElement->Attribute("height"));
                 }
-                else
-                {
+                else {
                     width = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].width;
                     height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;
                 }
 
+
                 if (objectElement->Attribute("gid"))
                     sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
 
-                // Экземпляр объекта
+/*
+                if (objectElement->Attribute("rotation"))
+                    rotation = atof(objectElement->Attribute("rotation"));
+
+                if(objectElement->Attribute("gid"))
+                    sprite.setTextureRect(subRects[atoi(objectElement->Attribute("gid")) - firstTileID]);
+*/
+
+
+                // ГќГЄГ§ГҐГ¬ГЇГ«ГїГ° Г®ГЎГєГҐГЄГІГ 
                 Object object;
                 object.name = objectName;
                 object.type = objectType;
+                sprite.setRotation(rotation);
                 object.sprite = sprite;
 
                 sf::Rect <int> objectRect;
@@ -219,7 +231,7 @@ bool Level::LoadFromFile(std::string filename)
                 objectRect.width = width;
                 object.rect = objectRect;
 
-                // "Переменные" объекта
+                // "ГЏГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ" Г®ГЎГєГҐГЄГІГ 
                 XMLElement* properties;
                 properties = objectElement->FirstChildElement("properties");
                 if (properties != NULL)
@@ -240,7 +252,7 @@ bool Level::LoadFromFile(std::string filename)
                     }
                 }
 
-                // Пихаем объект в вектор
+                // ГЏГЁГµГ ГҐГ¬ Г®ГЎГєГҐГЄГІ Гў ГўГҐГЄГІГ®Г°
                 objects.push_back(object);
 
                 objectElement = objectElement->NextSiblingElement("object");
@@ -257,17 +269,15 @@ bool Level::LoadFromFile(std::string filename)
 }
 
 
-Object Level::GetObject(std::string name)
-{
-    // Только первый объект с заданным именем
+/* Г‚Г®Г§Г°Г Г№Г ГҐГІ ГЇГҐГ°ГўГ»Г© Г®ГЎГєГҐГЄГІ Г± Г§Г Г¤Г Г­Г­Г»Г¬ ГЁГ¬ГҐГ­ГҐГ¬ */
+Object Level::GetObject(std::string name){
     for (int i = 0; i < objects.size(); i++)
         if (objects[i].name == name)
             return objects[i];
 }
 
-std::vector<Object> Level::GetObjects(std::string name)
-{
-    // Все объекты с заданным именем
+/* Г‚Г®Г§Г°Г Г№Г ГҐГІ ГўГ±ГҐ Г®ГЎГєГҐГЄГІГ» Г± Г§Г Г¤Г Г­Г­Г»Г¬ ГЁГ¬ГҐГ­ГҐГ¬ */
+std::vector<Object> Level::GetObjects(std::string name){
     std::vector<Object> vec;
     for (int i = 0; i < objects.size(); i++)
         if (objects[i].name == name)
@@ -285,7 +295,6 @@ std::vector<Object> Level::GetObjectsWithType(std::string type) {
     return vec;
 }
 
-//
 sf::Vector2i Level::GetTileSize()
 {
     return sf::Vector2i(tileWidth, tileHeight);
@@ -293,12 +302,19 @@ sf::Vector2i Level::GetTileSize()
 
 void Level::Draw(sf::RenderWindow& window)
 {
-    // Рисуем все тайлы (объекты НЕ рисуем!)
+    // ГђГЁГ±ГіГҐГ¬ ГўГ±ГҐ ГІГ Г©Г«Г» 
     for (int layer = 0; layer < layers.size(); layer++)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
 
+/*
     for (Object obj : objects) 
         window.draw(obj.sprite);
 
+    // ГђГЁГ±ГіГҐГ¬ ГўГ±ГҐ Г®ГЎГєГҐГЄГІГ»
+    for (Object obj : objects) {
+        window.draw(obj.sprite);
+        
+    }
+*/
 }

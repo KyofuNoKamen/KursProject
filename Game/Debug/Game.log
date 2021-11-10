@@ -1,2 +1,4 @@
-﻿  Hero.cpp
+﻿  Window.cpp
+D:\Study\KursProject\KursProject\Game\Window.cpp(48,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Window.cpp(48,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Game.vcxproj -> D:\Study\KursProject\KursProject\Debug\Game.exe

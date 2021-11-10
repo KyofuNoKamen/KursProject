@@ -1,8 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
-
-/*¬ данный момент класс не используетс€!*/
+#include "includes.h"
 
 class Tiles {
 public:

@@ -1,9 +1,5 @@
 #include "Map.h"
-#include <iostream>
-#include <string>
-#include <map>
-#include <iterator>
-#include <vector>
+#include "Includes.h"
 
 Map::Map(sf::RenderWindow* window)
 {
