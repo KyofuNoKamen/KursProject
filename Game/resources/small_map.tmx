@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="left-up" width="20" height="20" tilewidth="100" tileheight="100" infinite="0" nextlayerid="3" nextobjectid="15">
+ <tileset firstgid="1" name="tile_set" tilewidth="100" tileheight="100" tilecount="4" columns="2">
+  <image source="tile_set.jpg" width="200" height="200"/>
+ </tileset>
+ <layer id="1" name="Слой тайлов 1" width="20" height="20">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,2,2,2,2,2,2,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,0,0,4,4,4,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,0,0,4,4,4,4,0,0,1,
+1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,4,4,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,2,0,2,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,2,0,2,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,2,2,2,2,2,2,0,0,1,
+1,0,0,0,0,0,0,1,1,0,0,0,0,2,0,0,0,0,0,1,
+1,2,2,2,2,2,2,2,1,0,0,0,0,2,0,0,0,0,0,1,
+1,2,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,1,
+1,2,2,2,2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,4,4,4,4,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,4,4,4,4,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,4,4,4,4,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,
+1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <objectgroup id="2" name="Слой объектов 1">
+  <object id="1" type="collidable" gid="3" x="0" y="100" width="100" height="100"/>
+  <object id="2" type="collidable" gid="3" x="0" y="200" width="100" height="100"/>
+  <object id="3" type="collidable" gid="3" x="0" y="400" width="100" height="100"/>
+  <object id="4" type="collidable" gid="3" x="0" y="300" width="100" height="100"/>
+  <object id="5" type="collidable" gid="3" x="0" y="500" width="100" height="100"/>
+  <object id="6" type="collidable" gid="3" x="0" y="600" width="100" height="100"/>
+  <object id="8" type="collidable" gid="3" x="0" y="700" width="100" height="100"/>
+  <object id="9" type="collidable" gid="3" x="0" y="800" width="100" height="100"/>
+  <object id="10" type="collidable" gid="3" x="100" y="100" width="100" height="100"/>
+  <object id="11" type="collidable" gid="3" x="200" y="100" width="100" height="100"/>
+  <object id="12" type="collidable" gid="3" x="400" y="100" width="100" height="100"/>
+  <object id="13" type="collidable" gid="3" x="500" y="100" width="100" height="100"/>
+  <object id="14" type="collidable" gid="3" x="300" y="100" width="100" height="100"/>
+ </objectgroup>
+</map>
