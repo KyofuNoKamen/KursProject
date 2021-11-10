@@ -13,17 +13,20 @@ class Window {
 		Level& getLevel();
 		void setLevel(Level&);
 		sf::RenderWindow &get_window();
-		void set_view(sf::View new_view);
+		
 	*/
 public:
 	Window(int, int, std::string);
 	Window(int, int, Level&, std::string);
 	void start();
 
+	void fight_start();
+
 	Level& getLevel();
 	void setLevel(Level&);
 	sf::RenderWindow &get_window();
 	void moveView(int x, int y);
+	void set_view(sf::View new_view);
 /*
 	void setLevel(Level&);
 	Level& getLevel();

@@ -17,11 +17,10 @@ private:
     sf::Vector2i tile_size;
     Level* level;
     bool isMoving;
-
+    sf::Texture texture;
     void heroSpriteFunction();
     void hero_move();
     void draw_hero(int x, int y, int width, int height);
-
 /*
 #include "Level.h"
 #include "Window.h"

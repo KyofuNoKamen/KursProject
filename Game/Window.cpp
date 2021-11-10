@@ -72,6 +72,7 @@ void Window::start()
     Hero hero(this, 200, 200);
 */
 
+
     while (main_window.isOpen())
     {
         sf::Event event;
@@ -80,16 +81,15 @@ void Window::start()
             if (event.type == sf::Event::Closed)
                 main_window.close();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                view.move(sf::Vector2f(0, -10));
+                view->move(sf::Vector2f(0, -10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                view.move(sf::Vector2f(0, 10));
+                view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    //view.move(sf::Vector2f(10, 0));
-                Fight_map fight("resources/Fight_map.tmx", this);
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                view.move(sf::Vector2f(-10, 0));
-            main_window.setView(view);
-            hero.hero_move();
+                //view.move(sf::Vector2f(10, 0));
+                fight_start();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))                
+                view->move(sf::Vector2f(-10, 0));
+            main_window.setView(*view);
         }
         
         main_window.clear();
@@ -100,9 +100,42 @@ void Window::start()
     }
 }
 
-void Window::set_view(sf::View new_view) {
-    view = new_view;
+void Window::fight_start()
+{
+
+    Fight_map fight("resources/Fight_map.tmx", this);
+
+    while(1)
+    {
+
+        sf::Event event;
+        while (main_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                main_window.close();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                view->move(sf::Vector2f(0, -10));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                //view->move(sf::Vector2f(0, 10));
+                return;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                //view.move(sf::Vector2f(10, 0));
+                fight.draw_map();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                view->move(sf::Vector2f(-10, 0));
+            main_window.setView(*view);
+        }
+
+        main_window.clear();
+        level->Draw(main_window);
+        //hero.update();
+        renderFPS();
+        main_window.display();
     }
+}
+
+void Window::set_view(sf::View new_view) {
+    *view = new_view;
 }
 
 void Window::renderFPS() {

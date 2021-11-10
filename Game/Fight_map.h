@@ -15,11 +15,12 @@ class Fight_map
 public:
 	/*Конструктор получает путь к карте, указатель на отряд игрока и отряд противника, указатель на главное окно*/
 	Fight_map(std::string path_map_fight/*, *player_squad, *enemy_squad*/, Window *main_window);
+	void draw_map();
 
 private:
 	std::string path_map;
 	Window* window;
-	
-	void draw_map();
+	sf::View view;
+		
 };
 

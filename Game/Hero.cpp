@@ -24,6 +24,11 @@ Hero::Hero(Window* window) {
     this->window = window;
     // ïîçèöèÿ ñïðàéòà îòñ÷èòûâàåòñÿ îò îáëàñòè âîçëå ëåâîãî íèæíåãî óãëà
     heroSprite.setOrigin(0, 60);
+    if (!texture.loadFromFile("resources/zel.png"))
+    {
+        std::cout << "Error during loading picture from file\n";
+    }
+    heroSprite.setTexture(texture);
 }
 
 Hero::Hero(Window* window, int x, int y) :Hero(window) {
@@ -47,13 +52,7 @@ Hero::Hero(Window* window, int x, int y):Hero(window) {
 }
 
 void Hero::heroSpriteFunction() {
-    sf::Texture hero;
-    if (!hero.loadFromFile("resources/zel.png"))
-    {
-        std::cout << "Error during loading picture from file\n";
-    }
-    heroSprite.setTexture(hero);
-  
+      
     heroSprite.setTextureRect(currentRect);
     window->get_window().draw(heroSprite);
 }
