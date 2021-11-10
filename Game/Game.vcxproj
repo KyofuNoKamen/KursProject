@@ -160,6 +160,7 @@
     <Image Include="..\..\..\..\hellhound.png" />
     <Image Include="..\Resources\spr.png" />
     <Image Include="resources\ground.jpg" />
+    <Image Include="resources\knight.png" />
     <Image Include="resources\texture.jpg" />
     <Image Include="resources\tile_set.jpg" />
   </ItemGroup>

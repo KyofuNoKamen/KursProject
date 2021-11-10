@@ -60,10 +60,11 @@ void Window::start()
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
 
+    Object easyEnemyObject = Window::getLevel().GetObject("easyEnemy");
     sf::Image easyEnemyImage;
     easyEnemyImage.loadFromFile("resources/hellhound.png");
-
-    Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
+    //Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
+    Enemy easyEnemy(easyEnemyImage, "EasyEnemy", level, 200, 200, 100, 100);
     p_easy_enemy = &easyEnemy;
 
     while (main_window.isOpen())

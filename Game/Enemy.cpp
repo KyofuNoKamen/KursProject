@@ -1,18 +1,20 @@
 #include "Enemy.h" 
 #include "Hero.h"
+//#include "Window.h"
 
-Enemy::Enemy(sf::Image& image, sf::String Name, float X, float Y, int W, int H) :Entity(image, Name, X, Y, W, H) {
-	if (name == "EasyEnemy") {
+Enemy::Enemy(sf::Image& image, sf::String Name, Level* level, float X, float Y, int W, int H) :Entity(image, Name, X, Y, W, H) {
+    //Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
+    if (name == "EasyEnemy") {
 		sprite.setTextureRect(sf::IntRect(100, 60, w, h));
 		dx = 10;//даем скорость.этот объект всегда двигается
 	}
 }
-void Enemy::enemyMove(int status, std::vector<Object> collidables) {
+void Enemy::enemyMove(int status,std::vector<Object> collidables) {
     if (name == "EasyEnemy") {
         sf::Vector2f step;
         sf::Vector2f newPos;
 
-        //std::vector<Object> collidables = Window::getLevel().GetObjectsWithType("collidable");
+        //std::vector<Object> collidables = level->GetObjectsWithType("collidable");
         newPos = sprite.getPosition() + step;
 
         bool canMakeStep = true;
