@@ -167,7 +167,6 @@
   <ItemGroup>
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\Entity.h" />
-    <ClInclude Include="Headers\Includes.h" />
     <ClInclude Include="Headers\Fight_map.h" />
     <ClInclude Include="Headers\Hero.h" />
     <ClInclude Include="Headers\Level.h" />

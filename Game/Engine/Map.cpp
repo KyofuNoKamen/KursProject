@@ -1,5 +1,4 @@
 #include "../Headers/Map.h"
-#include "../Headers/Includes.h"
 
 /*Map::Map(sf::RenderWindow* window)
 {

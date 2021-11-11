@@ -1,8 +1,9 @@
 #pragma once
-#include "Includes.h"
 #include "Level.h"
 #include "Map.h"
 #include "Enemy.h"
+#include <string>
+#include <SFML/Graphics.hpp>
 
 
 class Window {

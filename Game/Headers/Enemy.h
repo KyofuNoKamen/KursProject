@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-//#include "Window.h"
+#include <vector>
 #include "Level.h"
 
 class Enemy :public Entity {

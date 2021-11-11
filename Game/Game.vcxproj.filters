@@ -48,9 +48,6 @@
     <ClInclude Include="Headers\Level.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\Includes.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Map.h">
       <Filter>Headers</Filter>
     </ClInclude>

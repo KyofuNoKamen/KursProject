@@ -1,7 +1,6 @@
 #pragma once
-#include "Includes.h"
-#include "Window.h"
-#include "Level.h"
+#include "../Headers/Window.h"
+#include "../Headers/Level.h"
 
 class Hero {
 public:

@@ -1,5 +1,5 @@
-#include "../Headers/includes.h"
 #include "../Headers/Hero.h"
+#include <iostream>
 
 const sf::IntRect RECT_STAND(0, 0, 120, 130);
 const sf::IntRect RECT_DOWN(0, 520, 120, 130);
