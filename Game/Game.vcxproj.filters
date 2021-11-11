@@ -1,39 +1,106 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Engine\Enemy.cpp" />
-    <ClCompile Include="Engine\Entity.cpp" />
-    <ClCompile Include="Engine\Fight_map.cpp" />
-    <ClCompile Include="Engine\Hero.cpp" />
-    <ClCompile Include="Engine\Level.cpp" />
-    <ClCompile Include="Engine\Main.cpp" />
-    <ClCompile Include="Engine\Map.cpp" />
-    <ClCompile Include="Engine\Tiles.cpp" />
-    <ClCompile Include="Engine\tinyxml2.cpp" />
-    <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="Engine\Enemy.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entity.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Fight_map.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Hero.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Level.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Main.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Map.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Tiles.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\tinyxml2.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Window.cpp">
+      <Filter>Cpps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Enemy.h" />
-    <ClInclude Include="Headers\Entity.h" />
-    <ClInclude Include="Headers\Includes.h" />
-    <ClInclude Include="Headers\Fight_map.h" />
-    <ClInclude Include="Headers\Hero.h" />
-    <ClInclude Include="Headers\Level.h" />
-    <ClInclude Include="Headers\Map.h" />
-    <ClInclude Include="Headers\resource.h" />
-    <ClInclude Include="Headers\Tiles.h" />
-    <ClInclude Include="Headers\tinyxml2.h" />
-    <ClInclude Include="Headers\Window.h" />
+    <ClInclude Include="Headers\Enemy.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Entity.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Fight_map.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Hero.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Level.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Includes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Map.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\resource.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Tiles.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\tinyxml2.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Window.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\ground.jpg" />
-    <Image Include="resources\knight.png" />
-    <Image Include="resources\texture.jpg" />
-    <Image Include="resources\tile_set.jpg" />
-    <Image Include="resources\tile_set_fight.jpg" />
+    <Image Include="resources\tile_set_fight.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="resources\tile_set.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="resources\texture.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="resources\knight.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="resources\ground.jpg">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Fight_map.tmx" />
-    <None Include="resources\map.tmx" />
+    <None Include="resources\map.tmx">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="resources\Fight_map.tmx">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{edc0f055-4538-4db8-b6ab-73416cec40f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cpps">
+      <UniqueIdentifier>{7b84ff6f-5d81-4afe-aab7-7ef7b09c4c19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{4a9f02a7-ecfd-40ce-abc0-0c2ea8c61f5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

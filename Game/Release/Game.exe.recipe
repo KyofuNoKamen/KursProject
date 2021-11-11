@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Study\KursProject\KursProject\Release\Game.exe</FullPath>
+      <FullPath>D:\VSRepo\Game\Release\Game.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -102,10 +102,11 @@ D:\VSRepo\Game\Game\Engine\Level.cpp(307,33): warning C4018: <: несоотве
   Main.cpp
   Map.cpp
   Tiles.cpp
-  tinyxml2.cpp
   Window.cpp
 D:\VSRepo\Game\Game\Engine\Window.cpp(48,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\VSRepo\Game\Game\Engine\Window.cpp(48,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  tinyxml2.cpp
   Создание кода...
 D:\VSRepo\Game\Game\Engine\Level.cpp(277): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
+  LINK : не найден или не выполнена сборка D:\VSRepo\Game\Debug\Game.exe при последней инкрементной компоновке; выполняется полная компоновка
   Game.vcxproj -> D:\VSRepo\Game\Debug\Game.exe
