@@ -1,5 +1,5 @@
 #pragma once
-#include "includes.h"
+#include <SFML/Graphics.hpp>
 
 class Tiles {
 public:

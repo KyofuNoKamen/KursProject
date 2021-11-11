@@ -1,7 +1,6 @@
 #pragma once
-#include "Includes.h"
-#include "Window.h"
-#include "Level.h"
+#include "../Headers/Window.h"
+#include "../Headers/Level.h"
 
 class Hero {
 public:
@@ -17,11 +16,9 @@ private:
     sf::Texture texture;
     Level* level;
     bool isMoving;
-
     void heroSpriteFunction();
     void hero_move(sf::Time);
     void draw_hero(int x, int y, int width, int height);
-
 /*
 #include "Level.h"
 #include "Window.h"

@@ -1,6 +1,6 @@
 #pragma once
-#include "Includes.h"
 //#include "level.h"
+#include <SFML/Graphics.hpp>
 
 class Entity {
 private:

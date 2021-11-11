@@ -1,5 +1,6 @@
-#include "Enemy.h" 
-#include "Hero.h"
+#include "../Headers/Enemy.h" 
+#include "../Headers/Hero.h"
+#include <iostream>
 //#include "Window.h"
 
 Enemy::Enemy(sf::Image& image, sf::String Name, Level* level, float X, float Y, int W, int H) :Entity(image, Name, X, Y, W, H) {

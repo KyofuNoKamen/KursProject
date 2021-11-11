@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "../Headers/Entity.h"
 
 Entity::Entity(sf::Image& image, sf::String Name, float X, float Y, int W, int H) {
 	x = X; y = Y; w = W; h = H; name = Name;
