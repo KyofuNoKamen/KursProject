@@ -1,109 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Исходные файлы">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="Engine\Enemy.cpp" />
+    <ClCompile Include="Engine\Entity.cpp" />
+    <ClCompile Include="Engine\Fight_map.cpp" />
+    <ClCompile Include="Engine\Hero.cpp" />
+    <ClCompile Include="Engine\Level.cpp" />
+    <ClCompile Include="Engine\Main.cpp" />
+    <ClCompile Include="Engine\Map.cpp" />
+    <ClCompile Include="Engine\Tiles.cpp" />
+    <ClCompile Include="Engine\tinyxml2.cpp" />
+    <ClCompile Include="Engine\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Tiles.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Hero.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="tinyxml2.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-    <ClCompile Include="Fight_map.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
+    <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\Entity.h" />
+    <ClInclude Include="Headers\Includes.h" />
+    <ClInclude Include="Headers\Fight_map.h" />
+    <ClInclude Include="Headers\Hero.h" />
+    <ClInclude Include="Headers\Level.h" />
+    <ClInclude Include="Headers\Map.h" />
+    <ClInclude Include="Headers\resource.h" />
+    <ClInclude Include="Headers\Tiles.h" />
+    <ClInclude Include="Headers\tinyxml2.h" />
+    <ClInclude Include="Headers\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resources\ground.jpg">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="resources\texture.jpg">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="resources\tile_set.jpg">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\Resources\spr.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\..\..\..\hellhound.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="resources\knight.png">
-    <Image Include="resources\tile_set_fight.jpg">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
+    <Image Include="resources\ground.jpg" />
+    <Image Include="resources\knight.png" />
+    <Image Include="resources\texture.jpg" />
+    <Image Include="resources\tile_set.jpg" />
+    <Image Include="resources\tile_set_fight.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Tiles.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Hero.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="tinyxml2.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Level.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Includes.h">
-    <ClInclude Include="Fight_map.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\map.tmx">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="resources\Fight_map.tmx">
-      <Filter>Файлы ресурсов</Filter>
-    </None>
+    <None Include="resources\Fight_map.tmx" />
+    <None Include="resources\map.tmx" />
   </ItemGroup>
 </Project>

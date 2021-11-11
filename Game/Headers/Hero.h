@@ -17,7 +17,6 @@ private:
     sf::Texture texture;
     Level* level;
     bool isMoving;
-    sf::Texture texture;
     void heroSpriteFunction();
     void hero_move(sf::Time);
     void draw_hero(int x, int y, int width, int height);

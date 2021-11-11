@@ -1,4 +1,111 @@
-﻿  Window.cpp
-D:\Study\KursProject\KursProject\Game\Window.cpp(48,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Window.cpp(48,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-  Game.vcxproj -> D:\Study\KursProject\KursProject\Debug\Game.exe
+﻿  Enemy.cpp
+D:\VSRepo\Game\Game\Engine\Enemy.cpp(22,52): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\VSRepo\Game\Game\Engine\Enemy.cpp(22,42): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Entity.cpp
+  Fight_map.cpp
+  Hero.cpp
+D:\VSRepo\Game\Game\Engine\Hero.cpp(49,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Hero.cpp(49,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Hero.cpp(94,48): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(94,35): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(117,29): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(123,38): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(129,32): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(135,41): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(153,57): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\VSRepo\Game\Game\Engine\Hero.cpp(153,42): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  Level.cpp
+D:\VSRepo\Game\Game\Engine\Level.cpp(15,18): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(104,27): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(105,33): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(141,53): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(141,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(195,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(195,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Level.cpp(274,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\VSRepo\Game\Game\Engine\Level.cpp(282,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\VSRepo\Game\Game\Engine\Level.cpp(291,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\VSRepo\Game\Game\Engine\Level.cpp(306,31): warning C4018: <: несоответствие типов со знаком и без знака
+D:\VSRepo\Game\Game\Engine\Level.cpp(307,33): warning C4018: <: несоответствие типов со знаком и без знака
+  Main.cpp
+  Map.cpp
+  Tiles.cpp
+  tinyxml2.cpp
+  Window.cpp
+D:\VSRepo\Game\Game\Engine\Window.cpp(48,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\Game\Engine\Window.cpp(48,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
+D:\VSRepo\Game\Game\Engine\Level.cpp(277): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
+  Game.vcxproj -> D:\VSRepo\Game\Debug\Game.exe

@@ -1,6 +1,6 @@
-#include "Includes.h"
-#include "level.h"
-#include "tinyxml2.h"
+#include "../Headers/Includes.h"
+#include "../Headers/level.h"
+#include "../Headers/tinyxml2.h"
 
 using namespace tinyxml2;
 

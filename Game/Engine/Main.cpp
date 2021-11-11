@@ -1,6 +1,5 @@
-#include "includes.h"
-#include "Window.h"
-#include "Level.h"
+#include "../Headers/Window.h"
+#include "../Headers/Level.h"
 
 int main()
 {

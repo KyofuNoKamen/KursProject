@@ -26,13 +26,9 @@ public:
 	sf::RenderWindow& get_window();
 
 	void setLevel(Level&);
-	sf::RenderWindow &get_window();
 	void moveView(int x, int y);
 	void set_view(sf::View new_view);
-/*
-	void setLevel(Level&);
-	Level& getLevel();
-	void moveView(int, int);
+
 	void mapUpdate(int);
 
 private:

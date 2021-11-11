@@ -146,20 +146,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Fight_map.cpp" />
-    <ClCompile Include="Hero.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Tiles.cpp" />
-    <ClCompile Include="tinyxml2.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Engine\Enemy.cpp" />
+    <ClCompile Include="Engine\Entity.cpp" />
+    <ClCompile Include="Engine\Fight_map.cpp" />
+    <ClCompile Include="Engine\Hero.cpp" />
+    <ClCompile Include="Engine\Level.cpp" />
+    <ClCompile Include="Engine\Main.cpp" />
+    <ClCompile Include="Engine\Map.cpp" />
+    <ClCompile Include="Engine\Tiles.cpp" />
+    <ClCompile Include="Engine\tinyxml2.cpp" />
+    <ClCompile Include="Engine\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\hellhound.png" />
-    <Image Include="..\Resources\spr.png" />
     <Image Include="resources\ground.jpg" />
     <Image Include="resources\knight.png" />
     <Image Include="resources\texture.jpg" />
@@ -167,17 +165,17 @@
     <Image Include="resources\tile_set_fight.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Includes.h" />
-    <ClInclude Include="Fight_map.h" />
-    <ClInclude Include="Hero.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Tiles.h" />
-    <ClInclude Include="tinyxml2.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Headers\Enemy.h" />
+    <ClInclude Include="Headers\Entity.h" />
+    <ClInclude Include="Headers\Includes.h" />
+    <ClInclude Include="Headers\Fight_map.h" />
+    <ClInclude Include="Headers\Hero.h" />
+    <ClInclude Include="Headers\Level.h" />
+    <ClInclude Include="Headers\Map.h" />
+    <ClInclude Include="Headers\resource.h" />
+    <ClInclude Include="Headers\Tiles.h" />
+    <ClInclude Include="Headers\tinyxml2.h" />
+    <ClInclude Include="Headers\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\Fight_map.tmx" />

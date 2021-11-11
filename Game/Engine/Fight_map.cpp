@@ -1,4 +1,4 @@
-#include "Fight_map.h"
+#include "../Headers/Fight_map.h"
 
 Level g_level;
 

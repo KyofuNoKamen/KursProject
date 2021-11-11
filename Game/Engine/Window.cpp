@@ -1,8 +1,8 @@
-#include "Window.h"
-#include "Hero.h"
-#include "Entity.h"
-#include "Enemy.h"
-#include "Fight_map.h"
+#include "../Headers/Window.h"
+#include "../Headers/Hero.h"
+#include "../Headers/Entity.h"
+#include "../Headers/Enemy.h"
+#include "../Headers/Fight_map.h"
 
 sf::Text fpsText;
 
@@ -62,12 +62,12 @@ void Window::start()
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
-/*
+/**/
 
     //sf::View view;
     //view.setCenter(sf::Vector2f(500, 500));
     
-    main_window.setView(view);
+    main_window.setView(*view);
 
 
     Object easyEnemyObject = Window::getLevel().GetObject("easyEnemy");
