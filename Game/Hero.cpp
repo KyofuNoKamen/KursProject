@@ -38,6 +38,11 @@ Hero::Hero(Window* window) {
     // ������� ������� ������������� �� ������� ����� ������ ������� ����
 
     heroSprite.setOrigin(0, 60);
+    if (!texture.loadFromFile("resources/zel.png"))
+    {
+        std::cout << "Error during loading picture from file\n";
+    }
+    heroSprite.setTexture(texture);
 }
 
 Hero::Hero(Window* window, int x, int y) :Hero(window) {

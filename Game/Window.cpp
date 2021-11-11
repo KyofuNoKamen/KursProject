@@ -2,6 +2,7 @@
 #include "Hero.h"
 #include "Entity.h"
 #include "Enemy.h"
+#include "Fight_map.h"
 
 sf::Text fpsText;
 
@@ -24,8 +25,8 @@ Window::Window(int resolution_x, int resolution_y, Level& level, std::string nam
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
-    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
-	Window::main_window.setFramerateLimit(120);
+    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name, sf::Style::Fullscreen);
+	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
 }
 
@@ -52,6 +53,7 @@ void Window::start()
     sf::Clock clock;
 
     Hero hero(this, 200, 200);
+
     hero.set_tile_size(level->GetTileSize());
     view->setCenter(hero.heroSprite.getPosition());
 
@@ -60,6 +62,13 @@ void Window::start()
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
+/*
+
+    //sf::View view;
+    //view.setCenter(sf::Vector2f(500, 500));
+    
+    main_window.setView(view);
+
 
     Object easyEnemyObject = Window::getLevel().GetObject("easyEnemy");
     sf::Image easyEnemyImage;
@@ -67,6 +76,7 @@ void Window::start()
     //Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
     Enemy easyEnemy(easyEnemyImage, "EasyEnemy", level, 200, 200, 100, 100);
     p_easy_enemy = &easyEnemy;
+
 
     while (main_window.isOpen())
     {
@@ -76,16 +86,15 @@ void Window::start()
             if (event.type == sf::Event::Closed)
                 main_window.close();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-                view->move(sf::Vector2f(0, -50));
+                view->move(sf::Vector2f(0, -10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                view->move(sf::Vector2f(0, 50));
+                view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                view->move(sf::Vector2f(50, 0));
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                view->move(sf::Vector2f(-50, 0));
-
+                //view.move(sf::Vector2f(10, 0));
+                fight_start();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))                
+                view->move(sf::Vector2f(-10, 0));
             main_window.setView(*view);
-
         }
         
         main_window.clear();
@@ -96,6 +105,44 @@ void Window::start()
         clock.restart();
         main_window.display();
     }
+}
+
+void Window::fight_start()
+{
+
+    Fight_map fight("resources/Fight_map.tmx", this);
+
+    while(1)
+    {
+
+        sf::Event event;
+        while (main_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                main_window.close();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+                view->move(sf::Vector2f(0, -10));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+                //view->move(sf::Vector2f(0, 10));
+                return;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                //view.move(sf::Vector2f(10, 0));
+                fight.draw_map();
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                view->move(sf::Vector2f(-10, 0));
+            main_window.setView(*view);
+        }
+
+        main_window.clear();
+        level->Draw(main_window);
+        //hero.update();
+        renderFPS();
+        main_window.display();
+    }
+}
+
+void Window::set_view(sf::View new_view) {
+    *view = new_view;
 }
 
 void Window::renderFPS() {

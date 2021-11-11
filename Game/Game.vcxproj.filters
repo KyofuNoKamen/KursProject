@@ -40,6 +40,7 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
+    <ClCompile Include="Fight_map.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,6 +61,7 @@
       <Filter>Файлы ресурсов</Filter>
     </Image>
     <Image Include="resources\knight.png">
+    <Image Include="resources\tile_set_fight.jpg">
       <Filter>Файлы ресурсов</Filter>
     </Image>
   </ItemGroup>
@@ -92,11 +94,15 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Includes.h">
+    <ClInclude Include="Fight_map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\map.tmx">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="resources\Fight_map.tmx">
       <Filter>Файлы ресурсов</Filter>
     </None>
   </ItemGroup>

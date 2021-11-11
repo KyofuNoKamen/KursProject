@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Fight_map.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -163,11 +164,13 @@
     <Image Include="resources\knight.png" />
     <Image Include="resources\texture.jpg" />
     <Image Include="resources\tile_set.jpg" />
+    <Image Include="resources\tile_set_fight.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="Fight_map.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Map.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\Fight_map.tmx" />
     <None Include="resources\map.tmx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
