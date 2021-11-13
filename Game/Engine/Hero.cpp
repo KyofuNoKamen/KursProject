@@ -11,31 +11,15 @@ sf::IntRect currentRect = RECT_STAND;
 
 sf::Clock heroClock;
 
-
-float stepSpeedDivider = 350; // ��� ������, ��� ������� �������� �����
-int animationSpeedLimiter = 60; // ��� ������, ��� ������� �������� �������� �����
-
-/*  old
-float stepSpeedDivider = 10; // ÷åì ìåíüøå, òåì áûñòðåå äâèæåíèÿ ãåðîÿ
-int animationSpeedLimiter = 80; // ÷åì ìåíüøå, òåì áûñòðåå àíèìàöèÿ äâèæåíèÿ ãåðîÿ
-*/
+float stepSpeedDivider = 350; 
+int animationSpeedLimiter = 60; 
 
 sf::Vector2f destination; // êîîðäèíàòû ÎÊÎÍ×ÀÒÅËÜÍÎÉ ÒÎ×ÊÈ ïåðåäâèæåíèÿ ãåðîÿ
 sf::Vector2f step; // øàã, òàêæå íàïðàâëåíèå ïåðåäâèæåíèÿ ãåðîÿ
-int status;
 
 Hero::Hero(Window* window) {
     isMoving = false;
     this->window = window;
-
-
-    if (!texture.loadFromFile("resources/zel.png"))
-    {
-        std::cout << "Error during loading picture from file\n";
-    }
-    heroSprite.setTexture(texture);
-
-    // ������� ������� ������������� �� ������� ����� ������ ������� ����
 
     heroSprite.setOrigin(0, 60);
     if (!texture.loadFromFile("resources/zel.png"))
@@ -99,16 +83,11 @@ void Hero::hero_move(sf::Time deltatime){
             heroClock.restart();
         }
 
-        
-        // ���� ����� � ��������� �� ������ ����������, �� ������ ��� ���� � ��������� ��������
-        // ���� ��� ����� ����� ����� �� ������ ���� ������� �����
         sf::Vector2f distance = destination - heroSprite.getPosition();
         if (abs(distance.x) <= abs(microstep.x) && abs(distance.y) <= abs(microstep.y)) {
             isMoving = false;
             heroSprite.setPosition(destination);
         }
-
-        // ������������ �� �������, ��� ���������� �� �������� �� ����� �������� ������������
 
         return;
     }
@@ -116,39 +95,28 @@ void Hero::hero_move(sf::Time deltatime){
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         step = sf::Vector2f(-tile_size.x, 0);
         currentRect = RECT_LEFT;
-        status = 0;
-        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         step = sf::Vector2f(tile_size.x, 0); 
         currentRect = RECT_RIGHT;
-        status = 1;
-        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { 
         step = sf::Vector2f(0, -tile_size.y); 
         currentRect = RECT_UP;
-        status = 2;
-        window->mapUpdate(status);
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         step = sf::Vector2f(0, tile_size.y);
         currentRect = RECT_DOWN;
-        status = 3;
-        window->mapUpdate(status);
     }
     else {
         currentRect = RECT_STAND;
-        status = 4;
-        window->mapUpdate(status);
         return;
     }
 
-    std::vector<Object> collidables = window->getLevel().GetObjectsWithType("collidable");
+    std::vector<Object> collidables = window->getLevel().GetCollidables();
     destination = heroSprite.getPosition() + step;
 
     isMoving = true;
-    // Ïðîâåðêà íà âîçìîæíîñòü ïðîéòè â çàäàíîì íàïðàâëåíèè
     for (Object obj : collidables) {
         if (obj.rect.contains(destination.x, destination.y)) {
             isMoving = false;
@@ -157,8 +125,7 @@ void Hero::hero_move(sf::Time deltatime){
         }
     }
 
-    // çäåñü ìîæåò áûòü, íàïðèìåð, âûçîâ ôóíêöèè äëÿ íà÷àëà àíèìàöèè ïåðåäâèæåíèÿ ïðîòèâíèêîâ
-
+    window->StartEnemyMoving();
 }
 
 void Hero::set_tile_size(sf::Vector2i tile_size) {
