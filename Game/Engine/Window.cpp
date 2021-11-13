@@ -3,7 +3,11 @@
 #include "../Headers/Entity.h"
 #include "../Headers/Enemy.h"
 #include "../Headers/Fight_map.h"
+#include <iostream>
+#include <stdlib.h> 
+#include <time.h>       
 
+sf::Vector2f DIRECTIONS[] = {sf::Vector2f(1,0), sf::Vector2f(-1,0), sf::Vector2f(0,1), sf::Vector2f(0,-1)};
 sf::Text fpsText;
 
 Window::Window(int resolution_x, int resolution_y, std::string name)
@@ -11,9 +15,7 @@ Window::Window(int resolution_x, int resolution_y, std::string name)
     view = new sf::View;
 
     //view->setCenter(sf::Vector2f(500, 500));
-
     main_window.setView(*view);
-
 	create_window(resolution_x, resolution_y, name);
 }
 
@@ -25,32 +27,15 @@ Window::Window(int resolution_x, int resolution_y, Level& level, std::string nam
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
-    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name, sf::Style::Fullscreen);
+    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
 	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
 }
 
-/*Ôóíêöèÿ âîçâðàùàåò ãëàâíîå îêíî*/
-sf::RenderWindow &Window::get_window()
-{
-    return main_window;
-}
-
-void Window::setLevel(Level& level) {
-    this->level = &level;
-}
-
-Level& Window::getLevel() {
-    return *(this->level);
-}
-
-void Window::moveView(int x, int y) {
-    view->move(x, y);
-    main_window.setView(*view);
-}
 void Window::start() 
 {
-    sf::Clock clock;
+    srand(time(NULL));
+    sf::Clock clock_;
 
     Hero hero(this, 200, 200);
 
@@ -62,24 +47,21 @@ void Window::start()
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
-/**/
-
-    //sf::View view;
-    //view.setCenter(sf::Vector2f(500, 500));
     
     main_window.setView(*view);
 
-
-    Object easyEnemyObject = Window::getLevel().GetObject("easyEnemy");
     sf::Image easyEnemyImage;
-    easyEnemyImage.loadFromFile("resources/hellhound.png");
-    //Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
-    Enemy easyEnemy(easyEnemyImage, "EasyEnemy", level, 200, 200, 100, 100);
-    p_easy_enemy = &easyEnemy;
+    easyEnemyImage.loadFromFile("resources/ground.jpg");
 
+    for (Object& enemyObj : level->GetObjectsWithType("Enemy")) {
+        Enemy* enemy = new Enemy(easyEnemyImage, level, enemyObj.rect.left, enemyObj.rect.top, 100, 100);
+        enemies.push_back(*enemy);
+    }
 
     while (main_window.isOpen())
     {
+        sf::Time deltatime = clock_.getElapsedTime();
+        clock_.restart();
         sf::Event event;
         while (main_window.pollEvent(event))
         {
@@ -99,21 +81,46 @@ void Window::start()
         
         main_window.clear();
         level->Draw(main_window);
-        hero.update(clock.getElapsedTime());
-        main_window.draw(easyEnemy.sprite);
+        hero.update(deltatime);
+
+        for (Enemy& enemy: enemies) 
+            main_window.draw(enemy.sprite);
+        
+        if (enemyMoving) EnemiesMakeMicrostep(deltatime);
+
         renderFPS();
-        clock.restart();
         main_window.display();
     }
 }
 
-void Window::fight_start()
-{
+// Every enemy make microstep (if no walls ahead)
+// assign enemyMoving = false when all enemies finished movement
+void Window::EnemiesMakeMicrostep(sf::Time deltatime) {
+    bool isEverybodyFinished = true;
+    for (Enemy& enemy : enemies) {
+        if (enemy.getIsMoving()) {
+            enemy.makeMicrostep(deltatime);
+            isEverybodyFinished = false;
+        }
+    }
+    enemyMoving = !isEverybodyFinished;
+}
+
+// Every enemy gets the destination point;
+// assign enemyMoving = true 
+void Window::StartEnemyMoving() {
+    for (Enemy& enemy : enemies) {
+        sf::Vector2f randomDirection = DIRECTIONS[rand() % 4] * (float)level->GetTileSize().x;
+        enemy.makeStepInDirection(randomDirection);
+    }
+    enemyMoving = true;
+}
+
+void Window::fight_start(){
 
     Fight_map fight("resources/Fight_map.tmx", this);
 
-    while(1)
-    {
+    while(1){
 
         sf::Event event;
         while (main_window.pollEvent(event))
@@ -141,10 +148,6 @@ void Window::fight_start()
     }
 }
 
-void Window::set_view(sf::View new_view) {
-    *view = new_view;
-}
-
 void Window::renderFPS() {
     static sf::Clock clock_;
     static float totalElapsed = 0;
@@ -159,9 +162,28 @@ void Window::renderFPS() {
     clock_.restart();
 }
 
-void Window::mapUpdate(int status )
-{
-    std::vector<Object> collidables = Window::getLevel().GetObjectsWithType("collidable");
-    p_easy_enemy->enemyMove(status, collidables);
+void Window::mapUpdate(){
+    //p_easy_enemy->enemyMove();
 
+}
+
+void Window::set_view(sf::View new_view) {
+    *view = new_view;
+}
+
+sf::RenderWindow& Window::get_window(){
+    return main_window;
+}
+
+void Window::setLevel(Level& level) {
+    this->level = &level;
+}
+
+Level& Window::getLevel() {
+    return *(this->level);
+}
+
+void Window::moveView(int x, int y) {
+    view->move(x, y);
+    main_window.setView(*view);
 }

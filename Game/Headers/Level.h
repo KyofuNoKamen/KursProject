@@ -36,11 +36,8 @@ public:
     bool LoadFromFile(std::string);
     Object GetObject(std::string name);
     std::vector<Object> GetObjects(std::string name);
-  
     std::vector<Object> GetObjectsWithType(std::string);
-/*
-    std::vector<Object> GetObjectsWithType(std::string type);
-*/
+    std::vector<Object> GetCollidables();
     void Draw(sf::RenderWindow& window);
     sf::Vector2i GetTileSize();
 
@@ -51,5 +48,6 @@ private:
     sf::Texture tilesetImage;
     std::vector<Object> objects;
     std::vector<Layer> layers;
+    std::vector<Object> collidables;
 };
 

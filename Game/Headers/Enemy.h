@@ -8,8 +8,8 @@ public:
 	Level* level;
 	//Window* window;
 
-	Enemy(sf::Image&, sf::String, Level*, float, float, int, int);
+	Enemy(sf::Image&, Level*, float, float, int, int);
 	//Enemy(sf::Image&, sf::String, Level*, float, float, int, int);
-	void enemyMove(int, std::vector<Object>);
+	//void enemyMove();
 	
 };

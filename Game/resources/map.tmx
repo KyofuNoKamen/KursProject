@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="287">
-
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="291">
  <tileset firstgid="1" name="tile_set" tilewidth="100" tileheight="100" tilecount="4" columns="2">
   <image source="tile_set.jpg" width="200" height="200"/>
  </tileset>
@@ -264,6 +262,17 @@
   <object id="284" type="collidable" gid="3" x="200" y="1900" width="100" height="100"/>
   <object id="285" type="collidable" gid="3" x="200" y="2000" width="100" height="100"/>
   <object id="286" type="collidable" gid="3" x="200" y="2100" width="100" height="100"/>
-
+  <object id="287" type="Enemy" x="600" y="500">
+   <point/>
+  </object>
+  <object id="288" type="Enemy" x="300" y="500">
+   <point/>
+  </object>
+  <object id="289" type="Enemy" x="1100" y="400">
+   <point/>
+  </object>
+  <object id="290" type="Enemy" x="700" y="1400">
+   <point/>
+  </object>
  </objectgroup>
 </map>

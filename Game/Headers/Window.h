@@ -19,8 +19,8 @@ class Window {
 public:
 	Window(int, int, std::string);
 	Window(int, int, Level&, std::string);
-	void start();
 
+	void start();
 	void fight_start();
 
 	Level& getLevel();
@@ -29,8 +29,11 @@ public:
 	void setLevel(Level&);
 	void moveView(int x, int y);
 	void set_view(sf::View new_view);
+	void mapUpdate();
+	void EnemiesMakeMicrostep(sf::Time);
+	void StartEnemyMoving();
 
-	void mapUpdate(int);
+	std::vector<Enemy> enemies;
 
 private:
 	sf::RenderWindow main_window;
@@ -39,8 +42,8 @@ private:
 		resolution_y;
 	Level* level;
 	sf::View* view;
-	
 	Enemy* p_easy_enemy;
+	bool enemyMoving = false;
 
 	void create_window(int, int, std::string);
 	void renderFPS();

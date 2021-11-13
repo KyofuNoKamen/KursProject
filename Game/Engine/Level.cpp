@@ -185,9 +185,9 @@ bool Level::LoadFromFile(std::string filename)
                     objectName = objectElement->Attribute("name");
                 }
                 int x = atoi(objectElement->Attribute("x"));
-                int y = atoi(objectElement->Attribute("y")) - 100; // êîñòûëü
+                int y = atoi(objectElement->Attribute("y")) - 100; // kostyl`
 
-                int width, height;
+                int width=0, height=0;
                 float rotation = 0;
 
                 sf::Sprite sprite;
@@ -201,8 +201,8 @@ bool Level::LoadFromFile(std::string filename)
                     height = atoi(objectElement->Attribute("height"));
                 }
                 else {
-                    width = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].width;
-                    height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;
+                   /* width = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].width;
+                    height = subRects[atoi(objectElement->Attribute("gid")) - firstTileID].height;*/
                 }
 
 
@@ -260,6 +260,7 @@ bool Level::LoadFromFile(std::string filename)
             }
             objectGroupElement = objectGroupElement->NextSiblingElement("objectgroup");
         }
+        collidables = GetObjectsWithType("collidable");
     }
     else
     {
@@ -301,6 +302,10 @@ sf::Vector2i Level::GetTileSize()
     return sf::Vector2i(tileWidth, tileHeight);
 }
 
+std::vector<Object> Level::GetCollidables(){
+    return collidables;
+}
+
 void Level::Draw(sf::RenderWindow& window)
 {
     // Ðèñóåì âñå òàéëû 
@@ -308,14 +313,6 @@ void Level::Draw(sf::RenderWindow& window)
         for (int tile = 0; tile < layers[layer].tiles.size(); tile++)
             window.draw(layers[layer].tiles[tile]);
 
-/*
     for (Object obj : objects) 
         window.draw(obj.sprite);
-
-    // Ðèñóåì âñå îáúåêòû
-    for (Object obj : objects) {
-        window.draw(obj.sprite);
-        
-    }
-*/
 }
