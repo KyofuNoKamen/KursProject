@@ -1,5 +1,5 @@
 #pragma once
-#include "Level.h"
+#include "LabLevel.h"
 #include "Map.h"
 #include "Enemy.h"
 #include <string>
@@ -7,54 +7,29 @@
 
 
 class Window {
-	/*public:
-		Window(int, int, std::string);
-		Window(int, int, Level&, std::string);
-		void start();
-		Level& getLevel();
-		void setLevel(Level&);
-		sf::RenderWindow &get_window();
-		
-	*/
 public:
-	Window(int, int, std::string);
-	Window(int, int, Level&, std::string);
+	Window(int, int, LabLevel&, std::string);
 
 	void start();
 	void fight_start();
 
-	Level& getLevel();
+	LabLevel& getLevel();
 	sf::RenderWindow& get_window();
 
-	void setLevel(Level&);
+    void setLevel(LabLevel&);
 	void moveView(int x, int y);
+	void setViewCenter(int x, int y);
 	void set_view(sf::View new_view);
-	void mapUpdate();
-	void EnemiesMakeMicrostep(sf::Time);
-	void StartEnemyMoving();
-
-	std::vector<Enemy> enemies;
+	void drawEnemies();
 
 private:
 	sf::RenderWindow main_window;
 	std::string name;
 	int resolution_x,
 		resolution_y;
-	Level* level;
+	LabLevel* level;
 	sf::View* view;
-	Enemy* p_easy_enemy;
-	bool enemyMoving = false;
 
 	void create_window(int, int, std::string);
 	void renderFPS();
-
-	/*private:
-		sf::View view;
-		sf::RenderWindow main_window;
-		int resolution_x,
-			resolution_y;
-		std::string name;
-		Level* level;
-		void create_window(int, int, std::string);
-		*/
 };
