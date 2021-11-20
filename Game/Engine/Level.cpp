@@ -261,6 +261,7 @@ bool Level::LoadFromFile(std::string filename)
             objectGroupElement = objectGroupElement->NextSiblingElement("objectgroup");
         }
         collidables = GetObjectsWithType("collidable");
+
     }
     else
     {
@@ -269,7 +270,6 @@ bool Level::LoadFromFile(std::string filename)
 
     return true;
 }
-
 
 /* Âîçðàùàåò ïåðâûé îáúåêò ñ çàäàííûì èìåíåì */
 Object Level::GetObject(std::string name){

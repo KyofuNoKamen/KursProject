@@ -3,24 +3,28 @@
 #include <SFML/Graphics.hpp>
 
 class Entity {
-private:
+protected:
 	Level* level;
+	sf::Clock clock_;
 	sf::Vector2f destination;
 	sf::Vector2f step;
-	float stepSpeedDivider = 350;
-	int animationSpeedLimiter = 60;
+	sf::IntRect currentRect;
+	std::vector<sf::IntRect> spriteRects; // standing, up, right, down, left
+	float stepSpeedDivider = 500;
+	int animationSpeedLimiter = 100;
 	bool isMoving;
 public:
-	float dx, dy, x, y, speed;
-	int w, h, health;
+	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y);
+
+	float x, y;
+	int health;
 	bool life, onGround;
 
 	sf::Texture texture;
 	sf::Sprite sprite;
 
-	sf::FloatRect getRect();
 	bool getIsMoving();
 	bool makeStepInDirection(sf::Vector2f);
 	void makeMicrostep(sf::Time);
-	Entity(Level* level, sf::Image& image, float X, float Y, int W, int H);
+	void setAnimationSpeedLimiter(int value);
 };

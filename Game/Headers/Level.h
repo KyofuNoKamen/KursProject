@@ -2,6 +2,8 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
+const sf::Vector2f DIRECTIONS[] = { sf::Vector2f(0,-1), sf::Vector2f(1,0), sf::Vector2f(0,1), sf::Vector2f(-1,0) };
+
 /* Îáúåêò - ýòî âèäèìûé èëè íåâèäèìûé îáúåêò íà êàðòå, ó êîòîðîãî
    ìîæåò áûòü èìÿ, ñïðàéò, è ëþáûå ñâîéñòâà êîòîðûå ìîæíî çàäàòü
 */
@@ -26,10 +28,6 @@ struct Layer
     std::vector<sf::Sprite> tiles;
 };
 
-/* Êëàññ âûïîëíÿåò ñëåäóþùèå ôóíêöèè:
-    - Çàãðóçêà è îòðèñîâêà êàðòû ñ tmx-ôàéëà
-    - Ïîëó÷åíèå îáúåêòîâ íà êàðòå
-*/
 class Level
 {
 public:
