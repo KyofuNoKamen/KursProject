@@ -7,6 +7,7 @@
 #include <iostream>
 #include <stdlib.h> 
 #include <time.h>       
+#include "../Headers/Fight_interface.h"
 
 sf::Text fpsText;
 
@@ -91,6 +92,7 @@ void Window::start()
 void Window::fight_start(){
 
     Fight_map fight("resources/Fight_map.tmx", this);
+    Fight_interface fight_interface(get_window());
 
     while(1){
 
@@ -116,6 +118,7 @@ void Window::fight_start(){
         level->Draw(main_window);
         //hero.update();
         renderFPS();
+        fight_interface.draw_circle();
         main_window.display();
     }
 }

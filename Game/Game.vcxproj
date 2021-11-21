@@ -150,35 +150,59 @@
     <ClCompile Include="Engine\Entity.cpp" />
     <ClCompile Include="Engine\Fight_map.cpp" />
     <ClCompile Include="Engine\Hero.cpp" />
+    <ClCompile Include="Engine\LabLevel.cpp" />
     <ClCompile Include="Engine\Level.cpp" />
     <ClCompile Include="Engine\Main.cpp" />
     <ClCompile Include="Engine\Map.cpp" />
     <ClCompile Include="Engine\Tiles.cpp" />
     <ClCompile Include="Engine\tinyxml2.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="Engine\Fight_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\enemies.png" />
+    <Image Include="resources\goblin.png" />
+    <Image Include="resources\golem.png" />
     <Image Include="resources\ground.jpg" />
     <Image Include="resources\knight.png" />
+    <Image Include="resources\mushroom.png" />
+    <Image Include="resources\skeleton.png" />
+    <Image Include="resources\skull.png" />
+    <Image Include="resources\stella_walk.png" />
+    <Image Include="resources\test.jpg" />
     <Image Include="resources\texture.jpg" />
     <Image Include="resources\tile_set.jpg" />
     <Image Include="resources\tile_set_fight.jpg" />
+    <Image Include="resources\zel.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Fight_interface.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\Entity.h" />
     <ClInclude Include="Headers\Fight_map.h" />
     <ClInclude Include="Headers\Hero.h" />
+    <ClInclude Include="Headers\LabLevel.h" />
     <ClInclude Include="Headers\Level.h" />
     <ClInclude Include="Headers\Map.h" />
     <ClInclude Include="Headers\resource.h" />
     <ClInclude Include="Headers\Tiles.h" />
     <ClInclude Include="Headers\tinyxml2.h" />
     <ClInclude Include="Headers\Window.h" />
+    <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\Fight_map.tmx" />
     <None Include="resources\map.tmx" />
+    <None Include="resources\small_map.tmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resources\fonts\Anything Better Font by 7NTypes.otf" />
+    <Font Include="resources\fonts\fear.ttf" />
+    <Font Include="resources\fonts\Minecraft.ttf" />
+    <Font Include="resources\fonts\pwscratchy1.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
