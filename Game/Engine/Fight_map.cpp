@@ -14,7 +14,8 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window)
 void Fight_map::draw_map()
 {
 	window->setLevel(g_level);
-	view.setCenter(sf::Vector2f(750, 750));
-	window->set_view(view);
-	window->start();
+	view = new sf::View(sf::FloatRect(0, 0, window->get_window().getSize().x, window->get_window().getSize().y));
+	view->setCenter(sf::Vector2f(1500, 1150));
+	window->set_view(*view);
+	//window->start();
 }

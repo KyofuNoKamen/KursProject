@@ -20,7 +20,7 @@ public:
 private:
 	std::string path_map;
 	Window* window;
-	sf::View view;
+	sf::View* view;
 		
 };
 

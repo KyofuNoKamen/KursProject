@@ -1,16 +1,45 @@
-﻿  Fight_interface.cpp
-  Fight_map.cpp
-  LabLevel.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\LabLevel.cpp(28,101): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+﻿  Main.cpp
+  Window.cpp
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(16,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
-              T=int
+              T=unsigned int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\LabLevel.cpp(28,81): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(16,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
-              T=int
+              T=unsigned int
           ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(34,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(78,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(78,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(170,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(170,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(175,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(175,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Создание кода...
-  LINK : не найден или не выполнена сборка D:\VSRepo\Game\KursProject\Debug\Game.exe при последней инкрементной компоновке; выполняется полная компоновка
   Game.vcxproj -> D:\VSRepo\Game\KursProject\Debug\Game.exe

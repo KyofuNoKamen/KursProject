@@ -33,6 +33,8 @@
     </ClCompile>
     <ClCompile Include="Engine\LabLevel.cpp" />
     <ClCompile Include="Engine\Fight_interface.cpp" />
+    <ClCompile Include="Engine\Interface\Cpp\Panel.cpp" />
+    <ClCompile Include="Engine\Interface\Cpp\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Enemy.h">
@@ -68,6 +70,8 @@
     <ClInclude Include="resource1.h" />
     <ClInclude Include="Headers\LabLevel.h" />
     <ClInclude Include="Headers\Fight_interface.h" />
+    <ClInclude Include="Engine\Interface\Headers\Panel.h" />
+    <ClInclude Include="Engine\Interface\Headers\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\tile_set_fight.jpg">

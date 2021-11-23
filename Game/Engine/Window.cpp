@@ -12,23 +12,25 @@
 sf::Text fpsText;
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
-    view = new sf::View(sf::FloatRect(0, 0, resolution_x, resolution_y));
+    create_window(resolution_x, resolution_y, name);
+    view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
     //view->setCenter(sf::Vector2f(500, 500));
     main_window.setView(*view);
-    create_window(resolution_x, resolution_y, name);
     setLevel(level);
     level.spawnEnemies();
 }
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
-    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name);
+    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name/*, sf::Style::Fullscreen*/);
 	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
 }
 
 void Window::start() 
 {
+    Fight_interface fight_interface(get_window()); //for test
+
     srand(time(NULL));
     sf::Clock clock_;
 
@@ -72,9 +74,10 @@ void Window::start()
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
             else if (event.type == sf::Event::Resized)
-                view = new sf::View(sf::FloatRect(0, 0, (float)main_window.getSize().x, (float)main_window.getSize().y));
-
-            //main_window.setView(*view);
+            {
+                view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
+                main_window.setView(*view);
+            }
         }
         
         main_window.clear();
@@ -83,10 +86,14 @@ void Window::start()
         level->EnemiesMakeMicrostep(deltatime);
         drawEnemies();
         renderFPS();
+
+        fight_interface.draw_interface(); //for test
+
         main_window.display();
     }
-}
 
+    delete &fight_interface;
+}
 
 
 void Window::fight_start(){
@@ -118,7 +125,7 @@ void Window::fight_start(){
         level->Draw(main_window);
         //hero.update();
         renderFPS();
-        fight_interface.draw_circle();
+        fight_interface.draw_interface();
         main_window.display();
     }
 }

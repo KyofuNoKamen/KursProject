@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Interface\Cpp\Button.cpp" />
     <ClCompile Include="Engine\Enemy.cpp" />
     <ClCompile Include="Engine\Entity.cpp" />
     <ClCompile Include="Engine\Fight_map.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Engine\tinyxml2.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Engine\Fight_interface.cpp" />
+    <ClCompile Include="Engine\Interface\Cpp\Panel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\enemies.png" />
@@ -176,6 +178,7 @@
     <Image Include="resources\zel.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Interface\Headers\Button.h" />
     <ClInclude Include="Headers\Fight_interface.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\Entity.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="Headers\Tiles.h" />
     <ClInclude Include="Headers\tinyxml2.h" />
     <ClInclude Include="Headers\Window.h" />
+    <ClInclude Include="Engine\Interface\Headers\Panel.h" />
     <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>
