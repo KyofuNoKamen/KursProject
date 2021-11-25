@@ -19,6 +19,7 @@ public:
     void setLevel(LabLevel&);
 	void moveView(int x, int y);
 	void setViewCenter(int x, int y);
+	void main_menu();
 	void set_view(sf::View new_view);
 	void drawEnemies();
 
@@ -32,4 +33,8 @@ private:
 
 	void create_window(int, int, std::string);
 	void renderFPS();
+
+
+	bool isEsc = false;
+	bool runEsc = true;
 };

@@ -8,6 +8,7 @@
 #include <stdlib.h> 
 #include <time.h>       
 #include "../Headers/Fight_interface.h"
+#include "../Headers/Menu.h"
 
 sf::Text fpsText;
 
@@ -22,13 +23,15 @@ Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string 
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
 {
-    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name/*, sf::Style::Fullscreen*/);
+    Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name, sf::Style::Fullscreen);
 	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
+    main_window.setVerticalSyncEnabled(1);
 }
 
 void Window::start() 
 {
+    Menu menu(get_window());
     Fight_interface fight_interface(get_window()); //for test
 
     srand(time(NULL));
@@ -57,6 +60,9 @@ void Window::start()
 
     while (main_window.isOpen())
     {
+
+
+
         sf::Time deltatime = clock_.getElapsedTime();
         clock_.restart();
         sf::Event event;
@@ -73,12 +79,20 @@ void Window::start()
                 fight_start();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
+            {
+                isEsc = !isEsc;
+                runEsc = !runEsc;
+            }
             else if (event.type == sf::Event::Resized)
             {
                 view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
                 main_window.setView(*view);
             }
+          
         }
+
+        
         
         main_window.clear();
         level->Draw(main_window);
@@ -88,6 +102,12 @@ void Window::start()
         renderFPS();
 
         fight_interface.draw_interface(); //for test
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            runEsc = true;
+        if (isEsc == true)
+        {   
+            menu.draw_menu();
+        }
 
         main_window.display();
     }
@@ -98,10 +118,17 @@ void Window::start()
 
 void Window::fight_start(){
 
+    Menu menu(get_window());
     Fight_map fight("resources/Fight_map.tmx", this);
     Fight_interface fight_interface(get_window());
 
     while(1){
+
+
+        if (isEsc == true)
+        {
+            menu.draw_menu();
+        }
 
         sf::Event event;
         while (main_window.pollEvent(event))
@@ -118,7 +145,10 @@ void Window::fight_start(){
                 fight.draw_map();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+                isEsc = true;
             main_window.setView(*view);
+            
         }
 
         main_window.clear();
@@ -174,4 +204,9 @@ void Window::moveView(int x, int y) {
 void Window::setViewCenter(int x, int y) {
     view->setCenter(x, y);
     main_window.setView(*view);
+}
+
+void Window::main_menu()
+{
+    
 }

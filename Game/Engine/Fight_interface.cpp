@@ -19,8 +19,8 @@ Fight_interface::Fight_interface(sf::RenderWindow& window)
 	main_panel = new Panel(-(int)(window_size.x / 2), (window_size.y / 3), window_size.x, (window_size.y / 6), view);
 	main_panel->set_border(15);
 
-	first_button = new Button(10, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
-	second_button = new Button(230, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
+	first_button = new Button(70, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
+	second_button = new Button(300, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 }
 
 void Fight_interface::draw_interface()

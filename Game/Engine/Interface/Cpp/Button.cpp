@@ -8,7 +8,6 @@ Button::Button(int x, int y, int width, int height, sf::Vector2f panel_position,
 	view_position = window_position;
 	view_position -= sf::Vector2f(window_size.x/2, window_size.y/2);
 
-
 	start_position = panel_position;
 
 	old_view = start_position;
@@ -17,7 +16,12 @@ Button::Button(int x, int y, int width, int height, sf::Vector2f panel_position,
 	position.x = position.x + x + border;
 	position.y = position.y + y + border;
 	button.setPosition(position);
-	button.setFillColor(sf::Color::Blue);
+
+	button_texture.loadFromFile("resources/button.jpg");
+
+	button.setTexture(&button_texture);
+
+	button.setTextureRect(sf::IntRect(0,0,200,100));
 }
 
 sf::RectangleShape Button::get_button()
@@ -43,21 +47,20 @@ bool Button::clicked(sf::Vector2f window_position, sf::Vector2u window_size, sf:
 	{
 		if (is_pressed)
 		{
+			button.setTextureRect(sf::IntRect(0, 100, 200, 100));
 			if (!mouse.isButtonPressed(mouse.Left))
 			{
-				std::cout << "released" << std::endl;
+				button.setTextureRect(sf::IntRect(0, 0, 200, 100));
 				is_pressed = false;
 				return true;
 			}
-		}		
-	else if (mouse.isButtonPressed(mouse.Left))
+		}
+		else if (mouse.isButtonPressed(mouse.Left))
 		{
-			//std::cout << "pressed" << std::endl;
-
-			is_pressed = true;	
-		}	
-		return false;
+			is_pressed = true;
+		}
 	}
+	return false;
 }
 
 void Button::move(sf::Vector2f view)
@@ -65,5 +68,18 @@ void Button::move(sf::Vector2f view)
 	position.x = button.getPosition().x - old_view.x + view.x;
 	position.y = button.getPosition().y - old_view.y + view.y;
 	button.setPosition(position);
+	text.setPosition(position.x+button.getSize().x / 8, position.y + button.getSize().y / 8);
 	old_view = view;
+}
+
+void Button::set_text(std::string string)
+{
+	font.loadFromFile("resources/fonts/fear.ttf");
+	text.setString(string);
+	text.setFont(font);
+}
+
+sf::Text Button::get_text()
+{
+	return text;
 }

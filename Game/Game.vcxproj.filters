@@ -35,6 +35,7 @@
     <ClCompile Include="Engine\Fight_interface.cpp" />
     <ClCompile Include="Engine\Interface\Cpp\Panel.cpp" />
     <ClCompile Include="Engine\Interface\Cpp\Button.cpp" />
+    <ClCompile Include="Engine\Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Enemy.h">
@@ -72,6 +73,7 @@
     <ClInclude Include="Headers\Fight_interface.h" />
     <ClInclude Include="Engine\Interface\Headers\Panel.h" />
     <ClInclude Include="Engine\Interface\Headers\Button.h" />
+    <ClInclude Include="Headers\Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\tile_set_fight.jpg">
@@ -98,6 +100,9 @@
     <Image Include="resources\stella_walk.png" />
     <Image Include="resources\test.jpg" />
     <Image Include="resources\zel.png" />
+    <Image Include="resources\button.jpg" />
+    <Image Include="resources\panel.jpg" />
+    <Image Include="resources\menu_panel.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\map.tmx">

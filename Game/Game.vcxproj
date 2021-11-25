@@ -160,14 +160,18 @@
     <ClCompile Include="Engine\Window.cpp" />
     <ClCompile Include="Engine\Fight_interface.cpp" />
     <ClCompile Include="Engine\Interface\Cpp\Panel.cpp" />
+    <ClCompile Include="Engine\Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\button.jpg" />
     <Image Include="resources\enemies.png" />
     <Image Include="resources\goblin.png" />
     <Image Include="resources\golem.png" />
     <Image Include="resources\ground.jpg" />
     <Image Include="resources\knight.png" />
+    <Image Include="resources\menu_panel.png" />
     <Image Include="resources\mushroom.png" />
+    <Image Include="resources\panel.jpg" />
     <Image Include="resources\skeleton.png" />
     <Image Include="resources\skull.png" />
     <Image Include="resources\stella_walk.png" />
@@ -192,6 +196,7 @@
     <ClInclude Include="Headers\tinyxml2.h" />
     <ClInclude Include="Headers\Window.h" />
     <ClInclude Include="Engine\Interface\Headers\Panel.h" />
+    <ClInclude Include="Headers\Menu.h" />
     <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>

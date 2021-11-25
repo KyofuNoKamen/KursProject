@@ -16,10 +16,12 @@ public:
 	sf::RectangleShape get_panel();
 	void set_border(int border_size);
 	void move(sf::View& view);
+	void set_texture(sf::Texture texture);
 private:
 	sf::RectangleShape panel;
 	int border = 0;
 	sf::Vector2f position;
 	sf::View old_view;
+	sf::Texture panel_texture;
 };
 

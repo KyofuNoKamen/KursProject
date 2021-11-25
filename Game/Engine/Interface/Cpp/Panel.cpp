@@ -9,7 +9,9 @@ Panel::Panel(int x, int y, int width, int height, sf::View& view)
 	position.x = position.x + x + border;
 	position.y = position.y + y + border;
 	panel.setPosition(position);
-	panel.setFillColor(sf::Color::Magenta);
+	
+	panel_texture.loadFromFile("resources/panel.jpg");
+	panel.setTexture(&panel_texture);
 }
 
 sf::RectangleShape Panel::get_panel()
@@ -30,5 +32,11 @@ void Panel::move(sf::View& view)
 	position.y = panel.getPosition().y - old_view.getCenter().y + view.getCenter().y;
 	panel.setPosition(position);
 	old_view = view;
+}
+
+void Panel::set_texture(sf::Texture texture)
+{
+	panel_texture = texture;
+	panel.setTexture(&panel_texture, true);
 }
 
