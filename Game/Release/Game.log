@@ -1,64 +1,4 @@
-﻿  Fight_interface.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(22,77): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(23,79): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-  Button.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(6,66): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(6,49): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,62): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,45): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(44,65): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(44,46): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-  Menu.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Menu.cpp(19,113): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Window.cpp
+﻿  Window.cpp
 D:\VSRepo\Game\KursProject\Game\Headers\Map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x43, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x45, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x48, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
@@ -166,7 +106,7 @@ D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Фай�
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x17a, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x17d, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x180, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(17,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -175,7 +115,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(17,91): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(17,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -184,8 +124,8 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(17,66): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(37,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(89,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(39,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -194,7 +134,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(89,103): warning C4244: арг
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(89,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -203,13 +143,41 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(89,78): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(200,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(200,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(205,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(205,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(208,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(208,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(213,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(213,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(229,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(229,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(242,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(242,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
   Создание кода
-  30 of 989 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    24 functions had inline decision re-evaluated but remain unchanged
+  1 of 995 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Game.vcxproj -> D:\VSRepo\Game\KursProject\Release\Game.exe

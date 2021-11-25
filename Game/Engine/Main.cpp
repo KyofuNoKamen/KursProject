@@ -13,7 +13,7 @@ int main()
     Window main_window(1000, 800, level, "Main window");
     //main_window.set_view(view);
 
-    main_window.start();
+    main_window.main_menu();
 
     return 0;
 }

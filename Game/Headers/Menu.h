@@ -7,7 +7,7 @@ class Menu
 public:
 	Menu(sf::RenderWindow& window);
 
-	void draw_menu();
+	int draw_menu();
 	~Menu();
 
 private:

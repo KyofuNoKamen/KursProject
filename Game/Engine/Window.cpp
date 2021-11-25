@@ -9,6 +9,7 @@
 #include <time.h>       
 #include "../Headers/Fight_interface.h"
 #include "../Headers/Menu.h"
+#include "../Headers/Main_menu.h"
 
 sf::Text fpsText;
 
@@ -31,6 +32,7 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
 
 void Window::start() 
 {
+    int menu_command;
     Menu menu(get_window());
     Fight_interface fight_interface(get_window()); //for test
 
@@ -106,7 +108,13 @@ void Window::start()
             runEsc = true;
         if (isEsc == true)
         {   
-            menu.draw_menu();
+            menu_command = menu.draw_menu();
+            if (menu_command == 1)
+            {   
+                isEsc = false;
+                main_menu();
+                
+            }
         }
 
         main_window.display();
@@ -208,5 +216,47 @@ void Window::setViewCenter(int x, int y) {
 
 void Window::main_menu()
 {
-    
+
+    int menu_command;
+    Main_menu menu(get_window());
+
+    sf::Font font;
+    font.loadFromFile("resources/fonts/pwscratchy1.ttf");
+    fpsText.setFont(font);
+    fpsText.setCharacterSize(28);
+    fpsText.setFillColor(sf::Color::Red);
+
+    view->setCenter(main_window.getSize().x/2, main_window.getSize().y/2);
+    main_window.setView(*view);
+
+    while (main_window.isOpen())
+    {
+
+        sf::Event event;
+        while (main_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                main_window.close();
+            else if (event.type == sf::Event::Resized)
+            {
+                view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
+                main_window.setView(*view);
+            }
+
+        }
+
+        main_window.clear();
+        renderFPS();
+
+
+        menu_command = menu.draw_menu();
+
+        if (menu_command == 1) {
+            start();
+        }
+
+        main_window.display();
+    }
+
+    delete& menu;
 }

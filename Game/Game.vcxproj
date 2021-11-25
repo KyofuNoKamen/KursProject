@@ -161,6 +161,7 @@
     <ClCompile Include="Engine\Fight_interface.cpp" />
     <ClCompile Include="Engine\Interface\Cpp\Panel.cpp" />
     <ClCompile Include="Engine\Menu.cpp" />
+    <ClCompile Include="Engine\Main_menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\button.jpg" />
@@ -197,6 +198,7 @@
     <ClInclude Include="Headers\Window.h" />
     <ClInclude Include="Engine\Interface\Headers\Panel.h" />
     <ClInclude Include="Headers\Menu.h" />
+    <ClInclude Include="Headers\Main_menu.h" />
     <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>

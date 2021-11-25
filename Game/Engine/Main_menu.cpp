@@ -31,3 +31,52 @@ Main_menu::Main_menu(sf::RenderWindow& window)
 	third_button = new Button(100, 350, 700, 100, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 	third_button->set_text("Exit");
 }
+
+int Main_menu::draw_menu()
+{
+	view = p_window->getView();
+	window_size = p_window->getSize();
+	sf::Vector2i screen_position = p_window->getPosition();
+
+	main_panel->move(view);
+	p_window->draw(main_panel->get_panel());
+
+	first_button->move(main_panel->get_panel().getPosition());
+	p_window->draw(first_button->get_button());
+	p_window->draw(first_button->get_text());
+	if (first_button->clicked(view.getCenter(), window_size, screen_position))
+	{
+		return 1;
+	}
+
+
+	second_button->move(main_panel->get_panel().getPosition());
+	p_window->draw(second_button->get_button());
+	p_window->draw(second_button->get_text());
+	if (second_button->clicked(view.getCenter(), window_size, screen_position))
+	{
+
+	}
+
+
+	third_button->move(main_panel->get_panel().getPosition());
+	p_window->draw(third_button->get_button());
+	p_window->draw(third_button->get_text());
+	if (third_button->clicked(view.getCenter(), window_size, screen_position))
+	{
+		p_window->close();
+	}
+
+
+	return 0;
+}
+
+
+
+Main_menu::~Main_menu()
+{
+	delete main_panel;
+	delete first_button;
+	delete second_button;
+	delete third_button;
+}

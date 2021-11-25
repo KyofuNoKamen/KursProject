@@ -32,7 +32,7 @@ Menu::Menu(sf::RenderWindow& window)
 	third_button->set_text("Exit");
 }
 
-void Menu::draw_menu()
+int Menu::draw_menu()
 {
 	view = p_window->getView();
 	window_size = p_window->getSize();
@@ -55,7 +55,7 @@ void Menu::draw_menu()
 	p_window->draw(second_button->get_text());
 	if (second_button->clicked(view.getCenter(), window_size, screen_position))
 	{
-
+		return 1;
 	}
 
 
@@ -66,9 +66,13 @@ void Menu::draw_menu()
 	{
 		p_window->close();
 	}
+	return 0;
 }
 
 Menu::~Menu()
 {
 	delete main_panel;
+	delete first_button;
+	delete second_button;
+	delete third_button;
 }
