@@ -70,3 +70,8 @@ bool Entity::getIsMoving() {
     return isMoving;
 }
 
+
+sf::Texture Entity::get_texture()
+{
+    return texture;
+}

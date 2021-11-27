@@ -61,3 +61,5 @@ void Hero::draw_hero(int x, int y, int width, int height)
     sprite.setTextureRect(sf::IntRect(x, y, width, height));
     window->get_window().draw(sprite);
 }
+
+

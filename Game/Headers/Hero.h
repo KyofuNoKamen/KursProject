@@ -9,6 +9,7 @@ public:
 
     void update(sf::Time);
     void set_tile_size(sf::Vector2i tile_size);
+
 private:
     sf::Vector2i tile_size;
     Level* level;

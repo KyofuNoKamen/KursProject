@@ -27,7 +27,7 @@ Main_menu::Main_menu(sf::RenderWindow& window)
 	first_button = new Button(100, 50, 700, 100, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 	first_button->set_text("Start game");
 	second_button = new Button(100, 200, 700, 100, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
-	second_button->set_text("Settings");
+	second_button->set_text("Start UDP sockets test");
 	third_button = new Button(100, 350, 700, 100, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 	third_button->set_text("Exit");
 }
@@ -55,7 +55,7 @@ int Main_menu::draw_menu()
 	p_window->draw(second_button->get_text());
 	if (second_button->clicked(view.getCenter(), window_size, screen_position))
 	{
-
+		return 2;
 	}
 
 

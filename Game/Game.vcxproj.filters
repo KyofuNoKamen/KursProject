@@ -37,6 +37,7 @@
     <ClCompile Include="Engine\Interface\Cpp\Button.cpp" />
     <ClCompile Include="Engine\Menu.cpp" />
     <ClCompile Include="Engine\Main_menu.cpp" />
+    <ClCompile Include="Engine\Interface\Cpp\Unit_hole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Enemy.h">
@@ -76,6 +77,7 @@
     <ClInclude Include="Engine\Interface\Headers\Button.h" />
     <ClInclude Include="Headers\Menu.h" />
     <ClInclude Include="Headers\Main_menu.h" />
+    <ClInclude Include="Engine\Interface\Headers\Unit_hole.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\tile_set_fight.jpg">

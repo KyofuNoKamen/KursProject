@@ -23,6 +23,7 @@ public:
 	sf::Texture texture;
 	sf::Sprite sprite;
 
+	sf::Texture get_texture();
 	bool getIsMoving();
 	bool makeStepInDirection(sf::Vector2f);
 	void makeMicrostep(sf::Time);

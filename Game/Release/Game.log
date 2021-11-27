@@ -106,7 +106,7 @@ D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Фай�
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x17a, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x17d, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
 D:\VSRepo\Game\KursProject\Game\Headers\Fight_map.h(1,1): warning C4828: Файл содержит знак, начинающийся со смещения 0x180, который является недопустимым в текущей исходной кодировке (кодовая страница 65001).
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -115,7 +115,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,91): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -124,8 +124,8 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(18,66): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(39,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(42,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(94,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -134,7 +134,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,103): warning C4244: арг
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(94,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -143,30 +143,21 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(91,78): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(208,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(208,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(213,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(213,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(229,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(210,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(210,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(215,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(215,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(231,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=unsigned int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(229,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(231,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=unsigned int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(242,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(242,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(244,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -175,9 +166,23 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(242,78): warning C4244: арг
           [
               T=float
           ]
-  Создание кода
-  1 of 995 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  Game.vcxproj -> D:\VSRepo\Game\KursProject\Release\Game.exe
+D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(244,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: static class sf::IpAddress __cdecl sf::IpAddress::getLocalAddress(void)" (__imp_?getLocalAddress@IpAddress@sf@@SA?AV12@XZ).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __thiscall sf::IpAddress::toString(void)const " (__imp_?toString@IpAddress@sf@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __thiscall sf::IpAddress::IpAddress(void)" (__imp_??0IpAddress@sf@@QAE@XZ).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __thiscall sf::IpAddress::IpAddress(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (__imp_??0IpAddress@sf@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: enum sf::Socket::Status __thiscall sf::UdpSocket::receive(void *,unsigned int,unsigned int &,class sf::IpAddress &,unsigned short &)" (__imp_?receive@UdpSocket@sf@@QAE?AW4Status@Socket@2@PAXIAAIAAVIpAddress@2@AAG@Z).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: enum sf::Socket::Status __thiscall sf::UdpSocket::send(void const *,unsigned int,class sf::IpAddress const &,unsigned short)" (__imp_?send@UdpSocket@sf@@QAE?AW4Status@Socket@2@PBXIABVIpAddress@2@G@Z).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: enum sf::Socket::Status __thiscall sf::UdpSocket::bind(unsigned short,class sf::IpAddress const &)" (__imp_?bind@UdpSocket@sf@@QAE?AW4Status@Socket@2@GABVIpAddress@2@@Z).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __thiscall sf::UdpSocket::UdpSocket(void)" (__imp_??0UdpSocket@sf@@QAE@XZ).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: static class sf::IpAddress const sf::IpAddress::Any" (__imp_?Any@IpAddress@sf@@2V12@B).
+Window.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: virtual __thiscall sf::UdpSocket::~UdpSocket(void)" (__imp_??1UdpSocket@sf@@UAE@XZ).
+D:\VSRepo\Game\KursProject\Release\Game.exe : fatal error LNK1120: неразрешенных внешних элементов: 10

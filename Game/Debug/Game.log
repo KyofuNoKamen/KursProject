@@ -1,3 +1,22 @@
-﻿  Menu.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Menu.cpp(19,113): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+﻿  Fight_interface.cpp
+D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(28,77): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(29,79): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(34,117): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(34,70): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
   Game.vcxproj -> D:\VSRepo\Game\KursProject\Debug\Game.exe

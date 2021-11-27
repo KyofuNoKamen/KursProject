@@ -11,7 +11,11 @@
 #include "../Headers/Menu.h"
 #include "../Headers/Main_menu.h"
 
+#include <winsock2.h>
+
+
 sf::Text fpsText;
+
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
     create_window(resolution_x, resolution_y, name);
@@ -34,7 +38,6 @@ void Window::start()
 {
     int menu_command;
     Menu menu(get_window());
-    Fight_interface fight_interface(get_window()); //for test
 
     srand(time(NULL));
     sf::Clock clock_;
@@ -49,6 +52,7 @@ void Window::start()
         sf::IntRect(0, 650, 120, 130)
     };
     Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
+
 
     view->setCenter(hero.sprite.getPosition());
 
@@ -78,7 +82,7 @@ void Window::start()
                 view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 //view.move(sf::Vector2f(10, 0));
-                fight_start();
+                fight_start(hero.get_texture());
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
@@ -103,7 +107,6 @@ void Window::start()
         drawEnemies();
         renderFPS();
 
-        fight_interface.draw_interface(); //for test
         if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             runEsc = true;
         if (isEsc == true)
@@ -113,30 +116,24 @@ void Window::start()
             {   
                 isEsc = false;
                 main_menu();
-                
             }
         }
 
         main_window.display();
     }
 
-    delete &fight_interface;
 }
 
 
-void Window::fight_start(){
+void Window::fight_start(sf::Texture hero_texture)
+{
 
+    int menu_command;
     Menu menu(get_window());
-    Fight_map fight("resources/Fight_map.tmx", this);
-    Fight_interface fight_interface(get_window());
+    Fight_map fight("resources/Fight_map.tmx", this, hero_texture);
+    
 
     while(1){
-
-
-        if (isEsc == true)
-        {
-            menu.draw_menu();
-        }
 
         sf::Event event;
         while (main_window.pollEvent(event))
@@ -155,6 +152,11 @@ void Window::fight_start(){
                 view->move(sf::Vector2f(-10, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
                 isEsc = true;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
+            {
+                isEsc = !isEsc;
+                runEsc = !runEsc;
+            }
             main_window.setView(*view);
             
         }
@@ -162,8 +164,23 @@ void Window::fight_start(){
         main_window.clear();
         level->Draw(main_window);
         //hero.update();
+        fight.select_tile();
         renderFPS();
-        fight_interface.draw_interface();
+       
+
+
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            runEsc = true;
+        if (isEsc == true)
+        {
+            menu_command = menu.draw_menu();
+            if (menu_command == 1)
+            {
+                isEsc = false;
+                main_menu();
+            }
+        }
+
         main_window.display();
     }
 }
@@ -214,6 +231,10 @@ void Window::setViewCenter(int x, int y) {
     main_window.setView(*view);
 }
 
+sf::Vector2f Window::get_view() {
+    return view->getCenter();
+}
+
 void Window::main_menu()
 {
 
@@ -255,8 +276,47 @@ void Window::main_menu()
             start();
         }
 
+        if (menu_command == 2) {
+            //test_net();
+        }
+
+        //test_server();
+
         main_window.display();
     }
 
     delete& menu;
 }
+
+/*
+void Window::test_net()
+{
+    WSADATA WsaData;
+    WSAStartup(MAKEWORD(2, 2), &WsaData);
+
+    int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+
+    int port = 50001;
+
+    sockaddr_in address;
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons((unsigned short) port);
+
+    bind(handle, (const sockaddr*)&address, sizeof(sockaddr_in));
+
+    DWORD nonBlocking = 1;
+    ioctlsocket(handle, FIONBIO, &nonBlocking);
+
+
+    int sent_bytes = sendto(handle, (const char*)"String", 100, 0, (sockaddr*)&address, sizeof(sockaddr_in));
+
+
+    WSACleanup();
+}
+
+void Window::test_server()
+{
+   
+}
+*/
