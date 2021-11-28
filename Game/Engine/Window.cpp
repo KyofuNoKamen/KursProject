@@ -150,7 +150,7 @@ void Window::fight_start(sf::Texture hero_texture)
      //
      //}
     /////////////
-    Fight_map fight("resources/Fight_map.tmx", this, hero_texture, allySquad, enemySquad);
+    Fight_map fight("resources/Fight_map.tmx", this, allySquad, enemySquad);
     
 
     while(1){
@@ -163,8 +163,7 @@ void Window::fight_start(sf::Texture hero_texture)
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 view->move(sf::Vector2f(0, -10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-                //view->move(sf::Vector2f(0, 10));
-                return;
+                view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 //view.move(sf::Vector2f(10, 0));
                 fight.draw_map();
@@ -184,7 +183,7 @@ void Window::fight_start(sf::Texture hero_texture)
         main_window.clear();
         level->Draw(main_window);
         //hero.update();
-        fight.select_tile();
+        fight.update_frame();
         renderFPS();
        
 

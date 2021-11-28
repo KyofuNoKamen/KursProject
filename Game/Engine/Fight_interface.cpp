@@ -14,7 +14,7 @@ static Button *second_button;
 static sf::View unit_panel_view; //f_tst
 
 
-Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_texture, std::vector<Entity> enemySquad)
+Fight_interface::Fight_interface(sf::RenderWindow& window, std::vector<Entity> allySquad)
 {
 	p_window = &window;
 
@@ -29,12 +29,11 @@ Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_text
 	second_button = new Button(300, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 
 
-	
-	
-	unit_panel = new Unit_hole(first_button->get_button().getSize().x/2 - 50, first_button->get_button().getSize().y/2 - 50, 100, 100, unit_panel_view, unit_texture);
+	if (allySquad.size() > 1)
+		unit_panel = new Unit_hole(first_button->get_button().getSize().x/2 - 50, first_button->get_button().getSize().y/2 - 50, 100, 100, unit_panel_view, allySquad[0].get_texture());
 }
 
-void Fight_interface::draw_interface()
+int Fight_interface::draw_interface()
 {
 	view = p_window->getView();
 	
@@ -51,15 +50,31 @@ void Fight_interface::draw_interface()
 
 	first_button->move(main_panel->get_panel().getPosition());
 	p_window->draw(first_button->get_button());
-	first_button->clicked(view.getCenter(), window_size, screen_position);
+	
 
 	second_button->move(main_panel->get_panel().getPosition());
 	p_window->draw(second_button->get_button());
-	second_button->clicked(view.getCenter(), window_size, screen_position);
+	
 
 
 	unit_panel->move(unit_panel_view);
 	p_window->draw(unit_panel->get_unit_hole());
+
+
+	if (first_button->clicked(view.getCenter(), window_size, screen_position))
+	{
+		return 1;
+	}
+
+	else if (second_button->clicked(view.getCenter(), window_size, screen_position))
+	{
+		return 2;
+	}
+
+	else
+	{
+		return 0;
+	}
 }
 
 Fight_interface::~Fight_interface()

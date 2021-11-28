@@ -1,7 +1,7 @@
 #include "../Headers/Unit_hole.h"
 
 
-Unit_hole::Unit_hole(int x, int y, int width, int height, sf::View view, sf::Texture &texture)
+Unit_hole::Unit_hole(int x, int y, int width, int height, sf::View view, sf::Texture texture)
 {
 	old_view = view;
 	this->texture = texture;

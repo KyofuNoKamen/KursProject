@@ -5,7 +5,7 @@
 class Unit_hole
 {
 public:
-	Unit_hole(int x, int y, int width, int height, sf::View view, sf::Texture &texture);
+	Unit_hole(int x, int y, int width, int height, sf::View view, sf::Texture texture);
 
 	sf::Sprite get_unit_hole();
 

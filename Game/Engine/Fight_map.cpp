@@ -3,19 +3,22 @@
 
 // consider create new class like fightLevel or so
 LabLevel g_level;
+//static int button;
 
 
 
-Fight_map::Fight_map(std::string path_map_fight, Window *main_window, sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad)
+Fight_map::Fight_map(std::string path_map_fight, Window *main_window, std::vector<Entity> allySquad, std::vector<Entity> enemySquad)
 {
 	path_map = path_map_fight;
 	window = main_window;
 	g_level.LoadFromFile(path_map);	
+	this->allySquad = allySquad;
+	this->enemySquad = enemySquad;
 
 	select_texture.loadFromFile("resources/tile_set_fight.jpg");
 	select_sprite.setTexture(select_texture);
 	select_sprite.setTextureRect(sf::IntRect(100,100,100,100));
-	for (Entity& e : enemySquad) {
+	for (Entity& e : allySquad) {
 		std::cout << e.health << std::endl;
 	}
 
@@ -26,7 +29,7 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window, sf::Textur
 	///////////
 	//// Блок для функции получения отрядов
 	//////////
-	fight_interface = new Fight_interface(window->get_window(), this->hero_texture, enemySquad);
+	fight_interface = new Fight_interface(window->get_window(), enemySquad);
 	draw_map();
 }
 
@@ -50,5 +53,38 @@ void Fight_map::select_tile()
 		select_sprite.setPosition(tile_crd.x * g_level.GetTileSize().x, tile_crd.y * g_level.GetTileSize().y);
 		window->get_window().draw(select_sprite);
 	}
-	fight_interface->draw_interface();
+	
+}
+
+
+void Fight_map::update_frame()
+{
+	int button = fight_interface->draw_interface();
+
+	if (button == 1)
+	{
+		new_hero_texture = enemySquad[0].get_texture();
+		select_sprite.setTexture(new_hero_texture);
+		select_sprite.setTextureRect(sf::IntRect(0, 0, 100, 100));
+
+		//sf::Texture test_texture =  enemySquad[0].get_texture();
+		/*
+		sf::Sprite test_sprite;
+		test_sprite.setTexture(test_texture);
+
+
+
+
+
+		sf::Mouse mouse;
+		sf::Vector2f view_position;
+		view_position.x = view->getCenter().x - (float)window->get_window().getPosition().x;
+		view_position.y = view->getCenter().y - (float)window->get_window().getPosition().y;
+		view_position -= sf::Vector2f(window->get_window().getSize().x / 2, window->get_window().getSize().y / 2);
+		sf::Vector2f mouse_position(mouse.getPosition().x + view_position.x, mouse.getPosition().y + view_position.y);
+
+		test_sprite.setPosition(mouse_position);
+		*/
+	}
+	select_tile();
 }
