@@ -213,5 +213,17 @@
   <object id="171" type="collidable" gid="3" x="3700" y="4000" width="100" height="100"/>
   <object id="172" type="collidable" gid="3" x="3800" y="4000" width="100" height="100"/>
   <object id="173" type="collidable" gid="3" x="3900" y="4000" width="100" height="100"/>
+  <object id="287" type="Enemy" x="600" y="500">
+   <point/>
+  </object>
+  <object id="288" type="Enemy" x="300" y="500">
+   <point/>
+  </object>
+  <object id="289" type="Enemy" x="1100" y="400">
+   <point/>
+  </object>
+  <object id="290" type="Enemy" x="700" y="1400">
+   <point/>
+  </object>
  </objectgroup>
 </map>

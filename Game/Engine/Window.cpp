@@ -1,26 +1,29 @@
+#pragma once
 #include "../Headers/Window.h"
 #include "../Headers/Hero.h"
 #include "../Headers/Entity.h"
 #include "../Headers/Enemy.h"
 #include "../Headers/Fight_map.h"
+#include <iostream>
+#include <stdlib.h> 
+#include <time.h>       
+#include "../Headers/Fight_interface.h"
+#include "../Headers/Menu.h"
+#include "../Headers/Main_menu.h"
+#include "../Headers/Networking.h"
 
+#include <winsock2.h>
+
+Networking net;
 sf::Text fpsText;
 
-Window::Window(int resolution_x, int resolution_y, std::string name)
-{
-    view = new sf::View;
-
+Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
+    create_window(resolution_x, resolution_y, name);
+    view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
     //view->setCenter(sf::Vector2f(500, 500));
-
     main_window.setView(*view);
-
-	create_window(resolution_x, resolution_y, name);
-}
-
-Window::Window(int resolution_x, int resolution_y, Level& level, std::string name)
-    : Window(resolution_x, resolution_y, name)
-{
     setLevel(level);
+    level.spawnEnemies();
 }
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
@@ -28,58 +31,46 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
     Window::main_window.create(sf::VideoMode(resolution_x, resolution_y), name, sf::Style::Fullscreen);
 	Window::main_window.setFramerateLimit(60);
     Window::main_window.setKeyRepeatEnabled(false);
+    main_window.setVerticalSyncEnabled(1);
 }
 
-/*Ôóíêöèÿ âîçâðàùàåò ãëàâíîå îêíî*/
-sf::RenderWindow &Window::get_window()
-{
-    return main_window;
-}
-
-void Window::setLevel(Level& level) {
-    this->level = &level;
-}
-
-Level& Window::getLevel() {
-    return *(this->level);
-}
-
-void Window::moveView(int x, int y) {
-    view->move(x, y);
-    main_window.setView(*view);
-}
 void Window::start() 
 {
-    sf::Clock clock;
+    int menu_command;
+    Menu menu(get_window());
 
-    Hero hero(this, 200, 200);
+    srand(time(NULL));
+    sf::Clock clock_;
 
-    hero.set_tile_size(level->GetTileSize());
-    view->setCenter(hero.heroSprite.getPosition());
+    sf::Image heroSpriteset;
+    heroSpriteset.loadFromFile("resources/zel.png");
+    std::vector<sf::IntRect> spriteRects = {
+        sf::IntRect(0, 0, 120, 130), 
+        sf::IntRect(0, 780, 120, 130),
+        sf::IntRect(0, 910, 120, 130),
+        sf::IntRect(0, 520, 120, 130),
+        sf::IntRect(0, 650, 120, 130)
+    };
+    Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
+
+
+    view->setCenter(hero.sprite.getPosition());
 
     sf::Font font;
     font.loadFromFile("resources/fonts/pwscratchy1.ttf");
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
     fpsText.setFillColor(sf::Color::Red);
-/**/
-
-    //sf::View view;
-    //view.setCenter(sf::Vector2f(500, 500));
     
     main_window.setView(*view);
 
-
-    Object easyEnemyObject = Window::getLevel().GetObject("easyEnemy");
-    sf::Image easyEnemyImage;
-    easyEnemyImage.loadFromFile("resources/hellhound.png");
-    //Enemy easyEnemy(easyEnemyImage, "EasyEnemy", 200, 200, 100, 100);
-    Enemy easyEnemy(easyEnemyImage, "EasyEnemy", level, 200, 200, 100, 100);
-    p_easy_enemy = &easyEnemy;
-
-
     while (main_window.isOpen())
     {
+
+
+
+        sf::Time deltatime = clock_.getElapsedTime();
+        clock_.restart();
         sf::Event event;
         while (main_window.pollEvent(event))
         {
@@ -91,29 +82,58 @@ void Window::start()
                 view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 //view.move(sf::Vector2f(10, 0));
-                fight_start();
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))                
+                fight_start(hero.get_texture());
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
-            main_window.setView(*view);
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
+            {
+                isEsc = !isEsc;
+                runEsc = !runEsc;
+            }
+            else if (event.type == sf::Event::Resized)
+            {
+                view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
+                main_window.setView(*view);
+            }
+          
         }
+
+        
         
         main_window.clear();
         level->Draw(main_window);
-        hero.update(clock.getElapsedTime());
-        main_window.draw(easyEnemy.sprite);
+        hero.update(deltatime);
+        level->EnemiesMakeMicrostep(deltatime);
+        drawEnemies();
         renderFPS();
-        clock.restart();
+
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            runEsc = true;
+        if (isEsc == true)
+        {   
+            menu_command = menu.draw_menu();
+            if (menu_command == 1)
+            {   
+                isEsc = false;
+                main_menu();
+            }
+        }
+
         main_window.display();
     }
+
 }
 
-void Window::fight_start()
+
+void Window::fight_start(sf::Texture hero_texture)
 {
 
-    Fight_map fight("resources/Fight_map.tmx", this);
+    int menu_command;
+    Menu menu(get_window());
+    Fight_map fight("resources/Fight_map.tmx", this, hero_texture);
+    
 
-    while(1)
-    {
+    while(1){
 
         sf::Event event;
         while (main_window.pollEvent(event))
@@ -130,19 +150,45 @@ void Window::fight_start()
                 fight.draw_map();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+                isEsc = true;
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
+            {
+                isEsc = !isEsc;
+                runEsc = !runEsc;
+            }
             main_window.setView(*view);
+            
         }
 
         main_window.clear();
         level->Draw(main_window);
         //hero.update();
+        fight.select_tile();
         renderFPS();
+       
+
+
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            runEsc = true;
+        if (isEsc == true)
+        {
+            menu_command = menu.draw_menu();
+            if (menu_command == 1)
+            {
+                isEsc = false;
+                main_menu();
+            }
+        }
+
         main_window.display();
     }
 }
 
-void Window::set_view(sf::View new_view) {
-    *view = new_view;
+void Window::drawEnemies() {
+    LabLevel* labLevel = level;
+    for (Enemy& enemy : level->GetEnemies())
+        main_window.draw(enemy.sprite);
 }
 
 void Window::renderFPS() {
@@ -159,9 +205,118 @@ void Window::renderFPS() {
     clock_.restart();
 }
 
-void Window::mapUpdate(int status )
-{
-    std::vector<Object> collidables = Window::getLevel().GetObjectsWithType("collidable");
-    p_easy_enemy->enemyMove(status, collidables);
-
+void Window::set_view(sf::View new_view) {
+    *view = new_view;
 }
+
+sf::RenderWindow& Window::get_window(){
+    return main_window;
+}
+
+void Window::setLevel(LabLevel& level) {
+    this->level = &level;
+}
+
+LabLevel& Window::getLevel() {
+    return *(this->level);
+}
+
+void Window::moveView(int x, int y) {
+    view->move(x, y);
+    main_window.setView(*view);
+}
+
+void Window::setViewCenter(int x, int y) {
+    view->setCenter(x, y);
+    main_window.setView(*view);
+}
+
+sf::Vector2f Window::get_view() {
+    return view->getCenter();
+}
+
+void Window::main_menu()
+{
+
+    int menu_command;
+    Main_menu menu(get_window());
+
+    sf::Font font;
+    font.loadFromFile("resources/fonts/pwscratchy1.ttf");
+    fpsText.setFont(font);
+    fpsText.setCharacterSize(28);
+    fpsText.setFillColor(sf::Color::Red);
+
+    view->setCenter(main_window.getSize().x/2, main_window.getSize().y/2);
+    main_window.setView(*view);
+
+    while (main_window.isOpen())
+    {
+
+        sf::Event event;
+        while (main_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                main_window.close();
+            else if (event.type == sf::Event::Resized)
+            {
+                view = new sf::View(sf::FloatRect(0, 0, main_window.getSize().x, main_window.getSize().y));
+                main_window.setView(*view);
+            }
+
+        }
+
+        main_window.clear();
+        renderFPS();
+
+
+        menu_command = menu.draw_menu();
+
+        if (menu_command == 1) {
+            start();
+        }
+
+        if (menu_command == 2) {
+            net.StartServer();
+        }
+
+        //test_server();
+
+        main_window.display();
+    }
+
+    delete& menu;
+}
+
+/*
+void Window::test_net()
+{
+    WSADATA WsaData;
+    WSAStartup(MAKEWORD(2, 2), &WsaData);
+
+    int handle = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+
+    int port = 50001;
+
+    sockaddr_in address;
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons((unsigned short) port);
+
+    bind(handle, (const sockaddr*)&address, sizeof(sockaddr_in));
+
+    DWORD nonBlocking = 1;
+    ioctlsocket(handle, FIONBIO, &nonBlocking);
+
+
+    int sent_bytes = sendto(handle, (const char*)"String", 100, 0, (sockaddr*)&address, sizeof(sockaddr_in));
+
+
+    WSACleanup();
+}
+
+void Window::test_server()
+{
+   
+}
+*/
