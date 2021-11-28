@@ -1,11 +1,12 @@
 #include "../Headers/Fight_map.h"
+#include <iostream>
 
 // consider create new class like fightLevel or so
 LabLevel g_level;
 
 
 
-Fight_map::Fight_map(std::string path_map_fight, Window *main_window, sf::Texture hero_texture)
+Fight_map::Fight_map(std::string path_map_fight, Window *main_window, sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad)
 {
 	path_map = path_map_fight;
 	window = main_window;
@@ -14,13 +15,18 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window, sf::Textur
 	select_texture.loadFromFile("resources/tile_set_fight.jpg");
 	select_sprite.setTexture(select_texture);
 	select_sprite.setTextureRect(sf::IntRect(100,100,100,100));
+	for (Entity& e : enemySquad) {
+		std::cout << e.health << std::endl;
+	}
 
 
 	
 	this->hero_texture = hero_texture;
-	fight_interface = new Fight_interface(window->get_window(), this->hero_texture);
 
-
+	///////////
+	//// Блок для функции получения отрядов
+	//////////
+	fight_interface = new Fight_interface(window->get_window(), this->hero_texture, enemySquad);
 	draw_map();
 }
 

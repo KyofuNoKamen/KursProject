@@ -12,6 +12,9 @@
 #include "../Headers/Main_menu.h"
 
 #include <winsock2.h>
+////////
+#include "../Headers/LabLevel.h"
+////////
 
 
 sf::Text fpsText;
@@ -130,7 +133,24 @@ void Window::fight_start(sf::Texture hero_texture)
 
     int menu_command;
     Menu menu(get_window());
-    Fight_map fight("resources/Fight_map.tmx", this, hero_texture);
+    /////////////
+    //Блок для отправки отряда
+     //std::vector<Entity> enemySquad;
+     //(*enemySquad).emplace_back(level->GetEnemies(/*[i]*/)); // collection.push_back(object(...));
+    std::vector<Entity> enemySquad;
+    std::vector<Enemy> enemies = level->GetEnemies();
+    for (Enemy& enemy : enemies) { 
+        enemySquad.emplace_back(enemy); 
+    }
+    std::vector<Entity> allySquad;
+    std::vector<Enemy> ellies = level->GetEnemies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
+    for (Enemy& enemy : enemies) {
+        enemySquad.emplace_back(enemy);
+    }
+     //
+     //}
+    /////////////
+    Fight_map fight("resources/Fight_map.tmx", this, hero_texture, allySquad, enemySquad);
     
 
     while(1){
