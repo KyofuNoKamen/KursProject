@@ -10,12 +10,12 @@
 #include "../Headers/Fight_interface.h"
 #include "../Headers/Menu.h"
 #include "../Headers/Main_menu.h"
+#include "../Headers/Networking.h"
 
 #include <winsock2.h>
 
-
+Networking net;
 sf::Text fpsText;
-
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
     create_window(resolution_x, resolution_y, name);
@@ -277,7 +277,7 @@ void Window::main_menu()
         }
 
         if (menu_command == 2) {
-            //test_net();
+            net.StartServer();
         }
 
         //test_server();
