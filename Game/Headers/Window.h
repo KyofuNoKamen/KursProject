@@ -41,6 +41,8 @@ private:
 		resolution_y;
 	LabLevel* level;
 	sf::View* view;
+	//////
+	//Hero* hro;
 
 	void create_window(int, int, std::string);
 	void renderFPS();

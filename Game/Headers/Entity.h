@@ -14,10 +14,11 @@ protected:
 	int animationSpeedLimiter = 100;
 	bool isMoving;
 public:
-	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y);
+	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y, int Chance);
 
 	float x, y;
 	int health;
+	int chance;
 	bool life, onGround;
 
 	sf::Texture texture;

@@ -1,9 +1,10 @@
 ﻿#include "../Headers/Entity.h"
 
-Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y) {
+Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int Chance) {
 	this->level = level;
     spriteRects = rects;
     health = 100;
+    Chance = chance;
 	life = true; isMoving = false; onGround = true;
 	texture.loadFromImage(image);
 	sprite.setTexture(texture);

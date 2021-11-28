@@ -140,7 +140,9 @@ void Window::fight_start(sf::Texture hero_texture)
     std::vector<Entity> enemySquad;
     std::vector<Enemy> enemies = level->GetEnemies();
     for (Enemy& enemy : enemies) { 
-        enemySquad.emplace_back(enemy); 
+        if (-enemy.x <= 100 && -enemy.y <= 100) {
+            enemySquad.emplace_back(enemy);
+        }
     }
     std::vector<Entity> allySquad;
     std::vector<Enemy> ellies = level->GetEnemies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 

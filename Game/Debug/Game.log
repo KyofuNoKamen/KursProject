@@ -1,46 +1,21 @@
-﻿  Fight_map.cpp
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(36,106): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(36,72): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(45,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+﻿  Hero.cpp
+D:\Study\KursProject\KursProject\Game\Engine\Hero.cpp(18,75): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
           with
           [
               T=float
           ]
-          and
-          [
-              T=int
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(46,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Hero.cpp(18,51): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
           with
           [
               T=float
           ]
-          and
-          [
-              T=int
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(50,78): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+  LabLevel.cpp
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(28,101): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int
           ]
-D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(50,40): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(28,81): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int

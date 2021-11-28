@@ -4,5 +4,5 @@
 
 class Enemy :public Entity {
 public:
-	Enemy(sf::Image, Level*, std::vector<sf::IntRect>, float, float);
+	Enemy(sf::Image, Level*, std::vector<sf::IntRect>, float, float, int);
 };
