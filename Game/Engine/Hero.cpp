@@ -1,7 +1,7 @@
 #include "../Headers/Hero.h"
 #include <iostream>
 
-Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y, chance) {
+Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int agility, int damage, int squad_counter): Entity(level, image, rects, x, y, agility, damage, squad_counter) {
     isMoving = false;
     this->window = window;
     this->level = level;
@@ -33,15 +33,20 @@ void Hero::heroControl(){
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         direction = DIRECTIONS[0];
+        window->checkEnemies();  //////////////////////////
+        
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         direction = DIRECTIONS[1];
+        window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         direction = DIRECTIONS[2];
+        window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         direction = DIRECTIONS[3];
+        window->checkEnemies();
     }
     else {
         return;
