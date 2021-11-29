@@ -18,6 +18,11 @@ public:
 
 	float x, y;
 	int health;
+	int agility;
+	int damage;
+	int squad_counter;
+	int vissibility_distance;
+	//squad vector
 	bool life, onGround;
 
 	sf::Texture texture;

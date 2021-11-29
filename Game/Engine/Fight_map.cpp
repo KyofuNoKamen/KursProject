@@ -20,6 +20,7 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window, std::vecto
 	select_sprite.setTextureRect(sf::IntRect(100,100,100,100));
 	for (Entity& e : allySquad) {
 		std::cout << e.health << std::endl;
+		//std::cout << e.chance << std::endl;
 	}
 
 

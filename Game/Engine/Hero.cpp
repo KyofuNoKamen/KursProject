@@ -5,6 +5,9 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
     isMoving = false;
     this->window = window;
     this->level = level;
+    agility = 70;
+    damage = 50;
+    squad_counter = 4;
 
     sprite.setOrigin(0, 60);
     
@@ -33,15 +36,20 @@ void Hero::heroControl(){
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         direction = DIRECTIONS[0];
+        window->checkEnemies();  //////////////////////////
+        
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
         direction = DIRECTIONS[1];
+        window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         direction = DIRECTIONS[2];
+        window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         direction = DIRECTIONS[3];
+        window->checkEnemies();
     }
     else {
         return;

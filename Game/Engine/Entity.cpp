@@ -4,6 +4,7 @@ Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, fl
 	this->level = level;
     spriteRects = rects;
     health = 100;
+    //Squad vector
 	life = true; isMoving = false; onGround = true;
 	texture.loadFromImage(image);
 	sprite.setTexture(texture);

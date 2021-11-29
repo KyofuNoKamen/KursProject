@@ -55,6 +55,7 @@ void Window::start()
         sf::IntRect(0, 650, 120, 130)
     };
     Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
+    hro = &hero;
 
 
     view->setCenter(hero.sprite.getPosition());
@@ -84,8 +85,8 @@ void Window::start()
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                //view.move(sf::Vector2f(10, 0));
-                fight_start(hero.get_texture());
+                view->move(sf::Vector2f(10, 0));
+                //fight_start(hero/*hero.get_texture()*/);  /////////////////////////////////
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && runEsc == true)
@@ -109,6 +110,7 @@ void Window::start()
         level->EnemiesMakeMicrostep(deltatime);
         drawEnemies();
         renderFPS();
+       // fight_start();   ////////////////////
 
         if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             runEsc = true;
@@ -128,22 +130,21 @@ void Window::start()
 }
 
 
-void Window::fight_start(sf::Texture hero_texture)
+void Window::fight_start(sf::Texture hero_texture, Enemy& enemy) 
 {
-
     int menu_command;
     Menu menu(get_window());
-    /////////////
-    //Блок для отправки отряда
-     //std::vector<Entity> enemySquad;
-     //(*enemySquad).emplace_back(level->GetEnemies(/*[i]*/)); // collection.push_back(object(...));
-    std::vector<Entity> enemySquad;
-    std::vector<Enemy> enemies = level->GetEnemies();
-    for (Enemy& enemy : enemies) { 
-        enemySquad.emplace_back(enemy); 
-    }
+
+    //Enemy squad = object Enemy with its field "enemy_squad"
+    //Ally squad = object Hero with its field "hero_squad"
+
+    /*Creating an enemy squad
+    std::vector<Entity> enemySquad; 
+    enemySquad.emplace_back(enemy);
+
+    //Creating an ally aquad
     std::vector<Entity> allySquad;
-    std::vector<Enemy> ellies = level->GetEnemies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
+    std::vector<Enemy> ellies = level->GetAllies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
     for (Enemy& enemy : enemies) {
         enemySquad.emplace_back(enemy);
     }
@@ -165,8 +166,8 @@ void Window::fight_start(sf::Texture hero_texture)
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 view->move(sf::Vector2f(0, 10));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                //view.move(sf::Vector2f(10, 0));
-                fight.draw_map();
+                view->move(sf::Vector2f(10, 0));
+                //fight.draw_map();
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 view->move(sf::Vector2f(-10, 0));
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -203,7 +204,15 @@ void Window::fight_start(sf::Texture hero_texture)
         main_window.display();
     }
 }
-
+void Window::checkEnemies(/*sf::Texture hero_texture*/) {
+    sf::Texture hero_texture = hro->get_texture();
+    std::vector<Enemy> enemies = level->GetEnemies();
+    for (Enemy& enemy : enemies) {
+        if ((abs(hro->x - enemy.x <= enemy.vissibility_distance)) && (abs(hro->y - enemy.y <= enemy.vissibility_distance))) {
+            Window::fight_start(hero_texture,enemy);
+        }
+    }
+}
 void Window::drawEnemies() {
     LabLevel* labLevel = level;
     for (Enemy& enemy : level->GetEnemies())

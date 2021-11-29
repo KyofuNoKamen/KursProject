@@ -14,7 +14,8 @@ public:
 	Window(int, int, LabLevel&, std::string);
 
 	void start();
-	void fight_start(sf::Texture hero_texture);
+	void fight_start(sf::Texture hero_texture, Enemy &enemy);   ////////Могут быть тут ошибки
+	void checkEnemies(/*sf::Texture hero_texture*/);
 
 	LabLevel& getLevel();
 	sf::RenderWindow& get_window();
@@ -41,6 +42,8 @@ private:
 		resolution_y;
 	LabLevel* level;
 	sf::View* view;
+	//////
+	Hero* hro;
 
 	void create_window(int, int, std::string);
 	void renderFPS();
