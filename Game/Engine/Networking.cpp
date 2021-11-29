@@ -20,7 +20,7 @@ void Networking::executionThread() {
     while (1) {
         mutex.lock();
         loop();
-        sf::sleep(sf::milliseconds(10));
+        //sf::sleep(sf::milliseconds(10));
         mutex.unlock();
     }
         
@@ -32,7 +32,7 @@ void Networking::executionThread() {
 void Networking::Initialize() {
     // bind the listener to a port
     client.bind(client_port);
-    server.bind(server_port);    
+    server.bind(server_port);
 
     send_message("first message!");
     send_message("second message!");
@@ -63,6 +63,6 @@ void Networking::send_message(std::string message)
 {
     std::string snd_message = message;
     //std::cout << message << std::endl;
-    client.send(snd_message.c_str(), snd_message.size() + 1, "192.168.1.101", server_port);
+    client.send(snd_message.c_str(), snd_message.size() + 1, "104.197.27.194", server_port);
 }
 
