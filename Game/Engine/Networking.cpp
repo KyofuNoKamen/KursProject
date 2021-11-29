@@ -50,7 +50,7 @@ void Networking::loop() {
     unsigned short port;
     if (server.receive(buffer, sizeof(buffer), received, sender, port) == 0)
     {
-        std::cout << std::endl << sender.getPublicAddress().toString() << " said: " << buffer << std::endl;
+        std::cout << std::endl << sender.getLocalAddress().toString() << " said: " << buffer << std::endl;
     }
     //std::cout << port;
 }
@@ -63,6 +63,6 @@ void Networking::send_message(std::string message)
 {
     std::string snd_message = message;
     //std::cout << message << std::endl;
-    client.send(snd_message.c_str(), snd_message.size() + 1, "104.197.27.194", server_port);
+    client.send(snd_message.c_str(), snd_message.size() + 1, sf::IpAddress::getLocalAddress().toString(), server_port);
 }
 
