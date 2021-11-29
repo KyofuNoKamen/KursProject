@@ -1,4 +1,5 @@
-﻿  Fight_map.cpp
+﻿  Enemy.cpp
+  Fight_map.cpp
 D:\Study\KursProject\KursProject\Game\Headers\Window.h(46,6): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
 D:\Study\KursProject\KursProject\Game\Headers\Window.h(46,6): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
 D:\Study\KursProject\KursProject\Game\Headers\Window.h(46,11): error C2238: непредвиденные лексемы перед ";"
@@ -62,6 +63,8 @@ D:\Study\KursProject\KursProject\Game\Engine\Hero.cpp(18,51): warning C4244: а�
           [
               T=float
           ]
+  LabLevel.cpp
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(28,117): error C2661: Enemy::Enemy: нет перегруженной функции, принимающей 8 аргументов
   Main.cpp
 D:\Study\KursProject\KursProject\Game\Headers\Window.h(46,6): error C2143: синтаксическая ошибка: отсутствие ";" перед "*"
 D:\Study\KursProject\KursProject\Game\Headers\Window.h(46,6): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
@@ -110,7 +113,7 @@ D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(99,78): warning C4244: �
           ]
 D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(207,32): error C2065: hro: необъявленный идентификатор
 D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(210,18): error C2065: hro: необъявленный идентификатор
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(210,52): error C2065: hro: необъявленный идентификатор
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(210,75): error C2065: hro: необъявленный идентификатор
 D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(252,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(252,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
 D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(257,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
@@ -140,6 +143,27 @@ D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(290,78): warning C4244: 
               T=unsigned int
           ]
           and
+          [
+              T=float
+          ]
+  Fight_interface.cpp
+D:\Study\KursProject\KursProject\Game\Engine\Fight_interface.cpp(28,77): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\Fight_interface.cpp(29,79): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\Fight_interface.cpp(34,117): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\Fight_interface.cpp(34,70): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
+          with
           [
               T=float
           ]

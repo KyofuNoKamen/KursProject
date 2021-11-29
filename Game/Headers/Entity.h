@@ -14,13 +14,14 @@ protected:
 	int animationSpeedLimiter = 100;
 	bool isMoving;
 public:
-	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y, int Agility, int Damage, int Squad_counter/*, SquadVector*/ );
+	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y);
 
 	float x, y;
 	int health;
 	int agility;
 	int damage;
 	int squad_counter;
+	int vissibility_distance;
 	//squad vector
 	bool life, onGround;
 

@@ -1,12 +1,9 @@
 ﻿#include "../Headers/Entity.h"
 
-Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int Agility, int Damage, int Squad_counter/*, SquadVector*/) {
+Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y) {
 	this->level = level;
     spriteRects = rects;
     health = 100;
-    Agility = agility;
-    Damage = damage;
-    Squad_counter = squad_counter;
     //Squad vector
 	life = true; isMoving = false; onGround = true;
 	texture.loadFromImage(image);

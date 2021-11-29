@@ -1,10 +1,13 @@
 #include "../Headers/Hero.h"
 #include <iostream>
 
-Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int agility, int damage, int squad_counter): Entity(level, image, rects, x, y, agility, damage, squad_counter) {
+Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y) {
     isMoving = false;
     this->window = window;
     this->level = level;
+    agility = 70;
+    damage = 50;
+    squad_counter = 4;
 
     sprite.setOrigin(0, 60);
     

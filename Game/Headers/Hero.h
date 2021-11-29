@@ -4,7 +4,7 @@
 
 class Hero: public Entity{
 public:
-    Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int agility, int damage, int squad_counter);
+    Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y);
     Window* window;
 
     void update(sf::Time);

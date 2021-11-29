@@ -54,7 +54,7 @@ void Window::start()
         sf::IntRect(0, 520, 120, 130),
         sf::IntRect(0, 650, 120, 130)
     };
-    Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200, 70, 20, 4);
+    Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
     hro = &hero;
 
 
@@ -135,21 +135,21 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
     int menu_command;
     Menu menu(get_window());
 
-    //Creating an enemy squad
+    //Enemy squad = object Enemy with its field "enemy_squad"
+    //Ally squad = object Hero with its field "hero_squad"
+
+    /*Creating an enemy squad
     std::vector<Entity> enemySquad; 
-    std::vector<Enemy> enemies = level->GetEnemies();
-    for (Enemy& enemy : enemies) {
-        enemySquad.emplace_back(enemy);
-    }
+    enemySquad.emplace_back(enemy);
 
     //Creating an ally aquad
     std::vector<Entity> allySquad;
-    std::vector<Enemy> ellies = level->GetEnemies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
+    std::vector<Enemy> ellies = level->GetAllies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
     for (Enemy& enemy : enemies) {
         enemySquad.emplace_back(enemy);
-    }
+    }*/
     
-    Fight_map fight("resources/Fight_map.tmx", this, /*hero_texture, */ allySquad, enemySquad);
+    Fight_map fight("resources/Fight_map.tmx", this, /*hero_texture, */ allySquad, enemySquad);    //«јменить сквады на объекты геро€ и врага!!!!
     
 
     while(1){
@@ -207,7 +207,7 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
     sf::Texture hero_texture = hro->get_texture();
     std::vector<Enemy> enemies = level->GetEnemies();
     for (Enemy& enemy : enemies) {
-        if ((abs(hro->x - enemy.x <= 300)) && (abs(hro->y - enemy.y <= 300))) {
+        if ((abs(hro->x - enemy.x <= enemy.vissibility_distance)) && (abs(hro->y - enemy.y <= enemy.vissibility_distance))) {
             Window::fight_start(hero_texture,enemy);
         }
     }
