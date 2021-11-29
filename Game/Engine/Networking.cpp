@@ -8,7 +8,6 @@ sf::Mutex mutex;
 
 void Networking::StartServer() {
     printf("before startS");
-    std::cout << std::endl << sf::IpAddress::getPublicAddress() << std::endl;
     thr = new sf::Thread(&Networking::executionThread, this);
 
     thr->launch();
