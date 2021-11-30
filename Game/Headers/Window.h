@@ -43,7 +43,7 @@ private:
 	LabLevel* level;
 	sf::View* view;
 	//////
-	Hero* hro;
+	//Hero* hro;
 
 	void create_window(int, int, std::string);
 	void renderFPS();

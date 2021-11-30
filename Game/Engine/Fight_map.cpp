@@ -6,7 +6,7 @@ LabLevel g_level;
 
 
 
-Fight_map::Fight_map(std::string path_map_fight, Window *main_window, /*sf::Texture hero_texture,*/ std::vector<Entity> allySquad, std::vector<Entity> enemySquad)
+Fight_map::Fight_map(std::string path_map_fight, Window *main_window/*, sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad*/)
 {
 	path_map = path_map_fight;
 	window = main_window;
@@ -15,10 +15,10 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window, /*sf::Text
 	select_texture.loadFromFile("resources/tile_set_fight.jpg");
 	select_sprite.setTexture(select_texture);
 	select_sprite.setTextureRect(sf::IntRect(100,100,100,100));
-	for (Entity& e : enemySquad) {
+	/*for (Entity& e : enemySquad) {
 		std::cout << e.health << std::endl;
 		//std::cout << e.chance << std::endl;
-	}
+	}*/
 
 
 	
@@ -27,7 +27,7 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window, /*sf::Text
 	///////////
 	//// Блок для функции получения отрядов
 	//////////
-	fight_interface = new Fight_interface(window->get_window(), this->hero_texture, enemySquad);
+	fight_interface = new Fight_interface(window->get_window(), this->hero_texture/*, enemySquad*/);
 	draw_map();
 }
 

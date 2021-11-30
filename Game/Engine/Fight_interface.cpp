@@ -14,7 +14,7 @@ static Button *second_button;
 static sf::View unit_panel_view; //f_tst
 
 
-Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_texture, std::vector<Entity> enemySquad)
+Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_texture/*, std::vector<Entity> enemySquad*/)
 {
 	p_window = &window;
 
