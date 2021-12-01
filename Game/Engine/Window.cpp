@@ -18,7 +18,7 @@
 
 
 sf::Text fpsText;
-static Hero* hro;
+Hero* hero;
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
     create_window(resolution_x, resolution_y, name);
@@ -54,11 +54,11 @@ void Window::start()
         sf::IntRect(0, 520, 120, 130),
         sf::IntRect(0, 650, 120, 130)
     };
-    Hero hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
-    hro = &hero;
+    hero = new Hero(this, this->level, heroSpriteset, spriteRects, 200, 200);
+    //hro = &hero;
 
 
-    view->setCenter(hero.sprite.getPosition());
+    view->setCenter(hero->sprite.getPosition());
 
     sf::Font font;
     font.loadFromFile("resources/fonts/pwscratchy1.ttf");
@@ -106,7 +106,7 @@ void Window::start()
         
         main_window.clear();
         level->Draw(main_window);
-        hero.update(deltatime);
+        hero->update(deltatime);
         level->EnemiesMakeMicrostep(deltatime);
         drawEnemies();
         renderFPS();
@@ -138,7 +138,7 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
     //Enemy squad = object Enemy with its field "enemy_squad"
     //Ally squad = object Hero with its field "hero_squad"
 
-    //Creating an enemy squad
+    /*Creating an enemy squad
     std::vector<Entity> enemySquad; 
     enemySquad.emplace_back(enemy);
 
@@ -147,11 +147,9 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
     std::vector<Enemy> ellies = level->GetAllies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
     for (Enemy& enemy : enemies) {
         enemySquad.emplace_back(enemy);
-    }
-     //
-     //}
-    /////////////
-    Fight_map fight("resources/Fight_map.tmx", this, allySquad, enemySquad);
+    }*/
+    
+    Fight_map fight("resources/Fight_map.tmx", this/*, hero_texture,  allySquad, enemySquad*/);    //«јменить сквады на объекты геро€ и врага!!!!
     
 
     while(1){
@@ -206,12 +204,28 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
 }
 
 void Window::checkEnemies(/*sf::Texture hero_texture*/) {
-    sf::Texture hero_texture = hro->get_texture();
+    std::cout << "hero coordinates x " << hero->x << std::endl;
+    std::cout << "hero coordinates y " << hero->y << std::endl;
+    std::cout << "hero agility " << hero->agility << std::endl;
+    std::cout << "hero damage " << hero->damage << std::endl;
+    std::cout << "hero health " << hero->health << std::endl;
+    std::cout << "hero squad counter " << hero->squad_counter << std::endl;
+    //sf::Texture hero_texture = hero->get_texture();
     std::vector<Enemy> enemies = level->GetEnemies();
     for (Enemy& enemy : enemies) {
-        if ((abs(hro->x - enemy.x <= enemy.vissibility_distance)) && (abs(hro->y - enemy.y <= enemy.vissibility_distance))) {
+        /*if ((abs(hero->x - enemy.x <= enemy.vissibility_distance)) && (abs(hero->y - enemy.y <= enemy.vissibility_distance))) {
             Window::fight_start(hero_texture,enemy);
-        }
+        }*/
+        //std::cout <<"checking "<< abs(hero->x - enemy.x) << "-> x; y -> " << abs(hero->y - enemy.y) << std::endl;
+    
+        std::cout << "enemy coordinates x " << enemy.x << std::endl;
+        std::cout << "enemy coordinates y " << enemy.y << std::endl;
+        std::cout << "enemy agility " << enemy.agility << std::endl;
+        std::cout << "enemy damage " << enemy.damage << std::endl;
+        std::cout << "enemy health " << enemy.health << std::endl;
+        std::cout << "enemy squad counter " << enemy.squad_counter << std::endl;
+        std::cout << "________________________________________________"  << std::endl;
+
     }
 }
 void Window::drawEnemies() {

@@ -10,11 +10,12 @@ protected:
 	sf::Vector2f step;
 	sf::IntRect currentRect;
 	std::vector<sf::IntRect> spriteRects; // standing, up, right, down, left
+	//std::vector<Entity> squad_vector;
 	float stepSpeedDivider = 500;
 	int animationSpeedLimiter = 100;
 	bool isMoving;
 public:
-	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y);
+	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y, int Squad_counter);
 
 	float x, y;
 	int health;

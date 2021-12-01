@@ -1,7 +1,7 @@
 #include "../Headers/Hero.h"
 #include <iostream>
 
-Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y) {
+Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y, squad_counter) {
     isMoving = false;
     this->window = window;
     this->level = level;

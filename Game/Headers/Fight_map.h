@@ -18,7 +18,7 @@ class Fight_map
 public:
 	/*Конструктор получает путь к карте, указатель на отряд игрока и отряд противника, указатель на главное окно*/
 	//Fight_map(std::string path_map_fight/*, *player_squad, *enemy_squad*/, Window *main_window);
-	Fight_map(std::string path_map_fight, Window* main_window, std::vector<Entity> allySquad, std::vector<Entity> enemySquad);
+	Fight_map(std::string path_map_fight, Window* main_window/*, sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad*/);
 	void draw_map();
 	void update_frame();
 	void select_tile();

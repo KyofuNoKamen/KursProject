@@ -25,7 +25,7 @@ void LabLevel::spawnEnemies() {
     //};
 
     for (Object& enemyObj : GetObjectsWithType("Enemy")) {
-        Enemy* enemy = new Enemy(enemyImg, this, enemySpriteRects, enemyObj.rect.left, enemyObj.rect.top, 69, 20, 4);
+        Enemy* enemy = new Enemy(enemyImg, this, enemySpriteRects, enemyObj.rect.left, enemyObj.rect.top, 4);
         enemy->setAnimationSpeedLimiter(100);
         enemies.push_back(*enemy);
     }
