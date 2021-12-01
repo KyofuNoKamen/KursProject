@@ -18,7 +18,7 @@
 
 
 sf::Text fpsText;
-
+static Hero* hro;
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
     create_window(resolution_x, resolution_y, name);
@@ -138,7 +138,7 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
     //Enemy squad = object Enemy with its field "enemy_squad"
     //Ally squad = object Hero with its field "hero_squad"
 
-    /*Creating an enemy squad
+    //Creating an enemy squad
     std::vector<Entity> enemySquad; 
     enemySquad.emplace_back(enemy);
 
@@ -204,6 +204,7 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
         main_window.display();
     }
 }
+
 void Window::checkEnemies(/*sf::Texture hero_texture*/) {
     sf::Texture hero_texture = hro->get_texture();
     std::vector<Enemy> enemies = level->GetEnemies();
