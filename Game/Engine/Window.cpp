@@ -11,10 +11,9 @@
 #include "../Headers/Menu.h"
 #include "../Headers/Main_menu.h"
 #include "../Headers/Networking.h"
-
+#include "../Headers/NetworkClient.h"
 #include <winsock2.h>
 
-Networking net;
 sf::Text fpsText;
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
@@ -36,6 +35,10 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
 
 void Window::start() 
 {
+    NetworkClient netC;
+    netC.init();
+    netC.registerOnServer("localhost", 55001, "player");
+
     int menu_command;
     Menu menu(get_window());
 
@@ -64,11 +67,8 @@ void Window::start()
     
     main_window.setView(*view);
 
-    while (main_window.isOpen())
-    {
-
-
-
+    while (main_window.isOpen()){
+        bool isWindowVisible = true;
         sf::Time deltatime = clock_.getElapsedTime();
         clock_.restart();
         sf::Event event;
@@ -277,7 +277,7 @@ void Window::main_menu()
         }
 
         if (menu_command == 2) {
-            net.StartServer();
+            //net.StartServer();
         }
 
         //test_server();

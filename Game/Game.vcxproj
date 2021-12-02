@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\NetworkClient.cpp" />
     <ClCompile Include="Engine\Interface\Cpp\Button.cpp" />
     <ClCompile Include="Engine\Enemy.cpp" />
     <ClCompile Include="Engine\Entity.cpp" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Interface\Headers\Button.h" />
+    <ClInclude Include="Headers\NetworkClient.h" />
     <ClInclude Include="Headers\Fight_interface.h" />
     <ClInclude Include="Headers\Enemy.h" />
     <ClInclude Include="Headers\Entity.h" />

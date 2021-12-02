@@ -6,6 +6,7 @@ class Networking {
 public:
 	void StartServer();
 	void executionThread();
+	void send_packet(sf::Packet);
 private:
 	sf::SocketSelector selector;
 	sf::UdpSocket client;
@@ -19,6 +20,5 @@ private:
 	void loop();
 	void shutdown();
 
-	void send_message(std::string message);
 
 };
