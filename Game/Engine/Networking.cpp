@@ -7,7 +7,8 @@ sf::Thread *thr;
 sf::Mutex mutex;
 
 void Networking::StartServer() {
-    printf("before startS");
+    std::cout << std::endl << sf::IpAddress::getPublicAddress() << std::endl;
+    std::cout << sf::IpAddress::getLocalAddress().toString() << std::endl;
     thr = new sf::Thread(&Networking::executionThread, this);
 
     thr->launch();
@@ -19,12 +20,10 @@ void Networking::executionThread() {
     while (1) {
         mutex.lock();
         loop();
-        //sf::sleep(sf::milliseconds(10));
+        //sf::sleep(sf::milliseconds(20));
         mutex.unlock();
     }
         
-    printf("loop");
-    printf("shutdown");
     shutdown();
 }
 
@@ -32,14 +31,10 @@ void Networking::Initialize() {
     // bind the listener to a port
     client.bind(client_port);
     server.bind(server_port);
-
-    send_message("first message!");
-    send_message("second message!");
+    //send_message("first message!");
 }
 
 void Networking::loop() {
-
-
 
     //server.setBlocking(0);
 
@@ -47,8 +42,7 @@ void Networking::loop() {
     std::size_t received = 0;
     sf::IpAddress sender;
     unsigned short port;
-    if (server.receive(buffer, sizeof(buffer), received, sender, port) == 0)
-    {
+    if (server.receive(buffer, sizeof(buffer), received, sender, port) == sf::Socket::Done){
         std::cout << std::endl << sender.getLocalAddress().toString() << " said: " << buffer << std::endl;
     }
     //std::cout << port;
@@ -58,10 +52,9 @@ void Networking::shutdown() {
 
 }
 
-void Networking::send_message(std::string message)
+void Networking::send_packet(sf::Packet packet)
 {
-    std::string snd_message = message;
-    //std::cout << message << std::endl;
+    std::string snd_message = "z";
     client.send(snd_message.c_str(), snd_message.size() + 1, sf::IpAddress::getLocalAddress().toString(), server_port);
 }
 
