@@ -4,13 +4,14 @@
 
 class Hero: public Entity{
 public:
-    Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y);
+    Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, std::string name);
     Window* window;
 
     void update(sf::Time);
     void set_tile_size(sf::Vector2i tile_size);
     int chance;
 
+    std::string name;
 private:
     sf::Vector2i tile_size;
     Level* level;

@@ -1,7 +1,7 @@
 #include "../Headers/Hero.h"
 #include <iostream>
 
-Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y, squad_counter) {
+Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, std::string name): Entity(level, image, rects, x, y, squad_counter) {
     isMoving = false;
     this->window = window;
     this->level = level;
@@ -9,6 +9,9 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
     damage = 50;
     squad_counter = 4;
     underModificator = false;
+    this->x = x;
+    this->y = y;
+
 
     sprite.setOrigin(0, 60);
     
@@ -18,15 +21,16 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
 void Hero::update(sf::Time deltatime) {
     heroSpriteFunction();
     if (getIsMoving()) {
-        //old_x = x;
-        //old_y = y;
-        makeMicrostep(deltatime);
-        window->setViewCenter(sprite.getPosition().x, sprite.getPosition().y);
-        window->checkEnemies();    //Will check during the movement
+
+        makeMicrostep(deltatime);   
+
+        
     }
-    else {
-        //window->checkEnemies();      //Will check while standing
+    else
+    {
         heroControl();
+        this->x = sprite.getPosition().x;
+        this->y = sprite.getPosition().y;
     }
 }
 
