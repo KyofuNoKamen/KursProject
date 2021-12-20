@@ -8,6 +8,7 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
     agility = 70;
     damage = 50;
     squad_counter = 4;
+    underModificator = false;
 
     sprite.setOrigin(0, 60);
     
@@ -17,10 +18,16 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
 void Hero::update(sf::Time deltatime) {
     heroSpriteFunction();
     if (getIsMoving()) {
+        //old_x = x;
+        //old_y = y;
         makeMicrostep(deltatime);
         window->setViewCenter(sprite.getPosition().x, sprite.getPosition().y);
+        window->checkEnemies();    //Will check during the movement
     }
-    else heroControl();
+    else {
+        //window->checkEnemies();      //Will check while standing
+        heroControl();
+    }
 }
 
 void Hero::heroSpriteFunction() {
@@ -36,27 +43,36 @@ void Hero::heroControl(){
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         direction = DIRECTIONS[0];
-        window->checkEnemies();  //////////////////////////
+
+        //window->checkEnemies();  //////////////////////////
         
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
+        //old_x = x;
+        //old_y = y;
         direction = DIRECTIONS[1];
-        window->checkEnemies();
+        //window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        //old_x = x;
+        //old_y = y;
         direction = DIRECTIONS[2];
-        window->checkEnemies();
+        //window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        //old_x = x;
+        //old_y = y;
         direction = DIRECTIONS[3];
-        window->checkEnemies();
+        //window->checkEnemies();
     }
     else {
         return;
     }
     // if the hero starts moving, enemies will do the same
-    if (makeStepInDirection(direction))
-        window->getLevel().StartEnemyMoving();        
+    if (makeStepInDirection(direction)) {
+        window->getLevel().StartEnemyMoving();
+        //window->checkEnemies();
+    }
 }
 
 void Hero::set_tile_size(sf::Vector2i tile_size) {

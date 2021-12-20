@@ -2,6 +2,7 @@
 #include "Interface/Headers/Panel.h"
 #include "Interface/Headers/Button.h"
 #include "Interface/Headers/Unit_hole.h"
+#include <iostream>
 
 
 static Panel *main_panel;
@@ -14,7 +15,7 @@ static Button *second_button;
 static sf::View unit_panel_view; //f_tst
 
 
-Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_texture/*, std::vector<Entity> enemySquad*/)
+Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture hero_texture, sf::Texture enemy_texture/*, std::vector<Entity> enemySquad*/)
 {
 	p_window = &window;
 
@@ -22,8 +23,10 @@ Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_text
 
 	window_size = p_window->getSize();
 
-	main_panel = new Panel(-(int)(window_size.x / 2), (window_size.y / 3), window_size.x, (window_size.y / 6), view);
+
+	/*main_panel = new Panel(-(int)(window_size.x / 2), (window_size.y / 3), window_size.x, (window_size.y / 6), view);
 	main_panel->set_border(15);
+	
 
 	first_button = new Button(70, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
 	second_button = new Button(300, 10, 200, main_panel->get_panel().getSize().y - 20, main_panel->get_panel().getPosition(), view.getCenter(), window_size);
@@ -31,6 +34,10 @@ Fight_interface::Fight_interface(sf::RenderWindow& window, sf::Texture unit_text
 
 	if (allySquad.size() > 1)
 		unit_panel = new Unit_hole(first_button->get_button().getSize().x/2 - 50, first_button->get_button().getSize().y/2 - 50, 100, 100, unit_panel_view, allySquad[0].get_texture());
+	
+	
+	unit_panel = new Unit_hole(first_button->get_button().getSize().x / 2 - 50, first_button->get_button().getSize().y / 2 - 50, 100, 100, unit_panel_view, hero_texture);
+	unit_panel = new Unit_hole(second_button->get_button().getSize().x / 2 - 50, second_button->get_button().getSize().y / 2 - 50, 100, 100, unit_panel_view, enemy_texture);*/
 }
 
 int Fight_interface::draw_interface()

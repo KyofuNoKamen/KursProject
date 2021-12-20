@@ -107,6 +107,7 @@ void Window::start()
         main_window.clear();
         level->Draw(main_window);
         hero->update(deltatime);
+        //checkEnemies();//////////////////////////
         level->EnemiesMakeMicrostep(deltatime);
         drawEnemies();
         renderFPS();
@@ -130,7 +131,7 @@ void Window::start()
 }
 
 
-void Window::fight_start(sf::Texture hero_texture, Enemy& enemy) 
+void Window::fight_start(/*Hero* hero, */ Enemy & enemy)
 {
     int menu_command;
     Menu menu(get_window());
@@ -138,20 +139,15 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
     //Enemy squad = object Enemy with its field "enemy_squad"
     //Ally squad = object Hero with its field "hero_squad"
 
-    /*Creating an enemy squad
-    std::vector<Entity> enemySquad; 
-    enemySquad.emplace_back(enemy);
-
-    //Creating an ally aquad
+    /*//Creating an ally aquad
     std::vector<Entity> allySquad;
     std::vector<Enemy> ellies = level->GetAllies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
     for (Enemy& enemy : enemies) {
         enemySquad.emplace_back(enemy);
     }*/
     
-    Fight_map fight("resources/Fight_map.tmx", this/*, hero_texture,  allySquad, enemySquad*/);    //ÇÀìåíèòü ñêâàäû íà îáúåêòû ãåğîÿ è âğàãà!!!!
+    Fight_map fight("resources/Fight_map.tmx", this, hero, enemy);/*, hero_texture,  allySquad, enemySquad);*/    //ÑŞÄÀ ÍÓÆÍÎ ÏÅĞÅÄÀÒÜ ÎÁÚÅÊÒÛ ÂĞÀÃÀ È ÃÅĞÎß!!!!
     
-
     while(1){
 
         sf::Event event;
@@ -175,6 +171,7 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
                 isEsc = !isEsc;
                 runEsc = !runEsc;
             }
+           
             main_window.setView(*view);
             
         }
@@ -184,8 +181,6 @@ void Window::fight_start(sf::Texture hero_texture, Enemy& enemy)
         //hero.update();
         fight.update_frame();
         renderFPS();
-       
-
 
         if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             runEsc = true;
@@ -211,21 +206,60 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
     std::cout << "hero health " << hero->health << std::endl;
     std::cout << "hero squad counter " << hero->squad_counter << std::endl;
     //sf::Texture hero_texture = hero->get_texture();
-    std::vector<Enemy> enemies = level->GetEnemies();
-    for (Enemy& enemy : enemies) {
-        /*if ((abs(hero->x - enemy.x <= enemy.vissibility_distance)) && (abs(hero->y - enemy.y <= enemy.vissibility_distance))) {
-            Window::fight_start(hero_texture,enemy);
-        }*/
-        //std::cout <<"checking "<< abs(hero->x - enemy.x) << "-> x; y -> " << abs(hero->y - enemy.y) << std::endl;
-    
-        std::cout << "enemy coordinates x " << enemy.x << std::endl;
-        std::cout << "enemy coordinates y " << enemy.y << std::endl;
-        std::cout << "enemy agility " << enemy.agility << std::endl;
-        std::cout << "enemy damage " << enemy.damage << std::endl;
-        std::cout << "enemy health " << enemy.health << std::endl;
-        std::cout << "enemy squad counter " << enemy.squad_counter << std::endl;
-        std::cout << "________________________________________________"  << std::endl;
 
+    std::vector<Enemy> enemies = level->GetEnemies();
+    
+    for (Enemy& enemy : enemies) {
+
+        if (hero->underModificator == false) {
+            if ((abs(hero->x - enemy.x) <= enemy.vissibility_distance) && (abs(hero->y - enemy.y) <= enemy.vissibility_distance)) {
+                std::cout << "Checking enemy coordinates " << enemy.x << " ; " << enemy.y << std::endl;
+                std::cout << "STOP RIGHT THERE!" << std::endl;
+                std::cout << "____________________________________________" << std::endl;
+                hero->underModificator = true;
+                //Window::fight_start(enemy);
+                std::cout << "You have caught by a creepy mushroom. He hits your left hand. You've lost health points" << std::endl;
+                hero->health = hero->health - enemy.damage;
+
+                std::cout << "Comparising hero and enemy characteristics..." << std::endl;
+                std::cout << "Hero health : " << hero->health << " | Enemy health : " << enemy.health << std::endl;
+                std::cout << "Hero damage : " << hero->damage << " | Enemy damage : " << enemy.damage << std::endl;
+                std::cout << "Hero agility : " << hero->agility << " | Enemy agility : " << enemy.agility << std::endl;
+
+                //Generator of random numbers 
+                std::cout << "Checking an oportunity to escape : " << std::endl;
+                int chance = (hero->agility - enemy.agility) * 2;
+                std::cout << chance << std::endl;
+                if (chance > 100) {
+                    chance = 100;
+                }
+                int generated_number = rand() % 100 + 1;
+                std::cout << "Generated number = " << generated_number << std::endl;
+                if (generated_number < chance) {
+                    std::cout << "You've managed to escape from enemy";
+                }
+                else {
+                    std::cout << "Your try to escape failed. Enemy hited you" << std::endl;
+                    hero->health = hero->health - enemy.damage;
+                    std::cout << "Displaying current health points: " << hero->health << std::endl;
+
+                }
+                /////////////////
+            }
+        }
+        /*if (enemy.underModificator == false) {
+            Enemy& currentEnemy = enemy;
+            for (Enemy& enemy : enemies) {
+                if ((abs(currentEnemy.x - enemy.x) <= enemy.vissibility_distance) && (abs(currentEnemy.y - enemy.y) <= enemy.vissibility_distance)) {
+                    std::cout << "Checking current enemy coordinates " << currentEnemy.x << " ; " << currentEnemy.y << std::endl;
+                    std::cout << "Checking enemy coordinates " << enemy.x << " ; " << enemy.y << std::endl;
+                    std::cout << "STOP RIGHT THERE!" << std::endl;
+                    std::cout << "____________________________________________" << std::endl;
+                    enemy.underModificator = true;
+                    Window::fight_start(enemy);
+                }
+            }
+        }*/
     }
 }
 void Window::drawEnemies() {
@@ -328,7 +362,7 @@ void Window::main_menu()
         main_window.display();
     }
 
-    delete& menu;
+        delete& menu;
 }
 
 /*

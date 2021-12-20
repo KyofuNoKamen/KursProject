@@ -1,24 +1,21 @@
 ﻿#include "../Headers/Entity.h"
 #include <iostream>
 
-Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, int squad_counter) {
+Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, float X, float Y, int squad_counter) {
 	this->level = level;
     spriteRects = rects;
     health = 100;
-    //X = x;
-    //Y = y;
+    x = X;
+    y = Y;
     //Squad vector
-
+    //old_x = X;
+    //old_y = Y;
 	life = true; isMoving = false; onGround = true;
 	texture.loadFromImage(image);
 	sprite.setTexture(texture);
     currentRect = rects[0];
     sprite.setTextureRect(currentRect);
     sprite.setPosition(x, y);
-    //////////
-    std::cout << x << std::endl;
-    std::cout << y << std::endl;
-    /////////
 	//sprite.setOrigin(-X, -Y);
 }
 
@@ -26,6 +23,7 @@ Entity::Entity(Level* level, sf::Image image, std::vector<sf::IntRect> rects, fl
 void Entity::makeMicrostep(sf::Time deltatime) {
     sf::Vector2f microstep = step / stepSpeedDivider * (float)deltatime.asMilliseconds();
     sprite.move(microstep);
+
 
     // movement animation
     if (clock_.getElapsedTime().asMilliseconds() > animationSpeedLimiter) {
@@ -44,6 +42,9 @@ void Entity::makeMicrostep(sf::Time deltatime) {
         currentRect = spriteRects[0];
         //currentRect.left = 0;
         sprite.setTextureRect(currentRect);
+        sf::Vector2f position = sprite.getPosition();
+        x = position.x;
+        y = position.y;
     }    
 }
 
