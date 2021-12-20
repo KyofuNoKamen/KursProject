@@ -5,13 +5,14 @@
 Enemy::Enemy(sf::Image image, Level* level, std::vector<sf::IntRect> rects, float X, float Y, int squad_counter/*, SquadVector*/) :Entity(level, image, rects, X, Y, squad_counter) {
 	// vremenniy kostyl')
 	sprite.setScale(5, 5);
-	vissibility_distance = 300;
+	vissibility_distance = 100;
 	agility = 60;
 	damage = 20;
 	//coordinates_x = x;
 	//coordinates_y = y;
 	std::cout << X << std::endl;  //Выводит
 	std::cout << Y << std::endl;
+	underModificator = false;
 
 	//squad_counter = 4;
 	

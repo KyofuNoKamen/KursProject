@@ -8,7 +8,7 @@
 class Fight_interface
 {
 public:
-	Fight_interface(sf::RenderWindow& window, sf::Texture unit_texture /*std::vector<Entity> enemySquad*/);
+	Fight_interface(sf::RenderWindow& window, sf::Texture hero_texture, sf:: Texture enemy_texture /*std::vector<Entity> enemySquad*/);
 	void draw_interface();
 	void set_unit_texture(sf::Texture unit_texture);
 	~Fight_interface();

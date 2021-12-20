@@ -14,7 +14,7 @@ public:
 	Window(int, int, LabLevel&, std::string);
 
 	void start();
-	void fight_start(sf::Texture hero_texture, Enemy &enemy);   ////////Могут быть тут ошибки
+	void fight_start(/*Hero* hero,*/ Enemy& enemy);   ////////Могут быть тут ошибки
 	void checkEnemies(/*sf::Texture hero_texture*/);
 
 	LabLevel& getLevel();

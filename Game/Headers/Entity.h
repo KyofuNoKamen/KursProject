@@ -23,8 +23,11 @@ public:
 	int damage;
 	int squad_counter;
 	int vissibility_distance;
+	//int old_x;
+	//int old_y;
 	//squad vector
 	bool life, onGround;
+	bool underModificator;
 
 	sf::Texture texture;
 	sf::Sprite sprite;

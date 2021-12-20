@@ -6,7 +6,7 @@ LabLevel g_level;
 
 
 
-Fight_map::Fight_map(std::string path_map_fight, Window *main_window/*, sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad*/)
+Fight_map::Fight_map(std::string path_map_fight, Window *main_window, Hero *hero, Enemy enemy/*sf::Texture hero_texture, std::vector<Entity> allySquad, std::vector<Entity> enemySquad*/)
 {
 	path_map = path_map_fight;
 	window = main_window;
@@ -27,8 +27,13 @@ Fight_map::Fight_map(std::string path_map_fight, Window *main_window/*, sf::Text
 	///////////
 	//// Блок для функции получения отрядов
 	//////////
-	fight_interface = new Fight_interface(window->get_window(), this->hero_texture/*, enemySquad*/);
-	draw_map();
+	sf::Texture enemy_texture = enemy.get_texture();
+	//fight_interface = new Fight_interface(window->get_window(), this->hero_texture, enemy_texture);
+	/*hero->health -= 10;
+	std::cout << "Comparison of hero and enemy characteristics" << std::endl;
+	std::cout << "Hero health: " << hero->health << std::endl;*/
+
+	//draw_map();
 }
 
 void Fight_map::draw_map()
