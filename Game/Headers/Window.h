@@ -27,8 +27,9 @@ public:
 	
 	void set_view(sf::View new_view);
 	void drawEnemies();
-
-
+	void addPlayer(sf::Texture& t_player, sf::Font& font, std::string clientName);
+	void getUserInputData(std::string& playerName);
+	LabLevel* level;
 	/*
 	void test_net();
 	void test_server();
@@ -39,7 +40,6 @@ private:
 	std::string name;
 	int resolution_x,
 		resolution_y;
-	LabLevel* level;
 	sf::View* view;
 
 	void create_window(int, int, std::string);

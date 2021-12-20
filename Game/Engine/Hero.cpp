@@ -1,10 +1,13 @@
 #include "../Headers/Hero.h"
 #include <iostream>
 
-Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y): Entity(level, image, rects, x, y) {
+Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRect> rects, float x, float y, std::string name): Entity(level, image, rects, x, y) {
     isMoving = false;
     this->window = window;
     this->level = level;
+    this->name = name;
+    this->x = x;
+    this->y = y;
 
     sprite.setOrigin(0, 60);
     
@@ -14,11 +17,17 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
 void Hero::update(sf::Time deltatime) {
     heroSpriteFunction();
     if (getIsMoving()) {
-        makeMicrostep(deltatime);
-        window->setViewCenter(sprite.getPosition().x, sprite.getPosition().y);
+        makeMicrostep(deltatime);   
+
+        
     }
-    else heroControl();
-}
+    else
+    {
+        heroControl();
+        this->x = sprite.getPosition().x;
+        this->y = sprite.getPosition().y;
+    }
+}                           
 
 void Hero::heroSpriteFunction() {
     sprite.setTextureRect(currentRect);

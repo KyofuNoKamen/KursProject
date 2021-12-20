@@ -15,7 +15,8 @@ private:
 	unsigned short client_port = 55001;
 	unsigned short server_port = 55002;
 	bool isAlive;
-	
+	void send_message(std::string msg);
+
 	void Initialize();
 	void loop();
 	void shutdown();
