@@ -40,6 +40,8 @@
     <ClCompile Include="Engine\Interface\Cpp\Unit_hole.cpp" />
     <ClCompile Include="Engine\Modificators.cpp" />
     <ClCompile Include="Engine\Mod_Heal.cpp" />
+    <ClCompile Include="Engine\NetworkClient.cpp" />
+    <ClCompile Include="Engine\Networking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Enemy.h">

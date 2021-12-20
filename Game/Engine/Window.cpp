@@ -75,10 +75,10 @@ void Window::start()
 
     hero = new Hero(this, this->level, heroSpriteset, spriteRects, 200, 200, "player");
     
-    getUserInputData(hero.name);
+    getUserInputData(hero->name);
 
     vector<string> namesVec;
-    netC.registerOnServer(S_Ip, S_port, hero.name);
+    netC.registerOnServer(S_Ip, S_port, hero->name);
 
     //getUserInputData(player.name);
 
@@ -91,7 +91,7 @@ void Window::start()
     sf::Packet receivedDataPacket;
     sf::Packet sendDataPacket;
 
-    view->setCenter(hero.sprite.getPosition());
+    view->setCenter(hero->sprite.getPosition());
 
     fpsText.setFont(font);
     fpsText.setCharacterSize(28);
@@ -200,7 +200,7 @@ void Window::start()
         }
         
         sendDataPacket.clear();
-        sendDataPacket << "DATA" << hero.x << hero.y;
+        sendDataPacket << "DATA" << hero->x << hero->y;
         netC.sendData(sendDataPacket);
 
         for (int i = 0; i < playersVec.size(); i++)
@@ -210,8 +210,8 @@ void Window::start()
 
         if (main_window.hasFocus())
         {
-            hero.update(deltatime);
-            setViewCenter(hero.sprite.getPosition().x, hero.sprite.getPosition().y);
+            hero->update(deltatime);
+            setViewCenter(hero->sprite.getPosition().x, hero->sprite.getPosition().y);
         }
 
         main_window.display();
