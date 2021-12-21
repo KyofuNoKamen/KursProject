@@ -199,6 +199,8 @@
     <ClInclude Include="Headers\Map.h" />
     <ClInclude Include="Headers\Modificators.h" />
     <ClInclude Include="Headers\Mod_Heal.h" />
+    <ClInclude Include="Headers\NetworkClient.h" />
+    <ClInclude Include="Headers\Networking.h" />
     <ClInclude Include="Headers\resource.h" />
     <ClInclude Include="Headers\Tiles.h" />
     <ClInclude Include="Headers\tinyxml2.h" />

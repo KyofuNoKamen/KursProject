@@ -10,8 +10,6 @@
 #include "../Headers/Fight_interface.h"
 #include "../Headers/Menu.h"
 #include "../Headers/Main_menu.h"
-#include "../Headers/Networking.h"
-#include "../Headers/NetworkClient.h"
 #include <winsock2.h>
 ////////
 #include "../Headers/LabLevel.h"
@@ -19,8 +17,10 @@
 
 sf::Text fpsText;
 Hero* hero;
-vector<Hero> playersVec;
+vector<Hero*> playersVec;
+vector<std::string> namesVec;
 string clientName;
+NetworkClient netC;
 
 sf::IpAddress S_Ip = sf::IpAddress::IpAddress::LocalHost;
 int S_port = 53948;
@@ -42,9 +42,19 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
     main_window.setVerticalSyncEnabled(1);
 }
 
+void sendData() {
+    sf::Packet sendDataPacket;
+    while (1)
+    {
+        sendDataPacket << "DATA" << hero->x << hero->y;
+        netC.sendData(sendDataPacket);
+        sendDataPacket.clear();
+        sf::sleep(sf::milliseconds(50));
+    }
+}
+
 void Window::start() 
 {
-    NetworkClient netC;
     netC.init();
     
 
@@ -68,8 +78,6 @@ void Window::start()
     };
     //hro = &hero;
 
-    sf::Texture t_player;
-    t_player.loadFromFile("resources/zel.png");
     sf::Font font;
     font.loadFromFile("resources/fonts/pwscratchy1.ttf");
 
@@ -77,7 +85,7 @@ void Window::start()
     
     getUserInputData(hero->name);
 
-    vector<string> namesVec;
+    
     netC.registerOnServer(S_Ip, S_port, hero->name);
 
     //getUserInputData(player.name);
@@ -85,11 +93,10 @@ void Window::start()
     netC.receiveConnectedClientsNames(namesVec);
     for (int i = 0; i < namesVec.size(); i++)
     {
-        addPlayer(t_player, font, namesVec[i]);
+        addPlayer(heroSpriteset, spriteRects, namesVec[i]);
     }
 
     sf::Packet receivedDataPacket;
-    sf::Packet sendDataPacket;
 
     view->setCenter(hero->sprite.getPosition());
 
@@ -98,6 +105,9 @@ void Window::start()
     fpsText.setFillColor(sf::Color::Red);
     
     main_window.setView(*view);
+
+    sf::Thread thread(&sendData);
+    thread.launch();
 
     while (main_window.isOpen()){
         bool isWindowVisible = true;
@@ -152,13 +162,14 @@ void Window::start()
         }
 
 
- 
+        
 
         if (netC.receiveData(receivedDataPacket, S_Ip, S_port) == sf::Socket::Status::Done)
         {
             if (receivedDataPacket.getDataSize() > 0)
             {
-                string s;
+                std::string s;
+                
                 if (receivedDataPacket >> s)
                 {
                     if (s == "NEW")
@@ -167,8 +178,9 @@ void Window::start()
                         {
                             if (s != clientName)
                             {
-                                addPlayer(t_player, font, s);
-                                cout << "New player connected: " << playersVec.back().name << endl;
+                                addPlayer(heroSpriteset, spriteRects, s);
+                                namesVec.push_back(s);
+                                cout << "New player connected: " << playersVec.back()->name << endl;
                             }
                         }
                     }
@@ -178,19 +190,19 @@ void Window::start()
                         {
                             float x, y;
                             receivedDataPacket >> s;
-                            std::cout << s << " - ";
                             receivedDataPacket >> x;
-                            std::cout << x << " - ";
+                            std::cout << x << std::endl;
                             receivedDataPacket >> y;
-                            std::cout << y << std::endl;
                             for (int i = 0; i < playersVec.size(); i++)
                             {
-                                if (s == playersVec[i].name)
+                                if (s == playersVec[i]->name)
                                 {
-                                    playersVec[i].sprite.setPosition(sf::Vector2f(x, y));
-                                    playersVec[i].x = x;
-                                    playersVec[i].y = y;
-                                    std::cout << playersVec[i].name << ": " << playersVec[i].x << " " << playersVec[i].y << std::endl;
+                                    playersVec[i]->sprite.setPosition(sf::Vector2f(x, y));
+                                    std::cout << playersVec[i]->x << " - " << x << std::endl;
+                                    std::cout << playersVec[i]->y << " - " << y << std::endl;
+                                    playersVec[i]->x = x;
+                                    playersVec[i]->y = y;
+                                    std::cout << "11111111111111111111111111111111111111111111" << std::endl;
                                 }
                             }
                         }
@@ -199,13 +211,14 @@ void Window::start()
             }
         }
         
-        sendDataPacket.clear();
-        sendDataPacket << "DATA" << hero->x << hero->y;
-        netC.sendData(sendDataPacket);
+        
 
         for (int i = 0; i < playersVec.size(); i++)
         {
-            playersVec[i].update(deltatime);
+            playersVec[i]->sprite.setTextureRect(playersVec[i]->currentRect);
+            playersVec[i]->sprite.setPosition(sf::Vector2f(playersVec[i]->x, playersVec[i]->y));
+            main_window.draw(playersVec[i]->sprite);
+            //main_window.draw(playersVec[i]->sprite);
         }
 
         if (main_window.hasFocus())
@@ -213,11 +226,15 @@ void Window::start()
             hero->update(deltatime);
             setViewCenter(hero->sprite.getPosition().x, hero->sprite.getPosition().y);
         }
+        
+        
 
         main_window.display();
     }
 
 }
+
+
 
 
 void Window::fight_start(/*Hero* hero, */ Enemy & enemy)
@@ -458,20 +475,9 @@ void Window::main_menu()
         delete& menu;
 }
 
-void Window::addPlayer(sf::Texture& t_player, sf::Font& font, std::string clientName)
+void Window::addPlayer(sf::Image& t_player, std::vector<sf::IntRect> spriteRects, std::string clientName)
 {
-    std::vector<sf::IntRect> spriteRects = {
-        sf::IntRect(0, 0, 120, 130),
-        sf::IntRect(0, 780, 120, 130),
-        sf::IntRect(0, 910, 120, 130),
-        sf::IntRect(0, 520, 120, 130),
-        sf::IntRect(0, 650, 120, 130)
-    };
-    sf::Image heroSpriteset;
-    heroSpriteset.loadFromFile("resources/zel.png");
-    playersVec.push_back(Hero(this, this->level, heroSpriteset, spriteRects, 200, 200, clientName));
-    playersVec.back().name = clientName;
-    playersVec.back().texture = t_player;
+    playersVec.push_back(new Hero(this, this->level, t_player, spriteRects, 200, 200, clientName));
 }
 
 void Window::getUserInputData(std::string& playerName)

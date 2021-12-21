@@ -12,6 +12,7 @@ Hero::Hero(Window* window, Level* level, sf::Image image, std::vector<sf::IntRec
     this->x = x;
     this->y = y;
 
+    this->name = name;
 
     sprite.setOrigin(0, 60);
     
@@ -23,8 +24,7 @@ void Hero::update(sf::Time deltatime) {
     if (getIsMoving()) {
 
         makeMicrostep(deltatime);   
-
-        
+              
     }
     else
     {

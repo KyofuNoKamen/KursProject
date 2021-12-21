@@ -8,7 +8,7 @@ protected:
 	sf::Clock clock_;
 	sf::Vector2f destination;
 	sf::Vector2f step;
-	sf::IntRect currentRect;
+	//
 	std::vector<sf::IntRect> spriteRects; // standing, up, right, down, left
 	//std::vector<Entity> squad_vector;
 	float stepSpeedDivider = 500;
@@ -16,7 +16,7 @@ protected:
 	bool isMoving;
 public:
 	Entity(Level* level, sf::Image image, std::vector<sf::IntRect>, float X, float Y, int Squad_counter);
-
+	sf::IntRect currentRect;
 	float x, y;
 	int health;
 	int agility;
@@ -28,7 +28,6 @@ public:
 	//squad vector
 	bool life, onGround;
 	bool underModificator;
-
 	sf::Texture texture;
 	sf::Sprite sprite;
 

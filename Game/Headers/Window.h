@@ -2,6 +2,9 @@
 #include "LabLevel.h"
 #include "Map.h"
 #include "Enemy.h"
+
+#include "Networking.h"
+#include "NetworkClient.h"
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -28,14 +31,14 @@ public:
 	
 	void set_view(sf::View new_view);
 	void drawEnemies();
-	void addPlayer(sf::Texture& t_player, sf::Font& font, std::string clientName);
+	void addPlayer(sf::Image& t_player, std::vector<sf::IntRect> spriteRects, std::string clientName);
 	void getUserInputData(std::string& playerName);
 	LabLevel* level;
 	/*
 	void test_net();
 	void test_server();
 	*/
-
+	//void sendData();
 private:
 	sf::RenderWindow main_window;
 	std::string name;
