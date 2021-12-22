@@ -3,10 +3,14 @@
 std::vector<Enemy>& LabLevel::GetEnemies(){
 	return enemies;
 }
+std::vector<Mod_Heal>& LabLevel::GetHeals() {
+    return heals;
+}
 
 void LabLevel::spawnEnemies() {
     sf::Image enemyImg;
     enemyImg.loadFromFile("resources/mushroom.png");
+
 
     std::vector<sf::IntRect> enemySpriteRects = {
        sf::IntRect(0, 0, 16, 16),
@@ -15,6 +19,18 @@ void LabLevel::spawnEnemies() {
         sf::IntRect(0, 16, 16, 16),
         sf::IntRect(0, 48, 16, 16)
     };
+    sf::Image healImg;
+    healImg.loadFromFile("resources/mushroom.png");
+
+
+    std::vector<sf::IntRect> healSpriteRects = {
+       sf::IntRect(0, 0, 16, 16),
+        sf::IntRect(0, 16, 16, 16),
+        sf::IntRect(0, 32, 16, 16),
+        sf::IntRect(0, 16, 16, 16),
+        sf::IntRect(0, 48, 16, 16)
+    };
+
 
     //std::vector<sf::IntRect> enemySpriteRects = {
     //   sf::IntRect(0, 0, 16, 32),
@@ -28,6 +44,11 @@ void LabLevel::spawnEnemies() {
         Enemy* enemy = new Enemy(enemyImg, this, enemySpriteRects, enemyObj.rect.left, enemyObj.rect.top, 4);
         enemy->setAnimationSpeedLimiter(100);
         enemies.push_back(*enemy);
+    }
+    for (Object& healsObj : GetObjectsWithType("Heal")) {
+        Mod_Heal* heal = new Mod_Heal(healImg, this, healSpriteRects, healsObj.rect.left, healsObj.rect.top);
+        heal->setAnimationSpeedLimiter(100);
+        heals.push_back(*heal);
     }
 }
 

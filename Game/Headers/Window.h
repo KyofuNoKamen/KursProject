@@ -31,6 +31,7 @@ public:
 	
 	void set_view(sf::View new_view);
 	void drawEnemies();
+	void drawHeals();
 	void addPlayer(sf::Image& t_player, std::vector<sf::IntRect> spriteRects, std::string clientName);
 	void getUserInputData(std::string& playerName);
 	LabLevel* level;

@@ -3,6 +3,7 @@
 #include "../Headers/Hero.h"
 #include "../Headers/Entity.h"
 #include "../Headers/Enemy.h"
+#include "../Headers/Mod_Heal.h"
 #include "../Headers/Fight_map.h"
 #include <iostream>
 #include <stdlib.h> 
@@ -242,15 +243,7 @@ void Window::fight_start(/*Hero* hero, */ Enemy & enemy)
     int menu_command;
     Menu menu(get_window());
 
-    //Enemy squad = object Enemy with its field "enemy_squad"
-    //Ally squad = object Hero with its field "hero_squad"
 
-    /*//Creating an ally aquad
-    std::vector<Entity> allySquad;
-    std::vector<Enemy> ellies = level->GetAllies();  //allies = level.GetAllies() - method which will return vector of the ally objects (work in progress) 
-    for (Enemy& enemy : enemies) {
-        enemySquad.emplace_back(enemy);
-    }*/
     
     Fight_map fight("resources/Fight_map.tmx", this, hero, enemy);/*, hero_texture,  allySquad, enemySquad);*/    //ÑÞÄÀ ÍÓÆÍÎ ÏÅÐÅÄÀÒÜ ÎÁÚÅÊÒÛ ÂÐÀÃÀ È ÃÅÐÎß!!!!
     
@@ -314,7 +307,7 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
     //sf::Texture hero_texture = hero->get_texture();
 
     std::vector<Enemy> enemies = level->GetEnemies();
-    
+
     for (Enemy& enemy : enemies) {
 
         if (hero->underModificator == false) {
@@ -353,25 +346,39 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
                 /////////////////
             }
         }
-        /*if (enemy.underModificator == false) {
-            Enemy& currentEnemy = enemy;
-            for (Enemy& enemy : enemies) {
-                if ((abs(currentEnemy.x - enemy.x) <= enemy.vissibility_distance) && (abs(currentEnemy.y - enemy.y) <= enemy.vissibility_distance)) {
-                    std::cout << "Checking current enemy coordinates " << currentEnemy.x << " ; " << currentEnemy.y << std::endl;
-                    std::cout << "Checking enemy coordinates " << enemy.x << " ; " << enemy.y << std::endl;
-                    std::cout << "STOP RIGHT THERE!" << std::endl;
-                    std::cout << "____________________________________________" << std::endl;
-                    enemy.underModificator = true;
-                    Window::fight_start(enemy);
+
+    }
+
+    std::vector<Mod_Heal> heals = level->GetHeals();
+
+    for (Mod_Heal& heal : heals) {
+
+        if (hero->underModificator == false) {
+            if ((abs(hero->x - heal.x) <= heal.modificator_range) && (abs(hero->y - heal.y) <= heal.modificator_range)) {
+                std::cout << "Checking heal coordinates " << heal.x << " ; " << heal.y << std::endl;
+                std::cout << "STOP RIGHT THERE!" << std::endl;
+                std::cout << "____________________________________________" << std::endl;
+                hero->underModificator = true;
+
+                std::cout << "You have caught by a creepy mushroom. He hits your left hand. You've lost health points" << std::endl;
+                hero->health = hero->health + heal.healing;
+                if (hero->health > 100) {
+                    hero->health = 100;
                 }
+
             }
-        }*/
+        }
     }
 }
 void Window::drawEnemies() {
     LabLevel* labLevel = level;
     for (Enemy& enemy : level->GetEnemies())
         main_window.draw(enemy.sprite);
+}
+void Window::drawHeals() {
+    LabLevel* labLevel = level;
+    for (Mod_Heal& heal : level->GetHeals())
+        main_window.draw(heal.sprite);
 }
 
 void Window::renderFPS() {

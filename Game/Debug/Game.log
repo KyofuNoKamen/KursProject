@@ -1,22 +1,5 @@
-<<<<<<< HEAD
-﻿  Modificators.cpp
-  Mod_Heal.cpp
-  Window.cpp
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(25,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-=======
-﻿  NetworkClient.cpp
-  Button.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(6,66): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(6,49): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,62): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+﻿  Fight_map.cpp
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(45,106): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -25,7 +8,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,62): warning C
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,45): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(45,72): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -34,28 +17,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(9,45): warning C
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(44,65): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Button.cpp(44,46): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-  Enemy.cpp
-  Entity.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Entity.cpp(23,46): warning C4018: >=: несоответствие типов со знаком и без знака
-D:\VSRepo\Game\KursProject\Game\Engine\Entity.cpp(47,57): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(54,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=float
@@ -64,7 +26,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Entity.cpp(47,57): warning C4244: арг�
           [
               T=int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Entity.cpp(47,42): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(55,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=float
@@ -73,95 +35,41 @@ D:\VSRepo\Game\KursProject\Game\Engine\Entity.cpp(47,42): warning C4244: арг�
           [
               T=int
           ]
-  Fight_map.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(30,106): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(30,72): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(39,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(40,108): warning C4244: =: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-          and
-          [
-              T=int
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(44,78): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(59,78): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_map.cpp(44,40): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Fight_map.cpp(59,40): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int
           ]
   Hero.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Hero.cpp(18,75): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Hero.cpp(18,51): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
-          with
-          [
-              T=float
-          ]
   LabLevel.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\LabLevel.cpp(28,101): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(44,101): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\LabLevel.cpp(28,81): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(44,81): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=int
           ]
-  Level.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(16,18): warning C4244: return: преобразование "double" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(105,27): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(106,33): warning C4244: =: преобразование "float" в "int", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(142,53): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(142,38): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(196,39): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(196,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(276,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(284,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(293,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(312,31): warning C4018: <: несоответствие типов со знаком и без знака
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(313,33): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(49,104): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\LabLevel.cpp(49,84): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
   Main.cpp
-  Map.cpp
-  Networking.cpp
-  Tiles.cpp
-  tinyxml2.cpp
   Window.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(31,91): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -170,7 +78,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,91): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(31,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -179,8 +87,9 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(21,66): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(45,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(95,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(68,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(95,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(138,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -189,7 +98,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(95,103): warning C4244: арг
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(95,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(138,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -198,21 +107,33 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(95,78): warning C4244: арг�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(225,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(225,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(230,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(230,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(250,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(197,47): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(217,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(228,83): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(228,53): warning C4244: аргумент: преобразование "const T" в "int", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(415,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(415,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(420,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(420,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(440,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=unsigned int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(250,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(440,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
           with
           [
               T=unsigned int
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(263,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(453,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -221,7 +142,7 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(263,103): warning C4244: ар�
           [
               T=float
           ]
-D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(263,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
+D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(453,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=unsigned int
@@ -230,99 +151,6 @@ D:\VSRepo\Game\KursProject\Game\Engine\Window.cpp(263,78): warning C4244: арг
           [
               T=float
           ]
-  Fight_interface.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Fight_interface.cpp(28,77): warning C4244: аргумент: преобразование "T" в "int", возможна потеря данных
->>>>>>> work
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(25,66): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(45,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(99,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(99,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(295,19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(295,16): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(300,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(300,21): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(320,71): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(320,44): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(333,103): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\Study\KursProject\KursProject\Game\Engine\Window.cpp(333,78): warning C4244: аргумент: преобразование "T" в "T", возможна потеря данных
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-<<<<<<< HEAD
   Создание кода...
-  Game.vcxproj -> D:\Study\KursProject\KursProject\Debug\Game.exe
-=======
-  Panel.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Panel.cpp(7,65): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-D:\VSRepo\Game\KursProject\Game\Engine\Interface\Cpp\Panel.cpp(7,48): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
-          with
-          [
-              T=float
-          ]
-  Menu.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Menu.cpp(19,113): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Main_menu.cpp
-D:\VSRepo\Game\KursProject\Game\Engine\Main_menu.cpp(19,119): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Unit_hole.cpp
-  Создание кода...
-D:\VSRepo\Game\KursProject\Game\Engine\Level.cpp(279): warning C4715: Level::GetObject: значение возвращается не при всех путях выполнения
-D:\VSRepo\Game\KursProject\Game\Engine\NetworkClient.cpp(45): warning C4715: NetworkClient::registerOnServer: значение возвращается не при всех путях выполнения
-  Game.vcxproj -> D:\VSRepo\Game\KursProject\Debug\Game.exe
->>>>>>> work
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1087,5): error MSB6006: "link.exe" завершилась с кодом 1104.
+LINK : fatal error LNK1104: не удается открыть файл "sfml-network-d.libsfml-graphics-d.lib"
