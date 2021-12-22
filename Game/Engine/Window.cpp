@@ -343,7 +343,6 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
                     std::cout << "Displaying current health points: " << hero->health << std::endl;
 
                 }
-                /////////////////
             }
         }
 
