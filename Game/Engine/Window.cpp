@@ -81,7 +81,7 @@ void Window::start()
     sf::Font font;
     font.loadFromFile("resources/fonts/pwscratchy1.ttf");
 
-    hero = new Hero(this, this->level, heroSpriteset, spriteRects, 200, 200, "player");
+    hero = new Hero(this, this->level, heroSpriteset, spriteRects, 2000, 3800, "player");
     
     getUserInputData(hero->name);
 
@@ -149,17 +149,6 @@ void Window::start()
         renderFPS();
        // fight_start();   ////////////////////
 
-        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            runEsc = true;
-        if (isEsc == true)
-        {   
-            menu_command = menu.draw_menu();
-            if (menu_command == 1)
-            {   
-                isEsc = false;
-                main_menu();
-            }
-        }
 
 
         
@@ -228,6 +217,18 @@ void Window::start()
         }
         
         
+
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            runEsc = true;
+        if (isEsc == true)
+        {
+            menu_command = menu.draw_menu();
+            if (menu_command == 1)
+            {
+                isEsc = false;
+                main_menu();
+            }
+        }
 
         main_window.display();
     }
