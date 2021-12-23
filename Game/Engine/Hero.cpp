@@ -24,7 +24,7 @@ void Hero::update(sf::Time deltatime) {
     if (getIsMoving()) {
 
         makeMicrostep(deltatime);   
-              
+        window->checkEnemies();
     }
     else
     {
@@ -47,27 +47,20 @@ void Hero::heroControl(){
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         direction = DIRECTIONS[0];
-
-        //window->checkEnemies();  //////////////////////////
         
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) { 
-        //old_x = x;
-        //old_y = y;
+
         direction = DIRECTIONS[1];
-        //window->checkEnemies();
+
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        //old_x = x;
-        //old_y = y;
+
         direction = DIRECTIONS[2];
-        //window->checkEnemies();
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        //old_x = x;
-        //old_y = y;
+
         direction = DIRECTIONS[3];
-        //window->checkEnemies();
     }
     else {
         return;

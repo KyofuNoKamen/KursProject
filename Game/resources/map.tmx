@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="700">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="705">
  <tileset firstgid="1" name="tile_set" tilewidth="100" tileheight="100" tilecount="20" columns="5">
   <image source="tile_set.jpg" width="500" height="400"/>
  </tileset>
@@ -605,5 +605,20 @@
   <object id="697" type="collidable" gid="6" x="1900" y="400" width="100" height="100"/>
   <object id="698" type="collidable" gid="6" x="1900" y="300" width="100" height="100"/>
   <object id="699" type="collidable" gid="6" x="1900" y="200" width="100" height="100"/>
+  <object id="700" type="Heal" x="2100" y="2300">
+   <point/>
+  </object>
+  <object id="701" type="Heal" x="2200" y="2400">
+   <point/>
+  </object>
+  <object id="702" type="Heal" x="2000" y="2400">
+   <point/>
+  </object>
+  <object id="703" type="Heal" x="2000" y="2200">
+   <point/>
+  </object>
+  <object id="704" type="Heal" x="2200" y="2200">
+   <point/>
+  </object>
  </objectgroup>
 </map>
