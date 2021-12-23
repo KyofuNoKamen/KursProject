@@ -21,9 +21,14 @@ vector<Hero*> playersVec;
 vector<std::string> namesVec;
 string clientName;
 NetworkClient netC;
+sf::Packet receivedDataPacket;
 
-sf::IpAddress S_Ip = sf::IpAddress::IpAddress::LocalHost;
-int S_port = 53948;
+sf::Clock thread_clock;
+sf::Time thread_time = thread_clock.getElapsedTime();
+
+sf::IpAddress S_Ip = sf::IpAddress::IpAddress("localhost");
+int S_port = 8080;
+bool main_map = 0;
 
 Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string name){
     create_window(resolution_x, resolution_y, name);
@@ -44,13 +49,16 @@ void Window::create_window(int resolution_x, int resolution_y, std::string name)
 
 void sendData() {
     sf::Packet sendDataPacket;
-    while (1)
-    {
-        sendDataPacket << "DATA" << hero->x << hero->y;
-        netC.sendData(sendDataPacket);
-        sendDataPacket.clear();
-        sf::sleep(sf::milliseconds(50));
-    }
+    sendDataPacket << "DATA" << hero->sprite.getPosition().x << hero->sprite.getPosition().y;
+    netC.sendData(sendDataPacket);
+    sendDataPacket.clear();
+}
+
+void falseData() {
+    sf::Packet sendDataPacket;
+    sendDataPacket << "DATA" << 9999 << 9999;
+    netC.sendData(sendDataPacket);
+    sendDataPacket.clear();
 }
 
 void Window::start() 
@@ -81,7 +89,7 @@ void Window::start()
     sf::Font font;
     font.loadFromFile("resources/fonts/pwscratchy1.ttf");
 
-    hero = new Hero(this, this->level, heroSpriteset, spriteRects, 2000, 3800, "player");
+    hero = new Hero(this, this->level, heroSpriteset, spriteRects, 7700, 2000, "player");
     
     getUserInputData(hero->name);
 
@@ -96,7 +104,7 @@ void Window::start()
         addPlayer(heroSpriteset, spriteRects, namesVec[i]);
     }
 
-    sf::Packet receivedDataPacket;
+
 
     view->setCenter(hero->sprite.getPosition());
 
@@ -108,6 +116,8 @@ void Window::start()
 
     sf::Thread thread(&sendData);
     thread.launch();
+
+    sf::Thread false_thread(&falseData);
 
     while (main_window.isOpen()){
         bool isWindowVisible = true;
@@ -148,17 +158,47 @@ void Window::start()
         drawEnemies();
         renderFPS();
        // fight_start();   ////////////////////
+        if (main_map == 0)
+        {
+            if (thread_clock.getElapsedTime().asSeconds() - thread_time.asSeconds() >= 0.2)
+            {
+                thread.launch();
+                thread_time = thread_clock.getElapsedTime();
+            }
+        }
 
+        if (main_map == 1)
+        {
+            if (thread_clock.getElapsedTime().asSeconds() - thread_time.asSeconds() >= 0.2)
+            {
+                false_thread.launch();
+                thread_time = thread_clock.getElapsedTime();
+            }
+        }
 
-
+        if ((hero->x == 6900 && hero->y == 2000) || (hero->x == 8600 && hero->y == 2000)) 
+        {
+            hero->x = 2000;
+            hero->y = 3800;
+            hero->sprite.setPosition(2000, 3800);
+            main_map = 1;
+        }
         
+        if ((hero->x == 2000 && hero->y == 100) || (hero->x == 100 && hero->y == 2200) || (hero->x == 3800 && hero->y == 2200)) 
+        {
+            hero->x = 7700;
+            hero->y = 2000;
+            hero->sprite.setPosition(7700, 2000);
+            main_map = 0;
+        }
 
-        if (netC.receiveData(receivedDataPacket, S_Ip, S_port) == sf::Socket::Status::Done)
+       
+
+         if (netC.receiveData(receivedDataPacket, S_Ip, S_port) == sf::Socket::Status::Done)
         {
             if (receivedDataPacket.getDataSize() > 0)
             {
                 std::string s;
-                
                 if (receivedDataPacket >> s)
                 {
                     if (s == "NEW")
@@ -180,30 +220,31 @@ void Window::start()
                             float x, y;
                             receivedDataPacket >> s;
                             receivedDataPacket >> x;
-                            std::cout << x << std::endl;
                             receivedDataPacket >> y;
                             for (int i = 0; i < playersVec.size(); i++)
                             {
+                                std::cout << "\tname = " << playersVec[i]->name << std::endl;
                                 if (s == playersVec[i]->name)
                                 {
                                     playersVec[i]->sprite.setPosition(sf::Vector2f(x, y));
-                                    std::cout << playersVec[i]->x << " - " << x << std::endl;
-                                    std::cout << playersVec[i]->y << " - " << y << std::endl;
                                     playersVec[i]->x = x;
                                     playersVec[i]->y = y;
-                                    std::cout << "11111111111111111111111111111111111111111111" << std::endl;
                                 }
                             }
                         }
                     }
                 }
             }
+            receivedDataPacket.clear();
         }
         
         
 
         for (int i = 0; i < playersVec.size(); i++)
         {
+            //std::cout << "\n\n\n\n\nname: " << playersVec[i]->name;
+            //std::cout << " sprite positon: " << playersVec[i]->sprite.getPosition().x << " " << playersVec[i]->sprite.getPosition().y;
+            std::cout << " hero coord: " << playersVec[i]->x << " " << playersVec[i]->y << "\n\n\n\n\n";
             playersVec[i]->sprite.setTextureRect(playersVec[i]->currentRect);
             playersVec[i]->sprite.setPosition(sf::Vector2f(playersVec[i]->x, playersVec[i]->y));
             main_window.draw(playersVec[i]->sprite);
@@ -485,14 +526,17 @@ void Window::getUserInputData(std::string& playerName)
 {
     //cout << "Enter server IP: ";
     //cin >> serverIp;
-    S_Ip = "localhost";
-    std::cout << endl;
-    std::cout << "Enter server registration port: ";
-    std::cin >> S_port;
-    std::cout << endl;
-    std::cout << "Enter name: ";
-    std::string name;
-    std::cin >> name;
+    //S_Ip = "localhost";
+    //std::cout << endl;
+    //std::cout << "Enter server registration port: ";
+    //std::cin >> S_port;
+    //std::cout << endl;
+    //std::cout << "Enter name: ";
+    //std::string name;
+    //std::cin >> name;
+    srand(time(NULL));
+    name = to_string(rand());
+    std::cout << name << std::endl;
     playerName = name;
 };
 

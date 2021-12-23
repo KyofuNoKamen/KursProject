@@ -6,7 +6,7 @@ int main()
     // Level - это типо карта
     LabLevel level;
     // загрузка карты
-    level.LoadFromFile("resources/map.tmx");
+    level.LoadFromFile("resources/big_map.tmx");
     //sf::View view;
     //view.setCenter(sf::Vector2f(500, 500));
 

@@ -1,5 +1,7 @@
 #include "NetworkServer.h"
 
+int port = 8080;
+
 NetworkServer::NetworkServer()
 {
 	//listener.setBlocking(true);
@@ -9,7 +11,7 @@ NetworkServer::NetworkServer()
 
 Socket::Status NetworkServer::init()
 {
-	if (listener.listen(Socket::AnyPort) == Socket::Status::Done)
+	if (listener.listen(port) == Socket::Status::Done)
 	{
 		cout << "Port -" << listener.getLocalPort() << endl;
 		return Socket::Status();
