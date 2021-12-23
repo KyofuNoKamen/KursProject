@@ -3,6 +3,7 @@
 #include "../Headers/Hero.h"
 #include "../Headers/Entity.h"
 #include "../Headers/Enemy.h"
+#include "../Headers/Mod_Heal.h"
 #include "../Headers/Fight_map.h"
 #include <iostream>
 #include <stdlib.h> 
@@ -32,6 +33,7 @@ Window::Window(int resolution_x, int resolution_y, LabLevel& level, std::string 
     main_window.setView(*view);
     setLevel(level);
     level.spawnEnemies();
+    level.spawnHeals();
 }
 
 void Window::create_window(int resolution_x, int resolution_y, std::string name)
@@ -306,16 +308,17 @@ void Window::fight_start(/*Hero* hero, */ Enemy & enemy)
 }
 
 void Window::checkEnemies(/*sf::Texture hero_texture*/) {
-    std::cout << "hero coordinates x " << hero->x << std::endl;
-    std::cout << "hero coordinates y " << hero->y << std::endl;
-    std::cout << "hero agility " << hero->agility << std::endl;
-    std::cout << "hero damage " << hero->damage << std::endl;
-    std::cout << "hero health " << hero->health << std::endl;
-    std::cout << "hero squad counter " << hero->squad_counter << std::endl;
+    //std::cout << "hero coordinates x " << hero->x << std::endl;
+    //std::cout << "hero coordinates y " << hero->y << std::endl;
+    //std::cout << "hero agility " << hero->agility << std::endl;
+    //std::cout << "hero damage " << hero->damage << std::endl;
+    //std::cout << "hero health " << hero->health << std::endl;
+    //std::cout << "hero squad counter " << hero->squad_counter << std::endl;
     //sf::Texture hero_texture = hero->get_texture();
 
     std::vector<Enemy> enemies = level->GetEnemies();
-    
+    std::vector<Mod_Heal> heals = level->GetHeals();
+
     for (Enemy& enemy : enemies) {
 
         if (hero->underModificator == false) {
@@ -354,25 +357,30 @@ void Window::checkEnemies(/*sf::Texture hero_texture*/) {
                 /////////////////
             }
         }
-        /*if (enemy.underModificator == false) {
-            Enemy& currentEnemy = enemy;
-            for (Enemy& enemy : enemies) {
-                if ((abs(currentEnemy.x - enemy.x) <= enemy.vissibility_distance) && (abs(currentEnemy.y - enemy.y) <= enemy.vissibility_distance)) {
-                    std::cout << "Checking current enemy coordinates " << currentEnemy.x << " ; " << currentEnemy.y << std::endl;
-                    std::cout << "Checking enemy coordinates " << enemy.x << " ; " << enemy.y << std::endl;
-                    std::cout << "STOP RIGHT THERE!" << std::endl;
-                    std::cout << "____________________________________________" << std::endl;
-                    enemy.underModificator = true;
-                    Window::fight_start(enemy);
+    }
+    for (Mod_Heal& heal : heals) {
+        if (hero->underModificator == false) {
+            if ((abs(hero->x - heal.x) <= heal.modificator_range) && (abs(hero->y - heal.y) <= heal.modificator_range)) {
+                std::cout << "Checking heal coordinates " << heal.x << " ; " << heal.y << std::endl;
+                hero->underModificator = true;
+                std::cout << "You have hiled by a healing potion" << std::endl;
+                hero->health = hero->health + heal.healing;
+                if (hero->health > 100) {
+                    hero->health = 100;
                 }
             }
-        }*/
+        }
     }
 }
 void Window::drawEnemies() {
     LabLevel* labLevel = level;
     for (Enemy& enemy : level->GetEnemies())
         main_window.draw(enemy.sprite);
+}
+void Window::drawHeals() {
+    LabLevel* labLevel = level;
+    for (Mod_Heal& heal : level->GetHeals())
+        main_window.draw(heal.sprite);
 }
 
 void Window::renderFPS() {
